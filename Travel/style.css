@@ -156,7 +156,8 @@ body {
 .header-div {
     display: flex;
     height: 90px;
-    /* border: 1px groove red; */
+    background: rgba(242, 120, 92, 0.7);
+    box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
 }
 
 .main-div {
@@ -173,6 +174,7 @@ body {
 .logo {
     width: 15%;
     height: 31px;
+    margin: 25px 0 34px 8.3%;
 }
 
 .logo-img {
@@ -183,17 +185,19 @@ body {
 .logo-title {
     display: inline-block;
     height: 31px;
+    margin: 0;
     font-family: 'Magra Regular', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 32px;
     line-height: 39px;
+    color: #FFFFFF;
 }
 
 .navigation {
     width: 36.6%;
     height: 21px;
-    margin: 35px 29% 34px 0;
+    margin: 35px 0 34px 10.9%;
     font-size: 0;
 }
 
@@ -215,22 +219,23 @@ body {
 }
 
 .navigation-link a {
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;
-    /* color: #FFFFFF; */
-    color: black;
+    color: #FFFFFF;
+    /* color: black; */
 }
 
 .btn-login {
     width: 7.2%;
     height: 41px;
+    margin: 25px 0 24px 13.6%;
     background: #0D606F;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
     border-radius: 10px;
-    font-family: 'Red Hat Text';
+    font-family: 'Red Hat Text', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
