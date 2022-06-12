@@ -1,38 +1,239 @@
-body{
-    margin: 0;
+/* basic fonts */
+
+/* Aleo */
+@font-face {
+    font-family: "Aleo Bold";
+    src: url("./assets/fonts/Aleo-Bold.woff2") format("woff2"),
+        url("./assets/fonts/Aleo-Bold.woff") format("woff");
 }
 
-.page{
+@font-face {
+    font-family: "Aleo Bold Italic";
+    src: url("./assets/fonts/Aleo-BoldItalic.woff") format("woff"),
+        url("./assets/fonts/Aleo-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Aleo Italic";
+    src: url("./assets/fonts/Aleo-Italic.woff2") format("woff2"),
+        url("./assets/fonts/Aleo-Italic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Aleo Light";
+    src: url("./assets/fonts/Aleo-Light.woff2") format("woff2"),
+        url("./assets/fonts/Aleo-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Aleo Light Italic";
+    src: url("./assets/fonts/Aleo-LightItalic.woff2") format("woff2"),
+        url("./assets/fonts/Aleo-LightItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Aleo Regular";
+    src: url("./assets/fonts/Aleo-Regular.woff2") format("woff2"),
+        url("./assets/fonts/Aleo-Regular.woff") format("woff");
+}
+
+/* Magra */
+@font-face {
+    font-family: "Magra Regular";
+    src: url("./assets/fonts/Magra-Regular.woff2") format("woff2"),
+        url("./assets/fonts/Magra.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Magra Bold";
+    src: url("./assets/fonts/Magra-Bold.woff2") format("woff2"),
+        url("./assets/fonts/Magra-Bold.woff") format("woff");
+}
+
+/* RedHatText */
+@font-face {
+    font-family: "RedHatText Bold";
+    src: url("./assets/fonts/RedHatText-Bold.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Bold Italic";
+    src: url("./assets/fonts/RedHatText-BoldItalic.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Italic";
+    src: url("./assets/fonts/RedHatText-Italic.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-Italic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Bold Italic";
+    src: url("./assets/fonts/RedHatText-LightItalic.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-LightItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Medium";
+    src: url("./assets/fonts/RedHatText-Medium.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-Medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Medium Italic";
+    src: url("./assets/fonts/RedHatText-MediumItalic.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Regular";
+    src: url("./assets/fonts/RedHatText-Regular.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText SemiBold";
+    src: url("./assets/fonts/RedHatText-SemiBold.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-SemiBold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "RedHatText Bold";
+    src: url("./assets/fonts/RedHatText-SemiBoldItalic.woff2") format("woff2"),
+        url("./assets/fonts/RedHatText-SemiBoldItalic.woff") format("woff");
+}
+
+/* links style */
+
+a {
+    text-decoration: none;
+    /* color: white; */
+    /* color: black; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.page {
     width: 100%;
 }
-.container{
+
+.container {
     width: 1440px;
     height: 3735px;
     margin: 0 auto;
-    border: 1px groove black;
+    /* border: 1px groove black; */
 }
-.background{
+
+/* basic markup */
+
+.background {
     position: static;
 }
-.top{
+
+.top {
     height: 765px;
+    opacity: .1;
 }
-.bottom{
+
+.bottom {
     height: 100%;
     margin-top: 1635px;
+    opacity: .1;
 }
-.webpage{
+
+.webpage {
     position: relative;
     z-index: 1;
     margin-top: -3740px;
-    z-index: 100; 
+    z-index: 100;
 }
-.header-div{
-    height: 90px;    
+
+.header-div {
+    display: flex;
+    height: 90px;
+    /* border: 1px groove red; */
 }
-.main-div{
+
+.main-div {
     height: 3584px;
+    /* border: 1px groove green; */
 }
-.footer-div{
+
+.footer-div {
     height: 61px;
+    /* border: 1px groove blue; */
+}
+
+/* header markup */
+.logo {
+    width: 15%;
+    height: 31px;
+}
+
+.logo-img {
+    display: inline-block;
+    height: 30px;
+}
+
+.logo-title {
+    display: inline-block;
+    height: 31px;
+    font-family: 'Magra Regular', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.navigation {
+    width: 36.6%;
+    height: 21px;
+    margin: 35px 29% 34px 0;
+    font-size: 0;
+}
+
+.navigation-list {
+    display: flex;
+    height: 21px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 42px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navigation-link {
+    height: 21px;
+
+}
+
+.navigation-link a {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    /* color: #FFFFFF; */
+    color: black;
+}
+
+.btn-login {
+    width: 7.2%;
+    height: 41px;
+    background: #0D606F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFFFF;
 }
