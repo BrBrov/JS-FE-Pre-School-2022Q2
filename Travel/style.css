@@ -504,7 +504,6 @@ a {
 .arrow {
     width: 17.54%;
     height: 22.5px;
-    /* margin: auto -31px auto 10px; */
 }
 
 .title-find-more {
@@ -514,4 +513,38 @@ a {
     font-size: 24px;
     line-height: 32px;
     color: #FFFFFF;
+}
+
+/* Stories block */
+.stories {
+    width: 83.4%;
+    /*1201px */
+    height: 1322px;
+    margin: 0 auto;
+}
+
+.title-stories {
+    width: 27.9%;
+    height: 35px;
+    margin: 0 auto 80px auto;
+    font-family: 'RedHatText SemiBold', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 53px;
+    color: #F2785C;
+}
+.stories-container{
+    display: flex;
+    width: 100%;
+    height: 1090px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.stories-element{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
