@@ -113,14 +113,14 @@ body {
 /* General setting */
 
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
     transition: .3s;
-  }
+}
 
 
 /* links style */
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -227,14 +227,16 @@ a{
     color: #FFFFFF;
     transition: 1.5s;
 }
-.navigation-link a:hover{
+
+.navigation-link a:hover {
     color: #f3cfaefa;
     text-shadow: 2px 2px 5px #091e22;
     font-size: 18px;
     text-decoration: dotted;
     transition: 1s;
 }
-.navigation-link a:active{
+
+.navigation-link a:active {
     cursor: wait;
 }
 
@@ -244,9 +246,10 @@ a{
     margin: 25px 0 24px 13.6%;
     background: #0D606F;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
-    border-radius: 10px;    
+    border-radius: 10px;
 }
-.title-btn-login{
+
+.title-btn-login {
     font-family: 'RedHatText Regular', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -530,12 +533,13 @@ a{
 
 /* Stories block */
 .stories {
-    width:100%;
+    width: 100%;
     height: 1364px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.7);
 }
-.stories-main{
+
+.stories-main {
     width: 83.4%;
     /*1201px */
     height: 1322px;
@@ -622,7 +626,7 @@ a{
     border-radius: 10px;
 }
 
-.arrow-see{
+.arrow-see {
     width: 17.54%;
     height: 40px;
     margin-right: 4.39%;
@@ -637,4 +641,67 @@ a{
     color: #FFFFFF;
     flex: none;
     flex-grow: 0;
+}
+
+/* Footer */
+.footer-div {
+    width: 100%;
+}
+
+.footer-grid {
+    width: 100%;
+    display: grid;
+    margin: 14px 0 13.35px 0;
+    grid-template-rows: 100%;
+    grid-template-columns: 35% 50.62%;
+}
+
+.git-rs {
+    display: flex;
+    width: 40%;
+    height: 33.65px;
+    flex-direction: row;
+    gap: 2%;
+    justify-content: space-around;
+}
+
+.git {
+    display: block;
+}
+
+.img-git {
+    height: 33.65px;
+}
+
+.rs {
+    display: block;
+}
+
+.img-rs {
+    height: 33.65px;
+}
+
+.footer-block {
+    display: grid;
+    width: 50.62%;
+    height: 33.65px;
+    margin-left: 12.9%;
+    /* grid-template-columns: 33.67% 4.61% 4.61% 4.61%; */
+    grid-template-columns: 155% 12% 12% 12%;
+    grid-template-rows: 33.65px;
+    gap: 2%;
+}
+
+.title-footer {
+    height: 21px;
+    margin-top: 1%;
+    font-family: 'RedHatText Regular', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+.social-net{
+    height: 33.65px;
 }
