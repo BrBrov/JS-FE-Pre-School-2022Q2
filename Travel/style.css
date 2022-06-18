@@ -110,12 +110,18 @@ body {
         url("./assets/fonts/RedHatText-SemiBoldItalic.woff") format("woff");
 }
 
+/* General setting */
+
+html {
+    scroll-behavior: smooth; 
+    transition: .3s;
+  }
+
+
 /* links style */
 
-a {
+a{
     text-decoration: none;
-    /* color: white; */
-    /* color: black; */
 }
 
 .page {
@@ -219,7 +225,17 @@ a {
     font-size: 16px;
     line-height: 21px;
     color: #FFFFFF;
-    /* color: black; */
+    transition: 1.5s;
+}
+.navigation-link a:hover{
+    color: #f3cfaefa;
+    text-shadow: 2px 2px 5px #091e22;
+    font-size: 18px;
+    text-decoration: dotted;
+    transition: 1s;
+}
+.navigation-link a:active{
+    cursor: wait;
 }
 
 .btn-login {
