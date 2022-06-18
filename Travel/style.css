@@ -110,11 +110,6 @@ body {
         url("./assets/fonts/RedHatText-SemiBoldItalic.woff") format("woff");
 }
 
-/* debud border */
-.bg {
-    border: 1px groove red;
-}
-
 /* links style */
 
 a {
@@ -131,10 +126,6 @@ a {
     width: 1440px;
     height: 3735px;
     margin: 0 auto;
-}
-
-.bg {
-    border: 1px groove black;
 }
 
 .background {
@@ -163,7 +154,7 @@ a {
 
 .bottom {
     background-image: url(./assets/jpg/boat-big.jpg);
-    opacity: 0.1;
+    /* opacity: 0.7; */
 }
 
 .header-div {
@@ -517,6 +508,12 @@ a {
 
 /* Stories block */
 .stories {
+    width:100%;
+    height: 1364px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.7);
+}
+.stories-main{
     width: 83.4%;
     /*1201px */
     height: 1322px;
@@ -534,17 +531,88 @@ a {
     line-height: 53px;
     color: #F2785C;
 }
-.stories-container{
+
+/* Storyes flexboxes */
+.stories-container {
     display: flex;
     width: 100%;
     height: 1090px;
+    margin-bottom: 40px;
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
     justify-content: space-between;
 }
-.stories-element{
+
+.stories-element {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    gap: 40px;
+}
+
+.img-story {
+    display: block;
+    height: 250px;
+    /* background: url(robin-noguier-sydwCr54rf0-unsplash.jpg); */
+    filter: drop-shadow(0px 4px 4px #0D606F);
+    border-radius: 16px;
+}
+
+.story-sample {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title-sample {
+    font-family: 'Aleo Regular', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 42px;
+    color: #0D606F;
+}
+
+.story {
+    font-family: 'Aleo Regular', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #0D606F;
+}
+
+/* "See more" button */
+
+.btn-see-more {
+    display: flex;
+    width: 19%;
+    /* 228px */
+    height: 59px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 32px;
+    gap: 10px;
+    background: #0D606F;
+    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+}
+
+.arrow-see{
+    width: 17.54%;
+    height: 40px;
+    margin-right: 4.39%;
+}
+
+.title-see-more {
+    font-family: 'RedHatText Regular', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+    flex: none;
+    flex-grow: 0;
 }
