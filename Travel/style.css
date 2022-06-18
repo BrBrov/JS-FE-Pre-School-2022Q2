@@ -231,7 +231,6 @@ a {
     border-radius: 10px;    
 }
 .title-btn-login{
-    margin-top: 1%;
     font-family: 'RedHatText Regular', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -301,15 +300,19 @@ a {
 
 #find-trip:optional {
     border-radius: 10px;
+    outline: none;
     background: rgba(255, 255, 255, 0.021);
     color: #F2785C;
 }
 
 #find-trip::placeholder {
+    border: none;
+    outline: none;
     color: #F2785C;
 }
 
-#find-trip:focus {
+#find-trip:focus::placeholder {
+    color: transparent;
     border: none;
     outline: none;
 }
