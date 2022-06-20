@@ -1,2 +1,2 @@
 let {log} = console;
-log('Here will be mark');
+log('Total score 105\nScore 100');
