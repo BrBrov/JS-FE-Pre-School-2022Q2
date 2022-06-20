@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./assets/svg/Logo.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="./assets/jpg/favicon.jpg" type="image/jpeg">
     <script defer src="index.js"></script>
     <title>Travel Part 1</title>
 </head>
@@ -27,16 +27,16 @@
                     <nav class="navigation">
                         <ul class="navigation-list">
                             <li class="navigation-link">
-                                <a href="#">How It Works</a>
+                                <a href="#preview">How It Works</a>
                             </li>
                             <li class="navigation-link">
-                                <a href="#">Plan Your Trip</a>
+                                <a href="#steps">Plan Your Trip</a>
                             </li>
                             <li class="navigation-link">
-                                <a href="#">Destinations</a>
+                                <a href="#destinations">Destinations</a>
                             </li>
                             <li class="navigation-link">
-                                <a href="#">Travel Stories</a>
+                                <a href="#stories">Travel Stories</a>
                             </li>
                         </ul>
                     </nav>
@@ -45,16 +45,16 @@
                     </button>
                 </header>
                 <main class="main-div">
-                    <section class="preview">
+                    <section id="preview" class="preview">
                         <h1 class="preview-title">Explore the beauty of the World</h1>
-                        <h2 class="preview-remark">Recieve personalized recommendations for countries,
-                            hotels, activities and more</h2>
+                        <div class="preview-remark">Recieve personalized recommendations for countries,
+                            hotels, activities and more</div>
                         <div class="preview-input">
                             <input type="text" name="search" id="find-trip" placeholder="What would you like to do?">
                             <button type="submit" class="start-planning">Start Planning</button>
                         </div>
                     </section>
-                    <section class="steps">
+                    <section id="steps" class="steps">
                         <h2 class="steps-title">3 STEPS TO THE PERFECT TRIP</h2>
                         <div class="steps-flex">
                             <div class="steps-box">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </section>
-                    <section class="destinations">
+                    <section id="destinations" class="destinations">
                         <h2 class="title-destination">POPULAR DESTINATIONS</h2>
                         <div class="carousel">
                             <div class="carousel-item">
@@ -117,7 +117,7 @@
                             <span class="title-find-more">Find more</span>
                         </button>
                     </section>
-                    <section class="stories">
+                    <section id="stories" class="stories">
                         <div class="stories-main">
                             <h2 class="title-stories">TRAVEL STORIES</h2>
                             <div class="stories-container">
@@ -225,21 +225,23 @@
                         </div>
                         <div class="footer-block">
                             <div class="title-footer">All Rights Reserved © Travel Portal</div>
-                            <div class="social-net">
-                                <a href="https://www.instagram.com/">
-                                    <img src="./assets/svg/Instagram.svg" alt="Instagram">
-                                </a>
-                            </div>
-                            <div class="social-net">
-                                <a href="https://www.youtube.com/">
-                                    <img src="./assets/svg/Youtube.svg" alt="Yuotube">
-                                </a>
-                            </div>
-                            <div class="social-net">
-                                <a href="https://twitter.com/">
-                                    <img src="./assets/svg/Twitter.svg" alt="Twitter">
-                                </a>
-                            </div>
+                            <ul class="social-list">
+                                <li class="social-link">
+                                    <a href="https://www.instagram.com/">
+                                        <img src="./assets/svg/Instagram.svg" alt="Instagram">
+                                    </a>
+                                </li>
+                                <li class="social-link">
+                                    <a href="https://www.youtube.com/">
+                                        <img src="./assets/svg/Youtube.svg" alt="Yuotube">
+                                    </a>
+                                </li>
+                                <li class="social-link">
+                                    <a href="https://twitter.com/">
+                                        <img src="./assets/svg/Twitter.svg" alt="Twitter">
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </footer>

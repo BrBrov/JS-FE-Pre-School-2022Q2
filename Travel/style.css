@@ -114,7 +114,6 @@ body {
 
 html {
     scroll-behavior: smooth;
-    transition: .3s;
 }
 
 
@@ -126,6 +125,7 @@ a {
 
 .page {
     width: 100%;
+    background: #FFFFFF
 }
 
 .container {
@@ -142,6 +142,7 @@ a {
     grid-template-columns: 100%;
     grid-template-rows: 765px 1331px;
     gap: 1639px;
+    background: #FFFFFF
 }
 
 .webpage {
@@ -247,6 +248,9 @@ a {
     background: #0D606F;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
     border-radius: 10px;
+}
+.btn-login:hover{
+    cursor: pointer;
 }
 
 .title-btn-login {
@@ -680,16 +684,18 @@ a {
 .img-rs {
     height: 33.65px;
 }
+.git-rs a, img:hover{
+    cursor: default;
+}
 
 .footer-block {
     display: grid;
     width: 50.62%;
     height: 33.65px;
     margin-left: 12.9%;
-    /* grid-template-columns: 33.67% 4.61% 4.61% 4.61%; */
-    grid-template-columns: 155% 12% 12% 12%;
+    grid-template-columns: 155% 38.2%;
     grid-template-rows: 33.65px;
-    gap: 2%;
+    /* gap: 2%; */
 }
 
 .title-footer {
@@ -702,6 +708,20 @@ a {
     line-height: 21px;
     color: #FFFFFF;
 }
-.social-net{
+.social-list{
+    display: flex;
+    list-style: none;    
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2%;
+}
+.social-link{
     height: 33.65px;
+    flex-grow: 0;
+}
+.social-link a, img:hover{
+    cursor: default;
 }
