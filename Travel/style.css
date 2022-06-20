@@ -122,7 +122,13 @@ html {
 a {
     text-decoration: none;
 }
+/* Button styles */
+button:active{
+    border: 3px groove rgb(224, 172, 124);
+    box-shadow: -1px -1px 6px 3px rgb(241, 209, 181);
+}
 
+/* General page style */
 .page {
     width: 100%;
     background: #FFFFFF
@@ -218,6 +224,8 @@ a {
 .navigation-link {
     height: 21px;
     margin-right: 2%;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .navigation-link a {
