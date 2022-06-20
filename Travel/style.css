@@ -181,6 +181,7 @@ a {
 .logo-img {
     display: inline-block;
     height: 30px;
+    margin-right: 3%;
 }
 
 .logo-title {
@@ -196,9 +197,9 @@ a {
 }
 
 .navigation {
-    width: 36.6%;
+    width: 38.6%;
     height: 21px;
-    margin: 35px 0 34px 10.9%;
+    margin: 35px 0 34px 11%;
     font-size: 0;
 }
 
@@ -209,19 +210,20 @@ a {
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-    gap: 42px;
+    gap: 6.7%;
     list-style: none;
     text-decoration: none;
 }
 
 .navigation-link {
     height: 21px;
-
+    margin-right: 2%;
 }
 
 .navigation-link a {
     font-family: 'RedHatText Regular', sans-serif;
     font-style: normal;
+    letter-spacing: 0.1px;
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;
@@ -244,9 +246,10 @@ a {
 .btn-login {
     width: 7.2%;
     height: 41px;
-    margin: 25px 0 24px 13.6%;
+    margin: 25px 0 24px 11.7%;    
     background: #0D606F;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
     border-radius: 10px;
 }
 .btn-login:hover{
@@ -254,6 +257,7 @@ a {
 }
 
 .title-btn-login {
+    margin-right: 0.9%;
     font-family: 'RedHatText Regular', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -271,12 +275,13 @@ a {
 .preview {
     width: 61.9%;
     height: 422px;
-    margin: 32px 0 0 8.3%;
+    margin: 29.8px 0 0 8.3%;
 }
 
 .preview-title {
-    width: 90%;
+    width: 88%;
     margin: 0;
+    text-align: justify;
     font-family: 'Aleo Regular', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -345,10 +350,11 @@ a {
 .start-planning {
     width: 25.6%;
     height: 59px;
-    margin: 18px auto 18px 5%;
+    margin: 18px auto 18px 4.2%;
     padding: 0;
     background: #0D606F;
     box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
     border-radius: 10px;
     font-family: 'RedHatText Medium', sans-serif;
     font-style: normal;
@@ -378,17 +384,20 @@ a {
 .steps-flex {
     display: flex;
     height: 154px;
-    /* grid-template-rows: 21% 18.9% 26.9%; */
     align-items: center;
-    justify-content: space-around;
+    justify-content:space-between;
 }
 
 .steps-box {
     display: flex;
     height: 154px;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     justify-content: space-between;
+}
+
+.steps-box:first-child{
+    margin-right: 5.55%;
 }
 
 .font-img-steps {
@@ -413,13 +422,14 @@ a {
 }
 
 .title-img-steps {
-    font-family: 'Aleo Bold', sans-serif;
+    font-family: 'Aleo Regular', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
     color: #0D606F;
 }
+
 
 /* Destinations sections */
 
@@ -458,7 +468,6 @@ a {
 
 .carousel-item {
     height: inherit;
-    flex-basis: content;
     margin: 0 1.45%;
 }
 
@@ -469,9 +478,9 @@ a {
 
 .title-item {
     width: 13.5%;
-    margin-top: -80px;
-    margin-left: 2%;
-    font-family: 'RedHatText Regular', sans-serif;
+    margin-top: -82px;
+    margin-left: 1.5%;
+    font-family: 'RedHatText SemiBold', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
@@ -518,17 +527,20 @@ a {
     padding: 10px 32px;
     background: #0D606F;
     box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
     border-radius: 10px;
 }
 
 .arrow {
-    width: 17.54%;
-    height: 22.5px;
+    width: 22.54%;
+    height: 27.5px;
 }
 
 .title-find-more {
+    margin-top: 2px;
     font-family: 'RedHatText Regular', sans-serif;
     font-style: normal;
+    letter-spacing: 0.2px;
     font-weight: 500;
     font-size: 24px;
     line-height: 32px;
@@ -553,7 +565,7 @@ a {
 .title-stories {
     width: 27.9%;
     height: 35px;
-    margin: 0 auto 80px auto;
+    margin: 0 auto 100px auto;
     font-family: 'RedHatText SemiBold', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -562,20 +574,19 @@ a {
     color: #F2785C;
 }
 
-/* Storyes flexboxes */
+/* Stories flexboxes */
 .stories-container {
     display: flex;
     width: 100%;
     height: 1090px;
-    margin-bottom: 40px;
     flex-direction: column;
-    gap: 15px;
+    gap: 13px;
     align-items: flex-start;
     justify-content: space-between;
 }
 
 .stories-element {
-    display: flex;
+    display: flex;    
     flex-direction: row;
     align-items: flex-start;
     gap: 40px;
@@ -584,7 +595,7 @@ a {
 .img-story {
     display: block;
     height: 250px;
-    /* background: url(robin-noguier-sydwCr54rf0-unsplash.jpg); */
+    margin-top: 4px;
     filter: drop-shadow(0px 4px 4px #0D606F);
     border-radius: 16px;
 }
@@ -618,22 +629,22 @@ a {
 .btn-see-more {
     display: flex;
     width: 19%;
-    /* 228px */
     height: 59px;
-    margin: 0 auto;
+    margin: 38px auto;
     justify-content: center;
     align-items: center;
-    padding: 10px 32px;
+    padding: 20px 21px 15px 14px;
     gap: 10px;
     background: #0D606F;
     box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
     border-radius: 10px;
 }
 
 .arrow-see {
-    width: 17.54%;
-    height: 40px;
-    margin-right: 4.39%;
+    width: 20.54%;
+    /* height: 50px; */
+    /* margin-right: 1%; */
 }
 
 .title-see-more {
@@ -692,8 +703,8 @@ a {
     display: grid;
     width: 50.62%;
     height: 33.65px;
-    margin-left: 12.9%;
-    grid-template-columns: 155% 38.2%;
+    margin-left: 12%;
+    grid-template-columns: 158.6% 38.1%;
     grid-template-rows: 33.65px;
     /* gap: 2%; */
 }
@@ -702,6 +713,7 @@ a {
     height: 21px;
     margin-top: 1%;
     font-family: 'RedHatText Regular', sans-serif;
+    letter-spacing: 0.3px;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -710,7 +722,7 @@ a {
 }
 .social-list{
     display: flex;
-    list-style: none;    
+    list-style: none;
     margin: 0;
     padding: 0;
     flex-direction: row;
