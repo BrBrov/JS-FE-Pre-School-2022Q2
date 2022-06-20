@@ -124,8 +124,8 @@ a {
 }
 /* Button styles */
 button:active{
-    border: 1px groove rgba(241, 238, 13, 0.932);
-    box-shadow: 0 0 3px 3px rgb(253, 195, 2);
+    border: 1px groove rgba(207, 154, 94, 0.932);
+    box-shadow: 0 0 3px 4px rgb(211, 187, 144);
 }
 
 /* General page style */
