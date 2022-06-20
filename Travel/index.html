@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/svg/favicon.svg" type="image/svg+xml">
+    <script defer src="index.js"></script>
+    <title>Travel Part 1</title>
+</head>
+
+<body>
+    <div class="page">
+        <div class="container">
+            <div class="background">
+                <div class="top"></div>
+                <div class="bottom"></div>
+            </div>
+            <div class="webpage">
+                <header class="header-div">
+                    <div class="logo">
+                        <img class="logo-img" src="./assets/svg/Logo.svg" alt="Logo">
+                        <h2 class="logo-title">Travel Portal</h2>
+                    </div>
+                    <nav class="navigation">
+                        <ul class="navigation-list">
+                            <li class="navigation-link">
+                                <a href="#preview">How It Works</a>
+                            </li>
+                            <li class="navigation-link">
+                                <a href="#steps">Plan Your Trip</a>
+                            </li>
+                            <li class="navigation-link">
+                                <a href="#destinations">Destinations</a>
+                            </li>
+                            <li class="navigation-link">
+                                <a href="#stories">Travel Stories</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <button type="button" class="btn-login">
+                        <span class="title-btn-login">Login</span>
+                    </button>
+                </header>
+                <main class="main-div">
+                    <section id="preview" class="preview">
+                        <h1 class="preview-title">Explore the beauty of the World</h1>
+                        <div class="preview-remark">Recieve personalized recommendations for countries,
+                            hotels, activities and more</div>
+                        <div class="preview-input">
+                            <input type="text" name="search" id="find-trip" placeholder="What would you like to do?">
+                            <button type="submit" class="start-planning">Start Planning</button>
+                        </div>
+                    </section>
+                    <section id="steps" class="steps">
+                        <h2 class="steps-title">3 STEPS TO THE PERFECT TRIP</h2>
+                        <div class="steps-flex">
+                            <div class="steps-box right-margin-steps">
+                                <div class="font-img-steps bicycle"></div>
+                                <div class="title-img-steps">Tell us what you want to do</div>
+                            </div>
+                            <div class="steps-box">
+                                <div class="font-img-steps calendar"></div>
+                                <div class="title-img-steps">Share us preferable dates </div>
+                            </div>
+                            <div class="steps-box">
+                                <div class="font-img-steps airplane"></div>
+                                <div class="title-img-steps">We will give you recommendations</div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="destinations" class="destinations">
+                        <h2 class="title-destination">POPULAR DESTINATIONS</h2>
+                        <div class="carousel">
+                            <div class="carousel-item">
+                                <img class="img-item" src="./assets/jpg/ocean-big.jpg" alt="SPAIN">
+                                <div class="title-item">SPAIN</div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-item" src="./assets/jpg/gates.jpg" alt="JAPAN">
+                                <div class="title-item">JAPAN</div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-item" src="./assets/jpg/bridge.jpg" alt="USA">
+                                <div class="title-item">USA</div>
+                            </div>
+                        </div>
+                        <div class="dots-nav">
+                            <div class="dot inactive-dot"></div>
+                            <div class="dot active-dot"></div>
+                            <div class="dot inactive-dot"></div>
+                        </div>
+                        <button class="btn-find-more" type="submit">
+                            <svg class="arrow" width="36" height="23" viewBox="0 0 36 23" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 11.5C0.5 11.1685 0.631696 10.8505
+                                         0.866116 10.6161C1.10054 10.3817 1.41848
+                                         10.25 1.75 10.25H31.2325L23.365 2.38499C23.1303
+                                         2.15028 22.9984 1.83193 22.9984 1.49999C22.9984
+                                         1.16805 23.1303 0.849708 23.365 0.614992C23.5997
+                                         0.380275 23.9181 0.248413 24.25 0.248413C24.5819
+                                         0.248413 24.9003 0.380275 25.135 0.614992L35.135
+                                         10.615C35.2514 10.7311 35.3438 10.869 35.4068
+                                         11.0209C35.4698 11.1728 35.5022 11.3356 35.5022
+                                         11.5C35.5022 11.6644 35.4698 11.8272 35.4068
+                                         11.9791C35.3438 12.1309 35.2514 12.2689 35.135
+                                         12.385L25.135 22.385C24.9003 22.6197 24.5819
+                                         22.7516 24.25 22.7516C23.9181 22.7516 23.5997
+                                         22.6197 23.365 22.385C23.1303 22.1503 22.9984
+                                         21.8319 22.9984 21.5C22.9984 21.1681 23.1303
+                                         20.8497 23.365 20.615L31.2325 12.75H1.75C1.41848
+                                         12.75 1.10054 12.6183 0.866116 12.3839C0.631696
+                                         12.1495 0.5 11.8315 0.5 11.5Z" fill="white" />
+                            </svg>
+                            <span class="title-find-more">Find More</span>
+                        </button>
+                    </section>
+                    <section id="stories" class="stories">
+                        <div class="stories-main">
+                            <h2 class="title-stories">TRAVEL STORIES</h2>
+                            <div class="stories-container">
+                                <div class="stories-element">
+                                    <img class="img-story" src="./assets/jpg/cave-big.jpg" alt>
+                                    <div class="story-sample">
+                                        <div class="title-sample">10 Photos of Attractive Thailand</div>
+                                        <div class="story">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                            pariatur. Excepteur sint occaecat cupidatat non proident,
+                                            sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit...<br>
+                                            <strong><u>Read More</u></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stories-element">
+                                    <img class="img-story" src="./assets/jpg/road-big.jpg" alt>
+                                    <div class="story-sample">
+                                        <div class="title-sample">Canyonlands National Park, Utah</div>
+                                        <div class="story">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                            pariatur. Excepteur sint occaecat cupidatat non proident,
+                                            sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit...<br>
+                                            <strong><u>Read More</u></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stories-element">
+                                    <img class="img-story" src="./assets/jpg/winter-big.jpg" alt>
+                                    <div class="story-sample">
+                                        <div class="title-sample">I left my heart in the Mountains!</div>
+                                        <div class="story">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                            pariatur. Excepteur sint occaecat cupidatat non proident,
+                                            sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit...<br>
+                                            <strong><u>Read More</u></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stories-element">
+                                    <img class="img-story" src="./assets/jpg/car-big.jpg" alt>
+                                    <div class="story-sample">
+                                        <div class="title-sample">The Longest journey in my life!</div>
+                                        <div class="story">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                            pariatur. Excepteur sint occaecat cupidatat non proident,
+                                            sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit...<br>
+                                            <strong><u>Read More</u></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-see-more" type="submit">
+                                <svg class="arrow-see" width="40" height="41" viewBox="0 0 40 41" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 20.5001C2.5 20.1686 2.6317 19.8507 2.86612
+                                    19.6162C3.10054 19.3818 3.41848 19.2501 3.75 19.2501H33.2325L25.365
+                                    11.3851C25.1303 11.1504 24.9984 10.8321 24.9984 10.5001C24.9984
+                                    10.1682 25.1303 9.84983 25.365 9.61511C25.5997 9.3804 25.9181
+                                    9.24854 26.25 9.24854C26.5819 9.24854 26.9003 9.3804 27.135
+                                    9.61511L37.135 19.6151C37.2514 19.7312 37.3438 19.8692 37.4068
+                                    20.021C37.4698 20.1729 37.5022 20.3357 37.5022 20.5001C37.5022
+                                    20.6645 37.4698 20.8273 37.4068 20.9792C37.3438 21.1311 37.2514
+                                    21.269 37.135 21.3851L27.135 31.3851C26.9003 31.6198 26.5819
+                                    31.7517 26.25 31.7517C25.9181 31.7517 25.5997 31.6198 25.365
+                                    31.3851C25.1303 31.1504 24.9984 30.8321 24.9984 30.5001C24.9984
+                                    30.1682 25.1303 29.8498 25.365 29.6151L33.2325 21.7501H3.75C3.41848
+                                    21.7501 3.10054 21.6184 2.86612 21.384C2.6317 21.1496 2.5 20.8316
+                                    2.5 20.5001Z" fill="white" />
+                                </svg>
+                                <span class="title-see-more">See More</span>
+                            </button>
+                        </div>
+                    </section>
+                </main>
+                <footer class="footer-div">
+                    <div class="footer-grid">
+                        <div class="git-rs">
+                            <a class="git" href="https://github.com/BrBrov">
+                                <img class="img-git" src="./assets/svg/git.svg" alt="Git">
+                            </a>
+                            <a class="rs" href="https://rs.school/js-stage0/">
+                                <img class="img-rs" src="./assets/svg/rs_school.svg" alt="RSschool">
+                            </a>
+                        </div>
+                        <div class="footer-block">
+                            <div class="title-footer">All Rights Reserved © Travel Portal</div>
+                            <ul class="social-list">
+                                <li class="social-link">
+                                    <a href="https://www.instagram.com/">
+                                        <img src="./assets/svg/Instagram.svg" alt="Instagram">
+                                    </a>
+                                </li>
+                                <li class="social-link">
+                                    <a href="https://www.youtube.com/">
+                                        <img src="./assets/svg/Youtube.svg" alt="Yuotube">
+                                    </a>
+                                </li>
+                                <li class="social-link">
+                                    <a href="https://twitter.com/">
+                                        <img src="./assets/svg/Twitter.svg" alt="Twitter">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
