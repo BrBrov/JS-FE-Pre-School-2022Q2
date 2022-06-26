@@ -835,7 +835,10 @@ img:hover {
         height: 42.67%;
         padding: 0;
         margin: 11.5% 4.2% auto auto;
-        background: url("./assets/svg/menu.svg") ;
+        background-image: url("./assets/svg/menu.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: unset;
         box-shadow: none;
     }
     .title-btn-login{
@@ -862,7 +865,7 @@ img:hover {
         margin: 17.2% auto 16.8% auto;
     }
     #find-trip{
-        width: 62.8%;
+        width: 58.8%;
         height: 23.1%;
         margin: 4.5% auto auto 4.6%;
         font-family: 'Aleo Italic', serif;
@@ -873,9 +876,9 @@ img:hover {
     }
     .start-planning{
         /*display: none;*/
-        width: 25.7%;
-        height: 63%;
-        margin: 1% 1% auto auto;
+        width: 25.56%;
+        height: 30px;
+        margin: 1% auto auto 7%;
         font-style: normal;
         font-weight: 500;
         font-size: 11px;
@@ -902,13 +905,16 @@ img:hover {
     .steps-flex{
         height: 64.2%;
         margin: 0 auto auto auto;
-        gap: 0;
+        gap: 1%;
     }
     .steps-box{
-        width: 26.1%;
+        width: 30.94%;
         height: 100%; /*114px*/
-        /* margin: 0; */
-        gap: 7%;
+        justify-content: start;
+        gap: 15%;
+    }
+    .steps-box:nth-child(2){
+        flex-grow: 0.8;
     }
     .right-margin-steps{
         margin: 0;
@@ -917,7 +923,7 @@ img:hover {
         margin: 0;
     }
     .font-img-steps{
-        width: 74.6%;
+        width: 63%;
         height: 4.38em;
         background-size: 50%;
     }
@@ -927,11 +933,17 @@ img:hover {
         font-size: 10px;
         line-height: 12px;
     }
-    .on-media-steps{
-        width: 119%;
-        padding-bottom: 13%;
+    .steps-box:nth-child(2) .font-img-steps{
+        width: 55.45%;
+        height: 4.38em;
     }
-
+    .steps-box:nth-child(1) .title-img-steps{
+        width: 84.5%;
+    }
+    .steps-box:nth-child(3) .title-img-steps{
+        width: 84.5%;
+    }
+ 
     /*destinations*/
 
     .destinations {
@@ -956,6 +968,7 @@ img:hover {
         width: 100%;
         height: 72.66%;
         margin: 0;
+        overflow: hidden;
     }
     .carousel-item{
         display: block;
@@ -963,7 +976,7 @@ img:hover {
         height: 100%;
         text-align: center;
         position: relative;
-        margin: 5.56% auto auto auto;
+        margin: 0 auto auto auto;
     }
     .carousel .carousel-item:nth-child(2){
         display: none;
@@ -1001,6 +1014,8 @@ img:hover {
 
     .img-item{
         width: 100%;
+        height: 100%;
+        /*margin-top: -5%;*/
     }
     .title-item{
         margin: -58% auto auto 4.17%;
@@ -1022,8 +1037,8 @@ img:hover {
         height: 99.2%;
     }
     .btn-find-more{
-        width: 25.56%;
-        height: 10.39%;
+        width: 91px;
+        height: 30px;
         margin: 5% auto auto auto;
         padding: 0;
     }
@@ -1035,8 +1050,8 @@ img:hover {
         margin: 8.12% 13% auto 0;
         font-style: normal;
         font-weight: 500;
-        font-size: 11px;
-        line-height: 15px;
+        font-size: 0.8em;
+        line-height: 1.4em;
         align-items: center;
         text-align: right;
     }
