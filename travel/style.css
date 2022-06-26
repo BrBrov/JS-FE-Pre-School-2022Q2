@@ -9,105 +9,105 @@ body {
 @font-face {
     font-family: "Aleo Bold";
     src: url("./assets/fonts/Aleo-Bold.woff2") format("woff2"),
-        url("./assets/fonts/Aleo-Bold.woff") format("woff");
+    url("./assets/fonts/Aleo-Bold.woff") format("woff");
 }
 
 @font-face {
     font-family: "Aleo Bold Italic";
     src: url("./assets/fonts/Aleo-BoldItalic.woff") format("woff"),
-        url("./assets/fonts/Aleo-BoldItalic.woff2") format("woff2");
+    url("./assets/fonts/Aleo-BoldItalic.woff2") format("woff2");
 }
 
 @font-face {
     font-family: "Aleo Italic";
     src: url("./assets/fonts/Aleo-Italic.woff2") format("woff2"),
-        url("./assets/fonts/Aleo-Italic.woff") format("woff");
+    url("./assets/fonts/Aleo-Italic.woff") format("woff");
 }
 
 @font-face {
     font-family: "Aleo Light";
     src: url("./assets/fonts/Aleo-Light.woff2") format("woff2"),
-        url("./assets/fonts/Aleo-Light.woff") format("woff");
+    url("./assets/fonts/Aleo-Light.woff") format("woff");
 }
 
 @font-face {
     font-family: "Aleo Light Italic";
     src: url("./assets/fonts/Aleo-LightItalic.woff2") format("woff2"),
-        url("./assets/fonts/Aleo-LightItalic.woff") format("woff");
+    url("./assets/fonts/Aleo-LightItalic.woff") format("woff");
 }
 
 @font-face {
     font-family: "Aleo Regular";
     src: url("./assets/fonts/Aleo-Regular.woff2") format("woff2"),
-        url("./assets/fonts/Aleo-Regular.woff") format("woff");
+    url("./assets/fonts/Aleo-Regular.woff") format("woff");
 }
 
 /* Magra */
 @font-face {
     font-family: "Magra Regular";
     src: url("./assets/fonts/Magra-Regular.woff2") format("woff2"),
-        url("./assets/fonts/Magra.woff") format("woff");
+    url("./assets/fonts/Magra.woff") format("woff");
 }
 
 @font-face {
     font-family: "Magra Bold";
     src: url("./assets/fonts/Magra-Bold.woff2") format("woff2"),
-        url("./assets/fonts/Magra-Bold.woff") format("woff");
+    url("./assets/fonts/Magra-Bold.woff") format("woff");
 }
 
 /* RedHatText */
 @font-face {
     font-family: "RedHatText Bold";
     src: url("./assets/fonts/RedHatText-Bold.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-Bold.woff") format("woff");
+    url("./assets/fonts/RedHatText-Bold.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Bold Italic";
     src: url("./assets/fonts/RedHatText-BoldItalic.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-BoldItalic.woff") format("woff");
+    url("./assets/fonts/RedHatText-BoldItalic.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Italic";
     src: url("./assets/fonts/RedHatText-Italic.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-Italic.woff") format("woff");
+    url("./assets/fonts/RedHatText-Italic.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Bold Italic";
     src: url("./assets/fonts/RedHatText-LightItalic.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-LightItalic.woff") format("woff");
+    url("./assets/fonts/RedHatText-LightItalic.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Medium";
     src: url("./assets/fonts/RedHatText-Medium.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-Medium.woff") format("woff");
+    url("./assets/fonts/RedHatText-Medium.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Medium Italic";
     src: url("./assets/fonts/RedHatText-MediumItalic.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-MediumItalic.woff") format("woff");
+    url("./assets/fonts/RedHatText-MediumItalic.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Regular";
     src: url("./assets/fonts/RedHatText-Regular.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-Regular.woff") format("woff");
+    url("./assets/fonts/RedHatText-Regular.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText SemiBold";
     src: url("./assets/fonts/RedHatText-SemiBold.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-SemiBold.woff") format("woff");
+    url("./assets/fonts/RedHatText-SemiBold.woff") format("woff");
 }
 
 @font-face {
     font-family: "RedHatText Bold";
     src: url("./assets/fonts/RedHatText-SemiBoldItalic.woff2") format("woff2"),
-        url("./assets/fonts/RedHatText-SemiBoldItalic.woff") format("woff");
+    url("./assets/fonts/RedHatText-SemiBoldItalic.woff") format("woff");
 }
 
 /* General setting */
@@ -757,4 +757,192 @@ img:hover {
 .social-link a,
 img:hover {
     cursor: default;
+}
+
+@media only screen and (max-width: 390px) {
+    body {
+        border: none;
+        margin: 0;
+        padding: 0;
+        /*overflow-x: hidden;*/
+    }
+
+    .page {
+        width: 100%;
+    }
+
+    .container {
+        max-width: calc(100vw);
+        max-height: calc(100vw * 3.782);
+    }
+
+    .background {
+        height: 100%;
+        grid-template-columns: 100%;
+        grid-template-rows: 17.02% 46.98%;
+        gap: 35.8%;
+    }
+
+    .top {
+        background-image: linear-gradient(180deg, #0D606F 0%, rgba(13, 96, 111, 0) 25.1%), url("./assets/jpg/mountain.jpg");
+        background-size: initial;
+        filter: none;
+    }
+
+    .bottom {
+        background-image: url("./assets/jpg/boat-small.jpg");
+    }
+
+    .webpage {
+        height: 100%;
+        grid-template-columns: 100%;
+        grid-template-rows: 5.08% 90.51% 4.41%;
+        margin-top: -379%; /*-500px;*/
+    }
+
+    .header-div {
+        /*height: 5.08%;*/
+        background: none;
+        box-shadow: none;
+    }
+    .main-div{
+        /*height: 90.51%;*/
+    }
+    .footer-div{
+        height: 65px;
+    }
+
+    /*header*/
+    .logo {
+        width: 7.44%;
+        height: 40%;
+        margin: 11.5% auto auto 4.2%;
+    }
+    .logo-img{
+        margin: 0;
+    }
+    .logo-title{
+        display: none;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .btn-login {
+        /*content: url("./assets/svg/menu.svg ");*/
+        width: 8.97%;
+        height: 42.67%;
+        padding: 0;
+        margin: 11.5% 4.2% auto auto;
+        background: url("./assets/svg/menu.svg") ;
+        box-shadow: none;
+    }
+    .title-btn-login{
+        display: none;
+    }
+
+    /*main*/
+
+    /*preview*/
+    .preview {
+        width: 100%;
+        height: 8.4%;
+        margin: 0;
+    }
+    .preview-title{
+        display: none;
+    }
+    .preview-remark{
+        display: none;
+    }
+    .preview-input{
+        width: 92.3%;
+        height: 42.9%;
+        margin: 17.2% auto 16.8% auto;
+    }
+    #find-trip{
+        width: 62.8%;
+        height: 23.1%;
+        margin: 4.5% auto auto 4.6%;
+        font-family: 'Aleo Italic', serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .start-planning{
+        /*display: none;*/
+        width: 25.7%;
+        height: 63%;
+        margin: 1% 1% auto auto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    /*steps*/
+
+    .steps {
+        width: 92.3%;
+        height: 12.96%;
+        margin: 1% auto 1% auto;
+    }
+    .steps-title{
+        width: 100%;
+        height: auto;
+        text-align: center;
+        margin: 5.6% auto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+    }
+    .steps-flex{
+        height: 64.2%;
+        margin: 0 auto auto auto;
+        gap: 0;
+    }
+    .steps-box{
+        width: 26.1%;
+        height: 100%; /*114px*/
+        /* margin: 0; */
+        gap: 7%;
+    }
+    .right-margin-steps{
+        margin: 0;
+    }
+    .steps-box:first-child{
+        margin: 0;
+    }
+    .font-img-steps{
+        width: 74.6%;
+        height: 4.38em;
+        background-size: 50%;
+    }
+    .title-img-steps{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+    }
+    .on-media-steps{
+        width: 119%;
+        padding-bottom: 13%;
+    }
+
+    .destinations {
+        display: none;
+    }
+
+    .stories {
+        display: none;
+    }
+
+    /*footer*/
+    .footer-grid {
+        display: none;
+    }
+
 }
