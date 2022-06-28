@@ -398,7 +398,7 @@ button:active {
     display: flex;
     height: 154px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .steps-box {
@@ -769,6 +769,7 @@ img:hover {
 
     .page {
         width: 100%;
+        background: #FFFFFF;
     }
 
     .container {
@@ -780,7 +781,8 @@ img:hover {
         height: 100%;
         grid-template-columns: 100%;
         grid-template-rows: 17.02% 46.98%;
-        gap: 35.8%;
+        gap: 36.1%;
+        border-radius: 30px;
     }
 
     .top {
@@ -791,13 +793,15 @@ img:hover {
 
     .bottom {
         background-image: url("./assets/jpg/boat-small.jpg");
+        background-size: 100% 100%;
     }
 
     .webpage {
         height: 100%;
         grid-template-columns: 100%;
         grid-template-rows: 5.08% 90.51% 4.41%;
-        margin-top: -379%; /*-500px;*/
+        margin-top: -378.1%; /*-500px;*/
+        border-radius: 30px;
     }
 
     .header-div {
@@ -805,10 +809,12 @@ img:hover {
         background: none;
         box-shadow: none;
     }
-    .main-div{
+
+    .main-div {
         /*height: 90.51%;*/
     }
-    .footer-div{
+
+    .footer-div {
         height: 65px;
     }
 
@@ -818,10 +824,12 @@ img:hover {
         height: 40%;
         margin: 11.5% auto auto 4.2%;
     }
-    .logo-img{
+
+    .logo-img {
         margin: 0;
     }
-    .logo-title{
+
+    .logo-title {
         display: none;
     }
 
@@ -841,31 +849,35 @@ img:hover {
         background-color: unset;
         box-shadow: none;
     }
-    .title-btn-login{
+
+    .title-btn-login {
         display: none;
     }
 
     /*main*/
-
     /*preview*/
     .preview {
         width: 100%;
-        height: 8.4%;
+        height: 8.2%;
         margin: 0;
     }
-    .preview-title{
+
+    .preview-title {
         display: none;
     }
-    .preview-remark{
+
+    .preview-remark {
         display: none;
     }
-    .preview-input{
+
+    .preview-input {
         width: 92.3%;
         height: 42.9%;
         margin: 17.2% auto 16.8% auto;
     }
-    #find-trip{
-        width: 58.8%;
+
+    #find-trip {
+        max-width: 58.8%;
         height: 23.1%;
         margin: 4.5% auto auto 4.6%;
         font-family: 'Aleo Italic', serif;
@@ -874,25 +886,26 @@ img:hover {
         font-size: 14px;
         line-height: 17px;
     }
-    .start-planning{
+
+    .start-planning {
         /*display: none;*/
         width: 25.56%;
-        height: 30px;
-        margin: 1% auto auto 7%;
+        height: 70.9%;
+        margin: 1% auto auto 6.7%;
         font-style: normal;
         font-weight: 500;
-        font-size: 11px;
-        line-height: 15px;
+        font-size: 70%;
+        line-height: 2%;
     }
 
     /*steps*/
-
     .steps {
         width: 92.3%;
         height: 12.96%;
-        margin: 1% auto 5.13% auto;
+        margin: 0 auto 0 auto;
     }
-    .steps-title{
+
+    .steps-title {
         width: 100%;
         height: auto;
         text-align: center;
@@ -902,56 +915,68 @@ img:hover {
         font-size: 14px;
         line-height: 19px;
     }
-    .steps-flex{
+
+    .steps-flex {
         height: 64.2%;
         margin: 0 auto auto auto;
+        justify-content: flex-start;
+        align-content: space-between;
         gap: 1%;
     }
-    .steps-box{
+
+    .steps-box {
         width: 30.94%;
         height: 100%; /*114px*/
-        justify-content: start;
         gap: 15%;
     }
-    .steps-box:nth-child(2){
+
+    .steps-box:nth-child(2) {
         flex-grow: 0.8;
     }
-    .right-margin-steps{
+
+    .right-margin-steps {
         margin: 0;
     }
-    .steps-box:first-child{
+
+    .steps-box:first-child {
         margin: 0;
     }
-    .font-img-steps{
+
+    .font-img-steps {
         width: 63%;
         height: 4.38em;
         background-size: 50%;
     }
-    .title-img-steps{
+
+    .title-img-steps {
         font-style: normal;
         font-weight: 400;
         font-size: 10px;
         line-height: 12px;
     }
-    .steps-box:nth-child(2) .font-img-steps{
+
+    .steps-box:nth-child(2) .font-img-steps {
         width: 55.45%;
         height: 4.38em;
     }
-    .steps-box:nth-child(1) .title-img-steps{
-        width: 84.5%;
-    }
-    .steps-box:nth-child(3) .title-img-steps{
-        width: 84.5%;
-    }
- 
-    /*destinations*/
 
+    .steps-box:nth-child(1) .title-img-steps {
+        width: 84.5%;
+    }
+
+    .steps-box:nth-child(3) .title-img-steps {
+        width: 84.5%;
+    }
+
+    /*destinations*/
     .destinations {
         width: 92.3%;
         height: 21.65%;
         overflow: visible;
+        margin: 0 auto 0 auto;
     }
-    .title-destination{
+
+    .title-destination {
         width: 100%;
         height: auto;
         text-align: center;
@@ -961,7 +986,8 @@ img:hover {
         font-size: 14px;
         line-height: 19px;
     }
-    .carousel{
+
+    .carousel {
         display: block;
         position: relative;
         z-index: 1;
@@ -970,7 +996,8 @@ img:hover {
         margin: 0;
         overflow: hidden;
     }
-    .carousel-item{
+
+    .carousel-item {
         display: block;
         width: 100%;
         height: 100%;
@@ -978,13 +1005,20 @@ img:hover {
         position: relative;
         margin: 0 auto auto auto;
     }
-    .carousel .carousel-item:nth-child(2){
+
+    .carousel .carousel-item:nth-child(1) .img-item {
+        background-image: url("./assets/jpg/ocean.jpg");
+    }
+
+    .carousel .carousel-item:nth-child(2) {
         display: none;
     }
-    .carousel .carousel-item:nth-child(3){
+
+    .carousel .carousel-item:nth-child(3) {
         display: none;
     }
-    .carousel:before{
+
+    .carousel:before {
         content: "";
         display: block;
         position: absolute;
@@ -997,7 +1031,8 @@ img:hover {
         background-position: center;
         transform: rotate(-90deg);
     }
-    .carousel:after{
+
+    .carousel:after {
         content: "";
         display: block;
         position: absolute;
@@ -1012,40 +1047,46 @@ img:hover {
     }
 
 
-    .img-item{
+    .img-item {
         width: 100%;
         height: 100%;
         /*margin-top: -5%;*/
     }
-    .title-item{
+
+    .title-item {
         margin: -58% auto auto 4.17%;
         font-style: normal;
         font-weight: 500;
         font-size: 20px;
         line-height: 26px;
     }
-    .dots-nav{
+
+    .dots-nav {
         position: relative;
         z-index: 2;
         width: 10.2%;
         height: 2.8%;
-        margin: -5% auto auto auto;
+        margin: -6% auto auto auto;
         gap: 20%;
     }
-    .dot{
+
+    .dot {
         width: 21.8%;
         height: 99.2%;
     }
-    .btn-find-more{
+
+    .btn-find-more {
         width: 91px;
         height: 30px;
-        margin: 5% auto auto auto;
+        margin: 6% auto auto auto;
         padding: 0;
     }
-    .arrow{
+
+    .arrow {
         margin: 13% auto auto 13.1%;
     }
-    .title-find-more{
+
+    .title-find-more {
         width: 75.3%;
         margin: 8.12% 13% auto 0;
         font-style: normal;
@@ -1057,8 +1098,92 @@ img:hover {
     }
 
     .stories {
-        display: none;
+        width: 100%;
+        height: 49.22%;
+        margin-top: 5.1%;
     }
+
+    .stories-main {
+        width: 92.38%;
+        height: 100%;
+    }
+
+    .title-stories {
+        width: 32.76%;
+        height: 2.74%;
+        margin: 0 auto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .stories-container {
+        width: 100%;
+        height: 87%;
+        margin-top: 5%;
+        justify-content: start;
+        gap: 1.7%;
+    }
+
+    .stories-element {
+        width: 99.93%;
+        height: 23.5%;
+        gap: 3%;
+        /*background-color: #F2785C;*/
+        /*opacity: 0.5;*/
+    }
+
+    .img-story {
+        width: 43.06%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .story-sample {
+        width: 54.17%;
+        height: 100%;
+        gap: 8%;
+    }
+
+    .title-sample {
+        margin-top: 3%;
+        font-weight: 700;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .story {
+        font-weight: 400;
+        font-size: 9px;
+        line-height: 11px;
+        word-spacing: -0.1em;
+        overflow: hidden;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+    }
+
+    .btn-see-more {
+        width: 25%;
+        height: 4.57%;
+        margin: 1.1% auto auto auto;
+        padding: 0;
+    }
+
+    .arrow-see {
+        width: 11.2%;
+        height: 33.5%;
+    }
+
+    .title-see-more {
+        width: 55.6%;
+        height: 50%;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 15px;
+    }
+
 
     /*footer*/
     .footer-grid {
