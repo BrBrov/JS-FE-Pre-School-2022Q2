@@ -764,7 +764,6 @@ img:hover {
         border: none;
         margin: 0;
         padding: 0;
-        /*overflow-x: hidden;*/
     }
 
     .page {
@@ -1154,7 +1153,7 @@ img:hover {
         font-size: 11px;
         line-height: 13px;
     }
-
+    /*bugs with story*/
     .story {
         font-weight: 400;
         font-size: 9px;
@@ -1194,8 +1193,10 @@ img:hover {
     .footer-grid {
         width: 100%;
         height: 54%;
+        margin: 4% auto;
         grid-template-columns: 1fr;
         grid-template-rows: 100%;
+        overflow-x: hidden;
     }
     .git-rs{
         display: none;
@@ -1214,6 +1215,8 @@ img:hover {
     .social-list{
         margin: auto 1% auto 3.3%;
     }
-    .social-link{}
+    .social-link a img{
+        width: 92%;
+    }
 
 }
