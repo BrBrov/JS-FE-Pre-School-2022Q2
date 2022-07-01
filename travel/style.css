@@ -927,11 +927,10 @@ img:hover {
     .steps-box {
         width: 30.94%;
         height: 100%; /*114px*/
-        gap: 15%;
     }
 
     .steps-box:nth-child(2) {
-        flex-grow: 0.8;
+        flex-grow: 1.2;
     }
 
     .right-margin-steps {
@@ -939,7 +938,7 @@ img:hover {
     }
 
     .steps-box:first-child {
-        margin: 0;
+        margin: 0 auto auto;
     }
 
     .font-img-steps {
@@ -957,15 +956,27 @@ img:hover {
 
     .steps-box:nth-child(2) .font-img-steps {
         width: 55.45%;
-        height: 4.38em;
+    }
+    .steps-box:nth-child(2) .title-img-steps{
+        height: 22%;
     }
 
     .steps-box:nth-child(1) .title-img-steps {
         width: 84.5%;
+        align-self: flex-start;
+    }
+    .steps-box:nth-child(1) .font-img-steps{
+        align-self: start;
+    }
+
+    .steps-box:nth-child(3) .font-img-steps{
+        align-self: end;
     }
 
     .steps-box:nth-child(3) .title-img-steps {
         width: 84.5%;
+        align-self: flex-end;
+        text-align: right;
     }
 
     /*destinations*/
