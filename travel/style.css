@@ -1144,33 +1144,38 @@ img:hover {
     .story-sample {
         width: 53.17%;
         height: 100%;
-        gap: 8%;
+        gap: 7%;
     }
 
     .title-sample {
         margin-top: 3%;
         font-weight: 700;
-        font-size: 0.8rem;
+
+        font-size: calc(11px - (390px - 100vw) * (1/70));
         line-height: 13px;
+        /* font-size: 11px;
+        line-height: 13px;*/
     }
+
     /*bugs with story*/
     .story {
-        display: block;
         font-weight: 400;
         font-size: 9px;
-        line-height: 0.6rem;
-        word-spacing: 0.3rem;
+        line-height: calc(11px - (390px - 100vw)*(3/70));
+        /*line-height: 11px;
+        line-height: 8px;*/
     }
-    .story div{
-        height: 80%;
-    }
+
+    /*.story div {*/
+    /*    height: 80%;*/
+    /*}*/
 
     .btn-see-more {
         width: 25%;
         height: 4.57%;
         margin: 1.1% auto auto auto;
         padding: 0;
-        gap:1%;
+        gap: 1%;
     }
 
     .arrow-see {
@@ -1186,8 +1191,8 @@ img:hover {
         text-align: right;
         font-style: normal;
         font-weight: 500;
-        font-size: calc(100%/1.2);
-        line-height: calc(1rem/1.1);
+        font-size: calc(100% / 1.2);
+        line-height: calc(1rem / 1.1);
     }
 
     /*footer*/
@@ -1199,24 +1204,33 @@ img:hover {
         grid-template-rows: 100%;
         overflow-x: hidden;
     }
-    .git-rs{
+
+    .git-rs {
         display: none;
     }
+
     /*.git{}*/
     /*.rs{}*/
-    .footer-block{
-        width: 38%;
+    .footer-block {
+        width: 36%;
         margin: 0 auto;
         grid-template-columns: 1fr;
         grid-template-rows: 50%;
     }
-    .title-footer{
+
+    .title-footer {
         display: none;
     }
-    .social-list{
+
+    .social-list {
         margin: auto 1% auto 3.3%;
     }
-    .social-link a img{
+
+    .social-link:nth-child(2){
+        margin-left: 5%;
+    }
+
+    .social-link a img {
         width: 92%;
     }
 
