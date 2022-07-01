@@ -1124,13 +1124,13 @@ img:hover {
         height: 87%;
         margin-top: 5%;
         justify-content: start;
-        gap: 1.7%;
+        gap: 1.9%;
     }
 
     .stories-element {
-        width: 99.93%;
+        width: 99.90%;
         height: 23.5%;
-        gap: 3%;
+        gap: 2.5%;
         /*background-color: #F2785C;*/
         /*opacity: 0.5;*/
     }
@@ -1212,8 +1212,8 @@ img:hover {
     /*.git{}*/
     /*.rs{}*/
     .footer-block {
-        width: 36%;
-        margin: 0 auto;
+        width: 38.2%;
+        margin: 0 auto auto 31%;
         grid-template-columns: 1fr;
         grid-template-rows: 50%;
     }
@@ -1223,11 +1223,14 @@ img:hover {
     }
 
     .social-list {
-        margin: auto 1% auto 3.3%;
+        margin: auto 0 auto 6%;
     }
 
     .social-link:nth-child(2){
         margin-left: 5%;
+    }
+    .social-link:nth-child(3){
+        margin-left: 4%;
     }
 
     .social-link a img {
