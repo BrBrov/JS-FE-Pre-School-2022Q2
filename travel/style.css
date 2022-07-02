@@ -140,6 +140,7 @@ button:active {
     width: 1440px;
     height: 3735px;
     margin: 0 auto;
+    overflow-x: hidden;
 }
 
 .background {
@@ -175,7 +176,7 @@ button:active {
     display: flex;
     width: 100%;
     background: rgba(242, 120, 92, 0.7);
-    box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
+    box-shadow: 0 4px 4px rgba(13, 96, 111, 0.5);
 }
 
 /* header markup */
@@ -214,10 +215,9 @@ button:active {
 .navigation-list {
     display: flex;
     height: 21px;
-    display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
+    padding: 0;
     gap: 6.7%;
     list-style: none;
     text-decoration: none;
@@ -258,7 +258,7 @@ button:active {
     height: 41px;
     margin: 25px 0 24px 11.7%;
     background: #0D606F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 2px 3px rgba(13, 96, 111, 0.16);
     border: none;
     border-radius: 10px;
 }
@@ -365,7 +365,7 @@ button:active {
     margin: 18px auto 18px 4.2%;
     padding: 0;
     background: #0D606F;
-    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
     border: none;
     border-radius: 10px;
     font-family: 'RedHatText Medium', sans-serif;
@@ -511,7 +511,7 @@ button:active {
     margin: 0 auto 40px auto;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
+    padding: 0;
     gap: 10px;
 }
 
@@ -542,7 +542,7 @@ button:active {
     gap: 10px;
     padding: 10px 32px;
     background: #0D606F;
-    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
     border: none;
     border-radius: 10px;
 }
@@ -653,7 +653,7 @@ button:active {
     padding: 20px 21px 15px 14px;
     gap: 10px;
     background: #0D606F;
-    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
     border: none;
     border-radius: 10px;
 }
@@ -802,6 +802,52 @@ img:hover {
         grid-template-rows: 5.08% 90.51% 4.41%;
         margin-top: -378.1%; /*-500px;*/
         border-radius: 30px;
+    }
+
+    .burger-menu {
+        display: block;
+        position: relative;
+        z-index: 3;
+        margin: -378.2% auto auto 57.57%;
+        /*margin: -378.2% auto auto 57.57%;*/
+        width: 42.31%;
+        height: 16.96%;
+        background: #F2785C;
+        box-shadow: 0 4px 3px rgba(13, 96, 111, 0.25);
+        border-radius: 10px;
+    }
+
+    .x-close {
+        position: relative;
+        width: 18.18%;
+        height: 12%;
+        /*margin: 4.9% auto auto 4.9%;*/
+        margin: 0;
+        left: 4.9%;
+        top: 3.2%;
+        background-image: url("./assets/svg/close-menu.svg");
+    }
+
+    .burger-menu-block {
+        display: flex;
+        position: relative;
+        width: 74.25%;
+        height: 70.4%;
+        top: 5%;
+        left: 15.5%;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .burger-link {
+        text-align: right;
+        font-family: 'RedHatText Regular', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 21px;
+        letter-spacing: 0.02rem;
+        color: #FFFFFF;
     }
 
     .header-div {
@@ -957,7 +1003,8 @@ img:hover {
     .steps-box:nth-child(2) .font-img-steps {
         width: 55.45%;
     }
-    .steps-box:nth-child(2) .title-img-steps{
+
+    .steps-box:nth-child(2) .title-img-steps {
         height: 22%;
     }
 
@@ -965,11 +1012,12 @@ img:hover {
         width: 84.5%;
         align-self: flex-start;
     }
-    .steps-box:nth-child(1) .font-img-steps{
+
+    .steps-box:nth-child(1) .font-img-steps {
         align-self: start;
     }
 
-    .steps-box:nth-child(3) .font-img-steps{
+    .steps-box:nth-child(3) .font-img-steps {
         align-self: end;
     }
 
@@ -1162,7 +1210,7 @@ img:hover {
         margin-top: 3%;
         font-weight: 700;
 
-        font-size: calc(11px - (390px - 100vw) * (1/70));
+        font-size: calc(11px - (390px - 100vw) * (1 / 70));
         line-height: 13px;
         /* font-size: 11px;
         line-height: 13px;*/
@@ -1172,7 +1220,7 @@ img:hover {
     .story {
         font-weight: 400;
         font-size: 9px;
-        line-height: calc(11px - (390px - 100vw)*(3/70));
+        line-height: calc(11px - (390px - 100vw) * (3 / 70));
         /*line-height: 11px;
         line-height: 8px;*/
     }
@@ -1180,7 +1228,6 @@ img:hover {
     /*.story div {*/
     /*    height: 80%;*/
     /*}*/
-
     .btn-see-more {
         width: 25%;
         height: 4.57%;
@@ -1237,10 +1284,11 @@ img:hover {
         margin: auto 0 auto 6%;
     }
 
-    .social-link:nth-child(2){
+    .social-link:nth-child(2) {
         margin-left: 5%;
     }
-    .social-link:nth-child(3){
+
+    .social-link:nth-child(3) {
         margin-left: 4%;
     }
 
