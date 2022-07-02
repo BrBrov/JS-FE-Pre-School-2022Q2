@@ -398,7 +398,7 @@ button:active {
     display: flex;
     height: 154px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .steps-box {
@@ -471,7 +471,7 @@ button:active {
 
 .carousel {
     display: flex;
-    width: auto;
+    width: unset;
     height: 800px;
     margin-left: -39%;
     margin-bottom: 24px;
@@ -1247,5 +1247,4 @@ img:hover {
     .social-link a img {
         width: 92%;
     }
-
 }
