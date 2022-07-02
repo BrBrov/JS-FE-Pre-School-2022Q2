@@ -140,7 +140,6 @@ button:active {
     width: 1440px;
     height: 3735px;
     margin: 0 auto;
-    overflow-x: hidden;
 }
 
 .background {
@@ -775,6 +774,7 @@ img:hover {
         max-width: calc(100vw);
         max-height: calc(100vw * 3.782);
         /*max-height: 1475px;*/
+        overflow-x: hidden;
     }
 
     .background {
@@ -804,17 +804,25 @@ img:hover {
         border-radius: 30px;
     }
 
+    @keyframes menu {
+        from,
+        to{margin-left: 57.57%;}
+    }
+    
     .burger-menu {
-        display: block;
+        /*display: none;*/
         position: relative;
         z-index: 3;
-        margin: -378.2% auto auto 57.57%;
+        margin-top: -378.2%;
+        margin-left: 100%;
+        /*margin: -378.2% auto auto 100%;*/
         /*margin: -378.2% auto auto 57.57%;*/
         width: 42.31%;
         height: 16.96%;
         background: #F2785C;
         box-shadow: 0 4px 3px rgba(13, 96, 111, 0.25);
         border-radius: 10px;
+        animation: menu 1,5s linear;
     }
 
     .x-close {
