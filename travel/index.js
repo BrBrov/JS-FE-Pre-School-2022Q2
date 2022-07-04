@@ -114,6 +114,7 @@ menuButton.addEventListener('click', () => {
                     if(document.getElementsByClassName('burger-menu')[0]){
                         burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
                         setTimeout(()=>{burgerButton.remove()},1450);
+                        eventData.stopImmediatePropagation();
                     }
                 },{capture: true})
                 if (eventData.target.className === 'x-close') {
@@ -125,22 +126,28 @@ menuButton.addEventListener('click', () => {
                     switch(eventData.target.outerText){
                         case links[0]:
                             window.scrollTo(0,document.getElementById('preview').offsetTop);
+                            eventData.stopImmediatePropagation();
                             break;
                         case links[1]:
                             window.scrollTo(0, document.getElementById('steps').offsetTop);
+                            eventData.stopImmediatePropagation();
                             break;
                         case links[2]:
                             window.scrollTo(0, document.getElementById('destinations').offsetTop);
+                            eventData.stopImmediatePropagation();
                             break;
                         case links[3]:
                             window.scrollTo(0, document.getElementById('stories').offsetTop);
+                            eventData.stopImmediatePropagation();
                             break;
                         case links[4]:
                             burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
                             setTimeout(()=>{burgerButton.remove()},1450);
                             break;
-                        case links[5]   :
+                        case links[5]:
+                            log(document.getElementsByClassName('social-list'));
                             window.scrollTo(0, document.getElementsByClassName('social-list')[0].offsetTop);
+                            eventData.stopImmediatePropagation();
                             break;
                     }
                 }
