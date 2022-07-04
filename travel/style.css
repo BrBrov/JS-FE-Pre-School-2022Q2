@@ -774,7 +774,7 @@ img:hover {
         max-width: calc(100vw);
         max-height: calc(100vw * 3.782);
         /*max-height: 1475px;*/
-        overflow-x: hidden;
+        /*overflow-x: hidden;*/
     }
 
     .background {
@@ -805,24 +805,27 @@ img:hover {
     }
 
     @keyframes menu {
-        from,
-        to{margin-left: 57.57%;}
+        from {margin-left: 100%}
+        to {margin-left: 57.57%}
     }
-    
+    @keyframes menuClose {
+        from {margin-left: 57.57%}
+        to {margin-left: 100%}
+    }
+
     .burger-menu {
-        /*display: none;*/
         position: relative;
         z-index: 3;
+        width: 42.31%;
+        height: 16.96%;
         margin-top: -378.2%;
         margin-left: 100%;
         /*margin: -378.2% auto auto 100%;*/
         /*margin: -378.2% auto auto 57.57%;*/
-        width: 42.31%;
-        height: 16.96%;
         background: #F2785C;
         box-shadow: 0 4px 3px rgba(13, 96, 111, 0.25);
         border-radius: 10px;
-        animation: menu 1,5s linear;
+        /*animation: menu 1.4s alternate forwards;*/
     }
 
     .x-close {

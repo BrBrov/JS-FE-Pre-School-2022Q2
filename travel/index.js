@@ -25,7 +25,6 @@ requirements.forEach((value) => {
     log(value);
 })
 
-
 addEventListener('resize', adaptive);
 
 function adaptive() {
@@ -92,6 +91,7 @@ menuButton.addEventListener('click', () => {
             const links = ['How It Works', 'Destinations', 'Plan Your Trip', 'Travel Stories', 'Account', 'Social Media'];
             let divElem = document.createElement('div');
             divElem.className = 'burger-menu';
+            divElem.style.animation = 'menu 1.4s alternate forwards';
             let closeElem = document.createElement('div');
             closeElem.className = 'x-close';
             let navElem = document.createElement('div');
@@ -105,11 +105,50 @@ menuButton.addEventListener('click', () => {
             }
             divElem.appendChild(closeElem);
             divElem.appendChild(navElem);
-            webPageElem.append(divElem)
-            log('Elem created');
+            webPageElem.append(divElem);
+
+            let burgerButton = document.getElementsByClassName('burger-menu')[0];
+
+            burgerButton.addEventListener('touchstart', (eventData)=>{
+                document.body.addEventListener('touchstart', ()=>{
+                    if(document.getElementsByClassName('burger-menu')[0]){
+                        burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
+                        setTimeout(()=>{burgerButton.remove()},1450);
+                    }
+                },{capture: true})
+                if (eventData.target.className === 'x-close') {
+                    burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
+                    setTimeout(()=>{burgerButton.remove()},1450);
+
+                }else{
+                    log(eventData.target.outerText);
+                    switch(eventData.target.outerText){
+                        case links[0]:
+                            window.scrollTo(0,document.getElementById('preview').offsetTop);
+                            break;
+                        case links[1]:
+                            window.scrollTo(0, document.getElementById('steps').offsetTop);
+                            break;
+                        case links[2]:
+                            window.scrollTo(0, document.getElementById('destinations').offsetTop);
+                            break;
+                        case links[3]:
+                            window.scrollTo(0, document.getElementById('stories').offsetTop);
+                            break;
+                        case links[4]:
+                            burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
+                            setTimeout(()=>{burgerButton.remove()},1450);
+                            break;
+                        case links[5]   :
+                            window.scrollTo(0, document.getElementsByClassName('social-list')[0].offsetTop);
+                            break;
+                    }
+                }
+            })
         }
     }
 });
+
 
 
 adaptive();
