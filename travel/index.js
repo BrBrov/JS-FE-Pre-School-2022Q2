@@ -120,6 +120,8 @@ menuButton.addEventListener('click', () => {
             burgerButton.addEventListener('touchstart', (eventData) => {
 
                 if (eventData.target.className === 'x-close') {
+                    document.getElementsByClassName('x-close')[0].style.transition = 'all 1s ease-in-out';
+                    document.getElementsByClassName('x-close')[0].style.transform = 'rotate(720deg)';
                     burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
                     setTimeout(() => {
                         burgerButton.remove()
