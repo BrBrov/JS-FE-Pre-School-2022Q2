@@ -129,20 +129,26 @@ menuButton.addEventListener('click', () => {
                 } else {
                     switch (eventData.target.outerText) {
                         case links[0]:
+                            document.getElementsByClassName('burger-link')[0].style.color = 'grey';
                             document.getElementById('preview').scrollIntoView(false);
                             break;
                         case links[1]:
+                            document.getElementsByClassName('burger-link')[1].style.color = 'grey';
                             window.scrollTo(0, document.getElementById('steps').offsetTop);
                             break;
                         case links[2]:
+                            document.getElementsByClassName('burger-link')[2].style.color = 'grey';
                             window.scrollTo(0, document.getElementById('destinations').offsetTop);
                             break;
                         case links[3]:
+                            document.getElementsByClassName('burger-link')[3].style.color = 'grey';
                             window.scrollTo(0, document.getElementById('stories').offsetTop);
                             break;
                         case links[4]:
+                            document.getElementsByClassName('burger-link')[4].style.color = 'grey';
                             break;
                         case links[5]:
+                            document.getElementsByClassName('burger-link')[5].style.color = 'grey';
                             document.getElementsByClassName('social-list')[0].scrollIntoView();
                             break;
                     }
