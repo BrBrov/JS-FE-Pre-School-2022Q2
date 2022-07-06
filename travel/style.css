@@ -773,6 +773,7 @@ img:hover {
     .container {
         max-width: calc(100vw);
         max-height: calc(100vw * 3.782);
+        overflow-x: hidden;
     }
 
     .background {

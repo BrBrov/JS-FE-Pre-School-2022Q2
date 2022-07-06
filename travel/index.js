@@ -62,7 +62,6 @@ function adaptive() {
         for (let i = 0; i < 4; i++) {
             textStoryDivision[i].textContent = textStory.mobile;
         }
-        log('page was resized - Adaptive!')
     } else {
         carouselItemsImg[0].attributes[1].nodeValue = "./assets/jpg/ocean-big.jpg";
         dots[1].className = blockMarksOfDots.active;
@@ -74,7 +73,6 @@ function adaptive() {
         for (let i = 0; i < 4; i++) {
             textStoryDivision[i].textContent = textStory.desktop;
         }
-        log('no adaptive!');
     }
 }
 
@@ -109,45 +107,41 @@ menuButton.addEventListener('click', () => {
 
             let burgerButton = document.getElementsByClassName('burger-menu')[0];
 
-            burgerButton.addEventListener('touchstart', (eventData)=>{
-                document.body.addEventListener('touchstart', ()=>{
-                    if(document.getElementsByClassName('burger-menu')[0]){
-                        burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
-                        setTimeout(()=>{burgerButton.remove()},1450);
-                        eventData.stopImmediatePropagation();
-                    }
-                },{capture: true})
+            document.body.addEventListener('touchstart', () => {
+
+                if (document.getElementsByClassName('burger-menu')[0]) {
+                    burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
+                    setTimeout(() => {
+                        burgerButton.remove()
+                    }, 1450);
+                }
+            }, {capture: true})
+
+            burgerButton.addEventListener('touchstart', (eventData) => {
+
                 if (eventData.target.className === 'x-close') {
                     burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
-                    setTimeout(()=>{burgerButton.remove()},1450);
-
-                }else{
-                    log(eventData.target.outerText);
-                    switch(eventData.target.outerText){
+                    setTimeout(() => {
+                        burgerButton.remove()
+                    }, 1450);
+                } else {
+                    switch (eventData.target.outerText) {
                         case links[0]:
-                            window.scrollTo(0,document.getElementById('preview').offsetTop);
-                            eventData.stopImmediatePropagation();
+                            document.getElementById('preview').scrollIntoView(false);
                             break;
                         case links[1]:
                             window.scrollTo(0, document.getElementById('steps').offsetTop);
-                            eventData.stopImmediatePropagation();
                             break;
                         case links[2]:
                             window.scrollTo(0, document.getElementById('destinations').offsetTop);
-                            eventData.stopImmediatePropagation();
                             break;
                         case links[3]:
                             window.scrollTo(0, document.getElementById('stories').offsetTop);
-                            eventData.stopImmediatePropagation();
                             break;
                         case links[4]:
-                            burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
-                            setTimeout(()=>{burgerButton.remove()},1450);
                             break;
                         case links[5]:
-                            log(document.getElementsByClassName('social-list'));
-                            window.scrollTo(0, document.getElementsByClassName('social-list')[0].offsetTop);
-                            eventData.stopImmediatePropagation();+3
+                            document.getElementsByClassName('social-list')[0].scrollIntoView();
                             break;
                     }
                 }
