@@ -147,7 +147,7 @@ menuButton.addEventListener('click', () => {
                         case links[5]:
                             log(document.getElementsByClassName('social-list'));
                             window.scrollTo(0, document.getElementsByClassName('social-list')[0].offsetTop);
-                            eventData.stopImmediatePropagation();
+                            eventData.stopImmediatePropagation();+3
                             break;
                     }
                 }
@@ -155,9 +155,6 @@ menuButton.addEventListener('click', () => {
         }
     }
 });
-
-
-
 adaptive();
 
 

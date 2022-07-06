@@ -855,7 +855,8 @@ img:hover {
         font-family: 'RedHatText Regular', sans-serif;
         font-style: normal;
         font-weight: 500;
-        font-size: 16px;
+        /*font-size: 16px;*/
+        font-size: calc(16px - (390px - 100vw)*(2/70));
         line-height: 21px;
         letter-spacing: 0.02rem;
         color: #FFFFFF;
@@ -1214,7 +1215,8 @@ img:hover {
     .story-sample {
         width: 53.17%;
         height: 100%;
-        gap: 7%;
+        /*gap: 7%;*/
+        gap: calc(7% - (390px - 100vw)*(4/70));
     }
 
     .title-sample {
