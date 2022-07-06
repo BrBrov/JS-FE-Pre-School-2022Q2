@@ -753,8 +753,7 @@ img:hover {
     flex-grow: 0;
 }
 
-.social-link a,
-img:hover {
+.social-link a, img:hover {
     cursor: default;
 }
 
