@@ -1,39 +1,163 @@
-let { log } = console;
+let {log} = console;
 
 let requirements = [
-    'Вёрстка валидная +10',
-    'Вёрстка семантическая:',
-    'В коде странице присутствуют следующие элементы (указано минимальное количество, может быть больше):',
-    '<header>, <main>, <footer> +3',
-    'четыре элемента <section> (по количеству секций) +3',
-    'только один заголовок <h1> +3',
-    'три заголовка <h2> (количество секций минус одна, у которой заголовок <h1>) +3',
-    'один элемент <nav> (панель навигации) +3',
-    'два списка ul > li > a (панель навигации, ссылки на соцсети) +3',
-    'четыре кнопки <button> +2',
-    'Вёрстка соответствует макету:',
+    'Вёрстка соответствует макету. Ширина экрана 390px +48',
     'блок <header> +6',
     'секция preview +9',
     'секция steps +9',
     'секция destinations +9',
     'секция stories +9',
     'блок <footer> +6',
-    'Требования к css:',
-    'для построения сетки используются флексы или гриды +2',
-    'при уменьшении масштаба страницы браузера вёрстка размещается по центру, а не сдвигается в сторону +2',
-    'фоновый цвет тянется на всю ширину страницы +2',
-    'иконки добавлены в формате .svg. SVG может быть добавлен любым способом. Обращаем внимание на формат, а не на способ добавления +2',
-    'изображения добавлены в формате .jpg +2',
-    'есть favicon +2',
-    'Интерактивность, реализуемая через css:',
-    'плавная прокрутка по якорям +5',
-    'иконки соцсетей в футере при нажатии на них ведут на гитхаб автора проекта и на страницу курса (допускается доабвление своих вариантов иконок github или RSSchool) https://rs.school/js-stage0/ +5',
-    'интерактивность включает в себя не только изменение внешнего вида курсора, например, при помощи свойства cursor: pointer, но и другие визуальные эффекты, например, изменение цвета фона или цвета шрифта. Если в макете указаны стили при наведении и клике, для элемента указываем эти стили. Если в макете стили не указаны, реализуете их по своему усмотрению, руководствуясь общим стилем макета +5',
-    'обязательное требование к интерактивности: плавное изменение внешнего вида элемента при наведении и клике не влияющее на соседние элементы -5',
-    '-5 за изменения размеров соседних надписей при наведении на ссылку в меню навигации, но так по-моему выглядит намного лучше!',
-    'Total score 105\nScore 100'
+    'Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется +15',
+    'нет полосы прокрутки при ширине страницы от 1440рх до 390px +7',
+    'нет полосы прокрутки при ширине страницы от 390px до 320рх +8',
+    'На ширине экрана 390рх и меньше реализовано адаптивное меню +22',
+    'при ширине страницы 390рх панель навигации скрывается, появляется бургер-иконка +2',
+    'при нажатии на бургер-иконку плавно появляется адаптивное меню +4',
+    'адаптивное меню соответствует макету +4',
+    'при нажатии на крестик адаптивное меню плавно скрывается уезжая за экран +4',
+    'ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям +4 (все кроме Account, она пока что просто закрывает меню)',
+    'при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, так же скрытие меню происходит если сделать клик вне данного окна +4',
+    'Total score 85\nScore 75'
 ];
 
-requirements.forEach((value)=>{
+requirements.forEach((value) => {
     log(value);
 })
+
+addEventListener('resize', adaptive);
+
+function adaptive() {
+    const path = './assets/jpg/';
+    const blockMarksOfDots = {
+        active: 'dot active-dot',
+        inactive: 'dot inactive-dot'
+    };
+    const pathStory = {
+        cave: ['cave-big.jpg', 'cave.jpg'],
+        road: ['road-big.jpg', 'road.jpg'],
+        winter: ['winter-big.jpg', 'winter.jpg'],
+        car: ['car-big.jpg', 'car.jpg']
+    };
+    const textStory = {
+        desktop: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+        mobile: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.Lorem ipsum dolor sit a...'
+    }
+    let carouselItemsImg = document.getElementsByClassName('img-item');
+    let dots = document.getElementsByClassName('dot');
+    let imgStory = document.getElementsByClassName('img-story');
+    let textStoryDivision = document.getElementsByClassName('text-story');
+
+
+    let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+    if (width <= 390) {
+        carouselItemsImg[0].attributes[1].nodeValue = path + "ocean.jpg";
+        dots[1].className = blockMarksOfDots.inactive;
+        dots[0].className = blockMarksOfDots.active;
+        imgStory[0].attributes[1].nodeValue = path + pathStory.cave[1];
+        imgStory[1].attributes[1].nodeValue = path + pathStory.road[1];
+        imgStory[2].attributes[1].nodeValue = path + pathStory.winter[1];
+        imgStory[3].attributes[1].nodeValue = path + pathStory.car[1];
+        for (let i = 0; i < 4; i++) {
+            textStoryDivision[i].textContent = textStory.mobile;
+        }
+    } else {
+        carouselItemsImg[0].attributes[1].nodeValue = "./assets/jpg/ocean-big.jpg";
+        dots[1].className = blockMarksOfDots.active;
+        dots[0].className = blockMarksOfDots.inactive;
+        imgStory[0].attributes[1].nodeValue = path + pathStory.cave[0];
+        imgStory[1].attributes[1].nodeValue = path + pathStory.road[0];
+        imgStory[2].attributes[1].nodeValue = path + pathStory.winter[0];
+        imgStory[3].attributes[1].nodeValue = path + pathStory.car[0];
+        for (let i = 0; i < 4; i++) {
+            textStoryDivision[i].textContent = textStory.desktop;
+        }
+    }
+}
+
+let menuButton = document.querySelector('.btn-login');
+
+menuButton.addEventListener('click', () => {
+
+    if (!document.querySelector('.burger-menu')) {
+
+        if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 390) {
+
+
+            let webPageElem = document.querySelector('.container');
+            const links = ['How It Works', 'Destinations', 'Plan Your Trip', 'Travel Stories', 'Account', 'Social Media'];
+            let divElem = document.createElement('div');
+            divElem.className = 'burger-menu';
+            divElem.style.animation = 'menu 1.4s alternate forwards';
+            let closeElem = document.createElement('div');
+            closeElem.className = 'x-close';
+            let navElem = document.createElement('div');
+            navElem.className = 'burger-menu-block';
+
+            for (let c in links) {
+                let linkElem = document.createElement('div');
+                linkElem.className = 'burger-link';
+                linkElem.textContent = links[c];
+                navElem.appendChild(linkElem);
+            }
+            divElem.appendChild(closeElem);
+            divElem.appendChild(navElem);
+            webPageElem.append(divElem);
+
+            let burgerButton = document.getElementsByClassName('burger-menu')[0];
+
+            document.body.addEventListener('touchstart', () => {
+
+                if (document.getElementsByClassName('burger-menu')[0]) {
+                    burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
+                    setTimeout(() => {
+                        burgerButton.remove()
+                    }, 1450);
+                }
+            }, {capture: true})
+
+            burgerButton.addEventListener('touchstart', (eventData) => {
+
+                if (eventData.target.className === 'x-close') {
+                    document.getElementsByClassName('x-close')[0].style.transition = 'all 1s ease-in-out';
+                    document.getElementsByClassName('x-close')[0].style.transform = 'rotate(720deg)';
+                    burgerButton.style.animation = 'menuClose 1.4s alternate forwards';
+                    setTimeout(() => {
+                        burgerButton.remove()
+                    }, 1450);
+                } else {
+                    switch (eventData.target.outerText) {
+                        case links[0]:
+                            document.getElementsByClassName('burger-link')[0].style.color = 'grey';
+                            document.getElementById('preview').scrollIntoView(false);
+                            break;
+                        case links[1]:
+                            document.getElementsByClassName('burger-link')[1].style.color = 'grey';
+                            window.scrollTo(0, document.getElementById('steps').offsetTop);
+                            break;
+                        case links[2]:
+                            document.getElementsByClassName('burger-link')[2].style.color = 'grey';
+                            window.scrollTo(0, document.getElementById('destinations').offsetTop);
+                            break;
+                        case links[3]:
+                            document.getElementsByClassName('burger-link')[3].style.color = 'grey';
+                            window.scrollTo(0, document.getElementById('stories').offsetTop);
+                            break;
+                        case links[4]:
+                            document.getElementsByClassName('burger-link')[4].style.color = 'grey';
+                            break;
+                        case links[5]:
+                            document.getElementsByClassName('burger-link')[5].style.color = 'grey';
+                            document.getElementsByClassName('social-list')[0].scrollIntoView();
+                            break;
+                    }
+                }
+            })
+        }
+    }
+});
+adaptive();
+
+
+
