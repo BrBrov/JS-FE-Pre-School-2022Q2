@@ -39,7 +39,7 @@ function adaptive() {
     let imgStory = document.getElementsByClassName('img-story');
     let textStoryDivision = document.getElementsByClassName('text-story');
 
-    function CreatePopUp(){
+    function CreatePopUp() {
         let popUpModal = document.createElement('div');
         popUpModal.className = 'pop-up';
 
@@ -78,7 +78,7 @@ function adaptive() {
         popUpSeparator.className = 'separator-pop-up';
         let separatorLeft = document.createElement('div');
         separatorLeft.className = 'line-separator';
-        let separatorRight= document.createElement('div');
+        let separatorRight = document.createElement('div');
         separatorRight.className = 'line-separator';
         let separatorText = document.createElement('div');
         separatorText.className = 'text-separator';
@@ -143,7 +143,8 @@ function adaptive() {
 
         return popUpModal;
     }
-    function CreateSignUp(){
+
+    function CreateSignUp() {
         let popUpModal = document.createElement('div');
         popUpModal.className = 'sign-up';
         let signTitle = document.createElement('div');
@@ -209,9 +210,9 @@ function adaptive() {
         pageContainer.append(popUpContainer);
         popUpContainer.append(popUpModal);
         popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
-        popUpContainer.addEventListener('click', (eventData)=>{
+        popUpContainer.addEventListener('click', (eventData) => {
             log(eventData.target.className);
-            switch(eventData.target.className){
+            switch (eventData.target.className) {
                 case 'pop-up-btn-facebook':
                 case 'facebook-img-pop-up':
                 case 'facebook-text-pop-up':
@@ -225,16 +226,16 @@ function adaptive() {
                 case 'btn-sign-up':
                 case 'label-sign-up':
                     let mail = document.getElementById('mail');
-                    if(mail.checkValidity()){
+                    if (mail.checkValidity()) {
                         mail = mail.value;
-                    }else {
+                    } else {
                         mail = 'Email isn\'t valid!';
                     }
-                    if(mail.length === 0){
+                    if (mail.length === 0) {
                         mail = 'Email wasn\'t entered';
                     }
                     let password = document.getElementById('password').value;
-                    if(password.length === 0){
+                    if (password.length === 0) {
                         password = 'Password was\'t entered';
                     }
                     alert(mail + '\n' + password);
@@ -244,46 +245,56 @@ function adaptive() {
                     break;
                 case 'pop-up-bg':
                     let bgPopUp = document.querySelector('.pop-up-bg');
-                    if(document.querySelector('.pop-up')){
+                    if (document.querySelector('.pop-up')) {
                         document.querySelector('.pop-up').style.animation = 'popupClose 1.5s alternate forwards';
-                        setTimeout(()=>{bgPopUp.remove();},1500);
-                    }else{
+                        setTimeout(() => {
+                            bgPopUp.remove();
+                        }, 1500);
+                    } else {
                         document.querySelector('.sign-up').style.animation = 'popupClose 1.5s alternate forwards';
-                        setTimeout(()=>{bgPopUp.remove();},1500);
+                        setTimeout(() => {
+                            bgPopUp.remove();
+                        }, 1500);
                     }
                     break;
                 case 'register':
                     popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
-                    setTimeout(()=>{popUpModal.remove()},1500);
+                    setTimeout(() => {
+                        popUpModal.remove()
+                    }, 1500);
                     let signUp = CreateSignUp();
-                    setTimeout(()=>{popUpContainer.append(signUp);},750);
-                    signUp.addEventListener('click',(e)=>{
-                        switch(e.target.className){
+                    setTimeout(() => {
+                        popUpContainer.append(signUp);
+                    }, 750);
+                    signUp.addEventListener('click', (e) => {
+                        switch (e.target.className) {
                             case 'btn-sign-in':
                             case 'label-sign-in':
                                 let mailSign = document.getElementById('sign-mail');
-                                if(mailSign.checkValidity()){
+                                if (mailSign.checkValidity()) {
                                     mailSign = mailSign.value;
-                                }else {
+                                } else {
                                     mailSign = 'Email isn\'t valid!';
                                 }
-                                if(mailSign.length === 0){
+                                if (mailSign.length === 0) {
                                     mailSign = 'Email wasn\'t entered';
                                 }
                                 let passwordSign = document.getElementById('sign-password').value;
-                                if(passwordSign.length === 0){
+                                if (passwordSign.length === 0) {
                                     passwordSign = 'Password was\'t entered';
                                 }
                                 alert(mailSign + '\n' + passwordSign);
                                 break;
                             case 'sign':
                                 signUp.style.animation = 'popupClose 1.5s alternate forwards';
-                                setTimeout(()=>{signUp.remove()},1500);
-                                setTimeout(()=>{
+                                setTimeout(() => {
+                                    signUp.remove()
+                                }, 1500);
+                                setTimeout(() => {
                                     popUpModal = CreatePopUp();
                                     popUpContainer.append(popUpModal);
                                     popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
-                                    },1500);
+                                }, 1500);
                                 break;
                         }
                     }, true);
@@ -376,7 +387,110 @@ function adaptive() {
                                     window.scrollTo(0, document.getElementById('stories').offsetTop);
                                     break;
                                 case links[4]:
-                                    document.getElementsByClassName('burger-link')[4].style.color = 'grey';
+                                    let listener =(eventData) => {
+                                        log(eventData.target.className);
+                                        switch (eventData.target.className) {
+                                            case 'pop-up-btn-facebook':
+                                            case 'facebook-img-pop-up':
+                                            case 'facebook-text-pop-up':
+                                                alert('Entrances with Facebook!');
+                                                break;
+                                            case 'pop-up-btn-google':
+                                            case 'google-img-pop-up':
+                                            case 'google-text-pop-up':
+                                                alert('Entrances with Google');
+                                                break;
+                                            case 'btn-sign-up':
+                                            case 'label-sign-up':
+                                                let mail = document.getElementById('mail');
+                                                if (mail.checkValidity()) {
+                                                    mail = mail.value;
+                                                } else {
+                                                    mail = 'Email isn\'t valid!';
+                                                }
+                                                if (mail.length === 0) {
+                                                    mail = 'Email wasn\'t entered';
+                                                }
+                                                let password = document.getElementById('password').value;
+                                                if (password.length === 0) {
+                                                    password = 'Password was\'t entered';
+                                                }
+                                                alert(mail + '\n' + password);
+                                                break;
+                                            case 'forgot-password':
+                                                alert('...page for recovery access account');
+                                                break;
+                                            case 'pop-up-bg':
+                                                let bgPopUp = document.querySelector('.pop-up-bg');
+                                                if (document.querySelector('.pop-up')) {
+                                                    document.querySelector('.pop-up').style.animation = 'popupClose 1.5s alternate forwards';
+                                                    setTimeout(() => {
+                                                        bgPopUp.remove();
+                                                    }, 1500);
+                                                } else {
+                                                    document.querySelector('.sign-up').style.animation = 'popupClose 1.5s alternate forwards';
+                                                    setTimeout(() => {
+                                                        bgPopUp.remove();
+                                                    }, 1500);
+                                                }
+                                                break;
+                                            case 'register':
+                                                popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
+                                                setTimeout(() => {
+                                                    popUpModal.remove()
+                                                }, 1500);
+                                                let signUp = CreateSignUp();
+                                                setTimeout(() => {
+                                                    popUpContainer.append(signUp);
+                                                }, 1500);
+                                                signUp.addEventListener('touchstart', (e) => {
+                                                    switch (e.target.className) {
+                                                        case 'btn-sign-in':
+                                                        case 'label-sign-in':
+                                                            let mailSign = document.getElementById('sign-mail');
+                                                            if (mailSign.checkValidity()) {
+                                                                mailSign = mailSign.value;
+                                                            } else {
+                                                                mailSign = 'Email isn\'t valid!';
+                                                            }
+                                                            if (mailSign.length === 0) {
+                                                                mailSign = 'Email wasn\'t entered';
+                                                            }
+                                                            let passwordSign = document.getElementById('sign-password').value;
+                                                            if (passwordSign.length === 0) {
+                                                                passwordSign = 'Password was\'t entered';
+                                                            }
+                                                            alert(mailSign + '\n' + passwordSign);
+                                                            break;
+                                                        case 'sign':
+                                                            signUp.style.animation = 'popupClose 1.5s alternate forwards';
+                                                            setTimeout(() => {
+                                                                signUp.remove()
+                                                            }, 1500);
+                                                            setTimeout(() => {
+                                                                popUpModal = CreatePopUp();
+                                                                popUpContainer.append(popUpModal);
+                                                                popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
+                                                            }, 1500);
+                                                            break;
+                                                    }
+                                                }, true);
+                                                break;
+
+                                        }
+                                    }
+                                    let account = document.getElementsByClassName('burger-link')[4]
+                                    account.style.color = 'grey';
+                                    let popUpContainer = document.createElement('div');
+                                    popUpContainer.className = 'pop-up-bg';
+                                    let popUpModal = CreatePopUp();
+                                    let pageContainer = document.querySelector('.container');
+                                    setTimeout(()=>{
+                                        pageContainer.append(popUpContainer);
+                                        popUpContainer.append(popUpModal);
+                                        popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
+                                        popUpContainer.addEventListener('touchstart', listener, true);
+                                    }, 1500);
                                     break;
                                 case links[5]:
                                     document.getElementsByClassName('burger-link')[5].style.color = 'grey';
