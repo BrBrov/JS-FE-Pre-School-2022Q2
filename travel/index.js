@@ -145,6 +145,228 @@ function adaptive() {
         for (let i = 0; i < 4; i++) {
             textStoryDivision[i].textContent = textStory.desktop;
         }
+        let loginButton = document.querySelector('.btn-login');
+        loginButton.addEventListener('click', () => {
+            log('Login was pushed!');
+            let popUpContainer = document.createElement('div');
+            popUpContainer.className = 'pop-up-bg';
+
+            // function of creation Pop Up Window
+
+            function CreatePopUp(){
+                let popUpModal = document.createElement('div');
+                popUpModal.className = 'pop-up';
+
+                let popUpTitle = document.createElement('div');
+                popUpTitle.className = 'pop-up-title';
+                popUpTitle.textContent = 'Log in to your account';
+                popUpModal.append(popUpTitle);
+
+                let btnFaceBook = document.createElement('button');
+                let imgFaceBook = document.createElement('img');
+                let textFaceBook = document.createElement('span');
+                imgFaceBook.className = 'facebook-img-pop-up';
+                imgFaceBook.src = './assets/svg/Facebook.svg';
+                imgFaceBook.alt = 'Facebook';
+                textFaceBook.className = 'facebook-text-pop-up';
+                textFaceBook.textContent = 'Sign In with Facebook';
+                btnFaceBook.className = 'pop-up-btn-facebook';
+                btnFaceBook.append(imgFaceBook);
+                btnFaceBook.append(textFaceBook);
+                popUpModal.append(btnFaceBook);
+
+                let btnGoogle = document.createElement('button');
+                let imgGoogle = document.createElement('img');
+                let textGoogle = document.createElement('span');
+                imgGoogle.className = 'google-img-pop-up';
+                imgGoogle.src = "./assets/svg/Google.svg";
+                imgGoogle.alt = "Google";
+                textGoogle.className = 'google-text-pop-up';
+                textGoogle.textContent = 'Sign In with Google';
+                btnGoogle.className = 'pop-up-btn-google';
+                btnGoogle.append(imgGoogle);
+                btnGoogle.append(textGoogle);
+                popUpModal.append(btnGoogle);
+
+                let popUpSeparator = document.createElement('div');
+                popUpSeparator.className = 'separator-pop-up';
+                let separatorLeft = document.createElement('div');
+                separatorLeft.className = 'line-separator';
+                let separatorRight= document.createElement('div');
+                separatorRight.className = 'line-separator';
+                let separatorText = document.createElement('div');
+                separatorText.className = 'text-separator';
+                separatorText.textContent = 'or';
+                popUpSeparator.appendChild(separatorLeft);
+                popUpSeparator.appendChild(separatorText);
+                popUpSeparator.appendChild(separatorRight);
+                popUpModal.append(popUpSeparator);
+
+                let formPopUp = document.createElement('form');
+                formPopUp.className = 'register-form';
+                formPopUp.action = '#';
+                let labelEmail = document.createElement('label');
+                labelEmail.className = 'label-email';
+                labelEmail.htmlFor = 'mail';
+                labelEmail.textContent = 'E-mail';
+                let inputMail = document.createElement('input');
+                inputMail.type = 'email';
+                inputMail.id = 'mail';
+                inputMail.name = 'email';
+                inputMail.autofocus = true;
+                let brForm = document.createElement('br');
+                let labelPass = document.createElement('label');
+                labelPass.className = 'label-password';
+                labelPass.htmlFor = 'password';
+                labelPass.textContent = 'Password';
+                let inputPass = document.createElement('input');
+                inputPass.id = 'password';
+                inputPass.type = 'password';
+                inputPass.name = 'password';
+                formPopUp.append(labelEmail);
+                formPopUp.append(brForm);
+                formPopUp.append(labelPass);
+                labelEmail.append(inputMail);
+                labelPass.append(inputPass);
+                popUpModal.append(formPopUp);
+                let buttonSignIn = document.createElement('button');
+                let textSignIn = document.createElement('span');
+                buttonSignIn.className = 'btn-sign-up';
+                textSignIn.className = 'label-sign-up';
+                textSignIn.textContent = 'Sign In';
+                buttonSignIn.append(textSignIn);
+                popUpModal.append(buttonSignIn);
+                popUpModal.append(document.createElement('br'));
+                let forgotPass = document.createElement('a');
+                forgotPass.className = 'forgot-password';
+                forgotPass.href = '#';
+                forgotPass.textContent = 'Forgot Your Password?';
+                popUpModal.append(forgotPass);
+                let separatorDown = document.createElement('div');
+                separatorDown.className = 'bottom-separator';
+                popUpModal.append(separatorDown);
+                let noAccount = document.createElement('span');
+                noAccount.className = 'dont-register';
+                noAccount.textContent = 'Don’t have an account? ';
+                let registerLink = document.createElement('a');
+                registerLink.className = 'register';
+                registerLink.href = '#';
+                registerLink.textContent = 'Register';
+                popUpModal.append(noAccount);
+                popUpModal.append(registerLink);
+
+                return popUpModal;
+            }
+
+            function CreateSignUp(){
+                let popUpModal = document.createElement('div');
+                popUpModal.className = 'sign-up';
+                let signTitle = document.createElement('div');
+                signTitle.className = 'sign-up-title';
+                signTitle.textContent = 'Create account';
+                popUpModal.append(signTitle);
+                let formSignIn = document.createElement('form');
+                formSignIn.className = 'sign-form';
+                formSignIn.action = '#';
+                let labelEmail = document.createElement('label');
+                let labelPass = document.createElement('label');
+                let inputMail = document.createElement('input');
+                let inputPass = document.createElement('input');
+                labelEmail.className = 'sign-email';
+                labelEmail.htmlFor = 'sign-mail';
+                labelEmail.textContent = 'E-mail';
+                labelPass.className = 'sign-password';
+                labelPass.htmlFor = 'password';
+                labelPass.textContent = 'Password';
+                inputMail.type = 'email';
+                inputMail.name = 'email';
+                inputMail.id = 'sign-mail';
+                inputMail.autofocus = true;
+                inputPass.id = 'sign-password';
+                inputPass.name = 'password';
+                inputPass.type = 'password';
+                formSignIn.append(labelEmail);
+                formSignIn.append(labelPass);
+                labelEmail.append(inputMail);
+                labelPass.append(inputPass);
+                popUpModal.append(formSignIn);
+                let btnSignIn = document.createElement('button');
+                btnSignIn.className = 'btn-sign-in';
+                let signInText = document.createElement('span');
+                signInText.className = 'label-sign-in';
+                signInText.textContent = 'Sign In';
+                btnSignIn.append(signInText);
+                popUpModal.append(btnSignIn);
+                let separator = document.createElement('div');
+                separator.className = 'bottom-separator-sign';
+                popUpModal.append(separator);
+                let signText = document.createElement('span');
+                signText.className = 'dont-sign';
+                signText.textContent = 'Already have an account? ';
+                let linkSign = document.createElement('a');
+                linkSign.className = 'sign';
+                linkSign.textContent = 'Log in';
+                linkSign.href = '#';
+                popUpModal.append(signText);
+                popUpModal.append(linkSign);
+
+                return popUpModal;
+            }
+
+            let popUpModal = CreatePopUp();
+
+            let pageContainer = document.querySelector('.container');
+            pageContainer.append(popUpContainer);
+            popUpContainer.append(popUpModal);
+            popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
+            pageContainer.addEventListener('click', (eventData,CreatePopUp, CreateSignUp)=>{
+                log(eventData.target.className);
+                switch(eventData.target.className){
+                    case 'pop-up-btn-facebook':
+                    case 'facebook-img-pop-up':
+                    case 'facebook-text-pop-up':
+                        alert('Entrances with Facebook!');
+                        break;
+                    case 'pop-up-btn-google':
+                    case 'google-img-pop-up':
+                    case 'google-text-pop-up':
+                        alert('Entrances with Google');
+                        break;
+                    case 'btn-sign-up':
+                    case 'label-sign-up':
+                        let mail = document.getElementById('mail');
+                        if(mail.checkValidity()){
+                            mail = mail.value;
+                        }else {
+                            mail = 'Email isn\'t valid!';
+                        }
+                        if(mail.length === 0){
+                            mail = 'Email wasn\'t entered';
+                        }
+                        let password = document.getElementById('password').value;
+                        if(password.length === 0){
+                            password = 'Password was\'t entered';
+                        }
+                        alert(mail + '\n' + password);
+                        break;
+                    case 'forgot-password':
+                        alert('...page for recovery access account');
+                        break;
+                    case 'pop-up-bg':
+                        let bgPopUp = document.querySelector('.pop-up-bg');
+                        if(document.querySelector('.pop-up')){
+                            document.querySelector('.pop-up').style.animation = 'popupClose 1.5s alternate forwards';
+                            setTimeout(()=>{bgPopUp.remove();},1500);
+                        }else{
+                            document.querySelector('.sign-up').animation = 'popupClose 1.5s alternate forwards';
+                            setTimeout(()=>{bgPopUp.remove();},1500);
+                        }
+                        break;
+                }
+                pageContainer.stopPropagation();
+
+            }, false)
+        })
     }
 }
 

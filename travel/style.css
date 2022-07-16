@@ -416,7 +416,7 @@ button:active {
     background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
-    animation: popupOpen 3s alternate forwards;
+    /*animation: popupOpen 3s alternate forwards;*/
 }
 .sign-up-title{
     margin: 0 auto;
