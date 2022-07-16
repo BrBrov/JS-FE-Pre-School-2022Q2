@@ -199,110 +199,7 @@ function adaptive() {
         return popUpModal;
     }
 
-    let popUpListener = () => {
-        log('Login was pushed!');
-        let popUpContainer = document.createElement('div');
-        popUpContainer.className = 'pop-up-bg';
 
-        let popUpModal = CreatePopUp();
-
-        let pageContainer = document.querySelector('.container');
-        pageContainer.append(popUpContainer);
-        popUpContainer.append(popUpModal);
-        popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
-        popUpContainer.addEventListener('click', (eventData) => {
-            log(eventData.target.className);
-            switch (eventData.target.className) {
-                case 'pop-up-btn-facebook':
-                case 'facebook-img-pop-up':
-                case 'facebook-text-pop-up':
-                    alert('Entrances with Facebook!');
-                    break;
-                case 'pop-up-btn-google':
-                case 'google-img-pop-up':
-                case 'google-text-pop-up':
-                    alert('Entrances with Google');
-                    break;
-                case 'btn-sign-up':
-                case 'label-sign-up':
-                    let mail = document.getElementById('mail');
-                    if (mail.checkValidity()) {
-                        mail = mail.value;
-                    } else {
-                        mail = 'Email isn\'t valid!';
-                    }
-                    if (mail.length === 0) {
-                        mail = 'Email wasn\'t entered';
-                    }
-                    let password = document.getElementById('password').value;
-                    if (password.length === 0) {
-                        password = 'Password was\'t entered';
-                    }
-                    alert(mail + '\n' + password);
-                    break;
-                case 'forgot-password':
-                    alert('...page for recovery access account');
-                    break;
-                case 'pop-up-bg':
-                    let bgPopUp = document.querySelector('.pop-up-bg');
-                    if (document.querySelector('.pop-up')) {
-                        document.querySelector('.pop-up').style.animation = 'popupClose 1.5s alternate forwards';
-                        setTimeout(() => {
-                            bgPopUp.remove();
-                        }, 1500);
-                    } else {
-                        document.querySelector('.sign-up').style.animation = 'popupClose 1.5s alternate forwards';
-                        setTimeout(() => {
-                            bgPopUp.remove();
-                        }, 1500);
-                    }
-                    break;
-                case 'register':
-                    popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
-                    setTimeout(() => {
-                        popUpModal.remove()
-                    }, 1500);
-                    let signUp = CreateSignUp();
-                    setTimeout(() => {
-                        popUpContainer.append(signUp);
-                    }, 750);
-                    signUp.addEventListener('click', (e) => {
-                        switch (e.target.className) {
-                            case 'btn-sign-in':
-                            case 'label-sign-in':
-                                let mailSign = document.getElementById('sign-mail');
-                                if (mailSign.checkValidity()) {
-                                    mailSign = mailSign.value;
-                                } else {
-                                    mailSign = 'Email isn\'t valid!';
-                                }
-                                if (mailSign.length === 0) {
-                                    mailSign = 'Email wasn\'t entered';
-                                }
-                                let passwordSign = document.getElementById('sign-password').value;
-                                if (passwordSign.length === 0) {
-                                    passwordSign = 'Password was\'t entered';
-                                }
-                                alert(mailSign + '\n' + passwordSign);
-                                break;
-                            case 'sign':
-                                signUp.style.animation = 'popupClose 1.5s alternate forwards';
-                                setTimeout(() => {
-                                    signUp.remove()
-                                }, 1500);
-                                setTimeout(() => {
-                                    popUpModal = CreatePopUp();
-                                    popUpContainer.append(popUpModal);
-                                    popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
-                                }, 1500);
-                                break;
-                        }
-                    }, true);
-                    break;
-
-            }
-        }, true)
-    }
 
 
     let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -512,6 +409,110 @@ function adaptive() {
         imgStory[3].attributes[1].nodeValue = path + pathStory.car[0];
         for (let i = 0; i < 4; i++) {
             textStoryDivision[i].textContent = textStory.desktop;
+        }
+        let popUpListener = () => {
+            log('Login was pushed!');
+            let popUpContainer = document.createElement('div');
+            popUpContainer.className = 'pop-up-bg';
+
+            let popUpModal = CreatePopUp();
+
+            let pageContainer = document.querySelector('.container');
+            pageContainer.append(popUpContainer);
+            popUpContainer.append(popUpModal);
+            popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
+            popUpContainer.addEventListener('click', (eventData) => {
+                log(eventData.target.className);
+                switch (eventData.target.className) {
+                    case 'pop-up-btn-facebook':
+                    case 'facebook-img-pop-up':
+                    case 'facebook-text-pop-up':
+                        alert('Entrances with Facebook!');
+                        break;
+                    case 'pop-up-btn-google':
+                    case 'google-img-pop-up':
+                    case 'google-text-pop-up':
+                        alert('Entrances with Google');
+                        break;
+                    case 'btn-sign-up':
+                    case 'label-sign-up':
+                        let mail = document.getElementById('mail');
+                        if (mail.checkValidity()) {
+                            mail = mail.value;
+                        } else {
+                            mail = 'Email isn\'t valid!';
+                        }
+                        if (mail.length === 0) {
+                            mail = 'Email wasn\'t entered';
+                        }
+                        let password = document.getElementById('password').value;
+                        if (password.length === 0) {
+                            password = 'Password was\'t entered';
+                        }
+                        alert(mail + '\n' + password);
+                        break;
+                    case 'forgot-password':
+                        alert('...page for recovery access account');
+                        break;
+                    case 'pop-up-bg':
+                        let bgPopUp = document.querySelector('.pop-up-bg');
+                        if (document.querySelector('.pop-up')) {
+                            document.querySelector('.pop-up').style.animation = 'popupClose 1.5s alternate forwards';
+                            setTimeout(() => {
+                                bgPopUp.remove();
+                            }, 1500);
+                        } else {
+                            document.querySelector('.sign-up').style.animation = 'popupClose 1.5s alternate forwards';
+                            setTimeout(() => {
+                                bgPopUp.remove();
+                            }, 1500);
+                        }
+                        break;
+                    case 'register':
+                        popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
+                        setTimeout(() => {
+                            popUpModal.remove()
+                        }, 1500);
+                        let signUp = CreateSignUp();
+                        setTimeout(() => {
+                            popUpContainer.append(signUp);
+                        }, 750);
+                        signUp.addEventListener('click', (e) => {
+                            switch (e.target.className) {
+                                case 'btn-sign-in':
+                                case 'label-sign-in':
+                                    let mailSign = document.getElementById('sign-mail');
+                                    if (mailSign.checkValidity()) {
+                                        mailSign = mailSign.value;
+                                    } else {
+                                        mailSign = 'Email isn\'t valid!';
+                                    }
+                                    if (mailSign.length === 0) {
+                                        mailSign = 'Email wasn\'t entered';
+                                    }
+                                    let passwordSign = document.getElementById('sign-password').value;
+                                    if (passwordSign.length === 0) {
+                                        passwordSign = 'Password was\'t entered';
+                                    }
+                                    alert(mailSign + '\n' + passwordSign);
+                                    break;
+                                case 'sign':
+                                    signUp.style.animation = 'popupClose 1.5s alternate forwards';
+                                    setTimeout(() => {
+                                        signUp.remove()
+                                    }, 1500);
+                                    setTimeout(() => {
+                                        popUpModal = CreatePopUp();
+                                        popUpContainer.append(popUpModal);
+                                        popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
+                                    }, 1500);
+                                    break;
+                            }
+                        }, true);
+                        break;
+
+                }
+            }, true)
         }
         let loginButton = document.querySelector('.btn-login');
         loginButton.addEventListener('click', popUpListener);
