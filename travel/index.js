@@ -143,7 +143,6 @@ function adaptive() {
 
         return popUpModal;
     }
-
     function CreateSignUp(){
         let popUpModal = document.createElement('div');
         popUpModal.className = 'sign-up';
@@ -210,7 +209,7 @@ function adaptive() {
         pageContainer.append(popUpContainer);
         popUpContainer.append(popUpModal);
         popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
-        popUpContainer.addEventListener('click', (eventData,CreatePopUp, CreateSignUp)=>{
+        popUpContainer.addEventListener('click', (eventData)=>{
             log(eventData.target.className);
             switch(eventData.target.className){
                 case 'pop-up-btn-facebook':
@@ -249,10 +248,47 @@ function adaptive() {
                         document.querySelector('.pop-up').style.animation = 'popupClose 1.5s alternate forwards';
                         setTimeout(()=>{bgPopUp.remove();},1500);
                     }else{
-                        document.querySelector('.sign-up').animation = 'popupClose 1.5s alternate forwards';
+                        document.querySelector('.sign-up').style.animation = 'popupClose 1.5s alternate forwards';
                         setTimeout(()=>{bgPopUp.remove();},1500);
                     }
                     break;
+                case 'register':
+                    popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
+                    setTimeout(()=>{popUpModal.remove()},1500);
+                    let signUp = CreateSignUp();
+                    setTimeout(()=>{popUpContainer.append(signUp);},750);
+                    signUp.addEventListener('click',(e)=>{
+                        switch(e.target.className){
+                            case 'btn-sign-in':
+                            case 'label-sign-in':
+                                let mailSign = document.getElementById('sign-mail');
+                                if(mailSign.checkValidity()){
+                                    mailSign = mailSign.value;
+                                }else {
+                                    mailSign = 'Email isn\'t valid!';
+                                }
+                                if(mailSign.length === 0){
+                                    mailSign = 'Email wasn\'t entered';
+                                }
+                                let passwordSign = document.getElementById('sign-password').value;
+                                if(passwordSign.length === 0){
+                                    passwordSign = 'Password was\'t entered';
+                                }
+                                alert(mailSign + '\n' + passwordSign);
+                                break;
+                            case 'sign':
+                                signUp.style.animation = 'popupClose 1.5s alternate forwards';
+                                setTimeout(()=>{signUp.remove()},1500);
+                                setTimeout(()=>{
+                                    popUpModal = CreatePopUp();
+                                    popUpContainer.append(popUpModal);
+                                    popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
+                                    },1500);
+                                break;
+                        }
+                    }, true);
+                    break;
+
             }
         }, true)
     }
