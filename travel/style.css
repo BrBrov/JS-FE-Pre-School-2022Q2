@@ -1230,6 +1230,16 @@ img:hover {
         to{margin-top: -105%}
     }
 
+    .pop-up-bg{
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        margin: -378% auto;
+        overflow-y: hidden;
+        backdrop-filter: brightness(50%);
+    }
+
     /*====POP UP LOGIN======>*/
 
     .pop-up{
@@ -1249,8 +1259,8 @@ img:hover {
         font-family: 'Aleo Regular', serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 32px;
-        line-height: 38px;
+        font-size: 1.2rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     .pop-up-btn-facebook{
@@ -1267,15 +1277,15 @@ img:hover {
     .facebook-img-pop-up{
         width: 5%;
         height: 40%;
-        margin: 0 2% 0 0.6%;
+        margin: 0 2% 1% 0.6%;
     }
     .facebook-text-pop-up{
         vertical-align: 20%;
         font-family: 'RedHatText Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1rem;
         color: #FFFFFF;
     }
     .pop-up-btn-google{
@@ -1291,15 +1301,15 @@ img:hover {
     .google-img-pop-up{
         width: 5%;
         height: 40%;
-        margin: 0 2% 0 0.6%;
+        margin: 0 2% 1% 0.6%;
     }
     .google-text-pop-up{
         vertical-align: 20%;
         font-family: 'RedHatText Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     .separator-pop-up{
@@ -1320,22 +1330,22 @@ img:hover {
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 0.7rem;
+        line-height: 0.6rem;
         color: rgba(13, 96, 111, 0.5);
     }
     .register-form{
         width: 86.16%;
-        height: 30%;
-        margin: 1% auto;
+        height: 25%;
+        margin: 1.2% auto;
         text-align: left;
     }
     .label-email{
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     #mail{
@@ -1354,16 +1364,16 @@ img:hover {
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 2.5rem;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1rem;
         color: #0D706F;
     }
     .label-password{
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     #password{
@@ -1380,13 +1390,14 @@ img:hover {
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 2.5rem;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1rem;
         color: #0D706F;
     }
     .btn-sign-up{
         width: 86%;
         height: 8%;
+        margin-top: 5%;
         margin-bottom: 1.3%;
         background: #0D606F;
         box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
@@ -1397,8 +1408,8 @@ img:hover {
         font-family: 'RedHatText Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1rem;
         color: #FFFFFF;
     }
     .forgot-password{
@@ -1406,15 +1417,15 @@ img:hover {
         font-family: 'Aleo Italic', sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 15px;
-        line-height: 18px;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
         text-decoration-line: underline;
         color: #0D606F;
         text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
     }
     .bottom-separator{
         width: 86%;
-        margin: 4.2% auto 2.8% auto;
+        margin: 2% auto 2% auto;
         border: 1px solid rgba(13, 96, 111, 0.5);
         transform: rotate(0.1deg);
     }
@@ -1422,8 +1433,8 @@ img:hover {
         font-family: 'Aleo Italic', sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 15px;
-        line-height: 18px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: rgba(13, 96, 111, 0.5);
         text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
     }
@@ -1431,8 +1442,8 @@ img:hover {
         font-family: 'Aleo Bold Italic', sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 15px;
-        line-height: 18px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         text-decoration-line: underline;
         color: rgba(13, 96, 111, 0.9);
         text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
@@ -1460,22 +1471,22 @@ img:hover {
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 32px;
-        line-height: 38px;
+        font-size: 1.2rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     .sign-form{
         width: 86.16%;
-        height: 39%;
-        margin: 4.6% auto;
+        height: 29%;
+        margin: 1% auto;
         text-align: left;
     }
     .sign-email{
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     #sign-mail{
@@ -1494,16 +1505,16 @@ img:hover {
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 2.5rem;
-        line-height: 19px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: #0D706F;
     }
     .sign-password{
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: #0D606F;
     }
     #sign-password{
@@ -1520,14 +1531,14 @@ img:hover {
         font-family: 'Aleo Regular', sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 2.5rem;
-        line-height: 19px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         color: #0D706F;
     }
     .btn-sign-in{
         width: 86%;
         height: 13%;
-        margin-top: 1.9%;
+        margin-top: 12.9%;
         margin-bottom: 1.3%;
         background: #0D606F;
         box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
@@ -1553,7 +1564,7 @@ img:hover {
         font-family: 'Aleo Italic', sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 0.7rem;
         line-height: 18px;
         color: rgba(13, 96, 111, 0.5);
         text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
@@ -1562,8 +1573,8 @@ img:hover {
         font-family: 'Aleo Bold Italic', sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 15px;
-        line-height: 18px;
+        font-size: 0.7rem;
+        line-height: 1rem;
         text-decoration-line: underline;
         color: rgba(13, 96, 111, 0.9);
         text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);

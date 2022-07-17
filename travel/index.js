@@ -346,14 +346,14 @@ function adaptive() {
 
                                                 // Change sign up from pop up
 
-                                                popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
+                                                popUpModal.style.animation = 'popupClose 0.75s alternate forwards';
                                                 setTimeout(() => {
                                                     popUpModal.remove()
-                                                }, 1500);
+                                                }, 750);
                                                 let signUp = CreateSignUp();
                                                 setTimeout(() => {
                                                     popUpContainer.append(signUp);
-                                                }, 1500);
+                                                }, 750);
 
                                                 // Sign up event listener
 
