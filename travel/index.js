@@ -39,6 +39,8 @@ function adaptive() {
     let imgStory = document.getElementsByClassName('img-story');
     let textStoryDivision = document.getElementsByClassName('text-story');
 
+    // Pop Up Creation
+
     function CreatePopUp() {
         let popUpModal = document.createElement('div');
         popUpModal.className = 'pop-up';
@@ -144,6 +146,8 @@ function adaptive() {
         return popUpModal;
     }
 
+    // Sign Up Creation
+
     function CreateSignUp() {
         let popUpModal = document.createElement('div');
         popUpModal.className = 'sign-up';
@@ -199,10 +203,11 @@ function adaptive() {
         return popUpModal;
     }
 
-
-
+    // Handler of adaptive
 
     let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+    // Replacer links for elements of adaptive version
 
     if (width <= 390) {
         carouselItemsImg[0].attributes[1].nodeValue = path + "ocean.jpg";
@@ -223,6 +228,7 @@ function adaptive() {
 
                 if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 390) {
 
+                    // Burger menu creation
 
                     let webPageElem = document.querySelector('.container');
                     const links = ['How It Works', 'Destinations', 'Plan Your Trip', 'Travel Stories', 'Account', 'Social Media'];
@@ -246,6 +252,8 @@ function adaptive() {
 
                     let burgerButton = document.getElementsByClassName('burger-menu')[0];
 
+                    // Event listener for body for closing burger menu
+
                     document.body.addEventListener('touchstart', () => {
 
                         if (document.getElementsByClassName('burger-menu')[0]) {
@@ -255,6 +263,8 @@ function adaptive() {
                             }, 1450);
                         }
                     }, {capture: true})
+
+                    // Handler of burger menu
 
                     burgerButton.addEventListener('touchstart', (eventData) => {
 
@@ -284,6 +294,7 @@ function adaptive() {
                                     window.scrollTo(0, document.getElementById('stories').offsetTop);
                                     break;
                                 case links[4]:
+                                    // Listener for pop up and sign up menu for adaptive version
                                     let listener =(eventData) => {
                                         log(eventData.target.className);
                                         switch (eventData.target.className) {
@@ -332,6 +343,9 @@ function adaptive() {
                                                 }
                                                 break;
                                             case 'register':
+
+                                                // Change sign up from pop up
+
                                                 popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
                                                 setTimeout(() => {
                                                     popUpModal.remove()
@@ -340,6 +354,9 @@ function adaptive() {
                                                 setTimeout(() => {
                                                     popUpContainer.append(signUp);
                                                 }, 1500);
+
+                                                // Sign up event listener
+
                                                 signUp.addEventListener('touchstart', (e) => {
                                                     switch (e.target.className) {
                                                         case 'btn-sign-in':
@@ -400,6 +417,9 @@ function adaptive() {
             }
         });
     } else {
+
+        // Replacer links of elements for desktop version
+
         carouselItemsImg[0].attributes[1].nodeValue = "./assets/jpg/ocean-big.jpg";
         dots[1].className = blockMarksOfDots.active;
         dots[0].className = blockMarksOfDots.inactive;
@@ -410,8 +430,11 @@ function adaptive() {
         for (let i = 0; i < 4; i++) {
             textStoryDivision[i].textContent = textStory.desktop;
         }
+
+        // Listener of pop up menu for desktop version
+
         let popUpListener = () => {
-            log('Login was pushed!');
+
             let popUpContainer = document.createElement('div');
             popUpContainer.className = 'pop-up-bg';
 
@@ -469,6 +492,9 @@ function adaptive() {
                         }
                         break;
                     case 'register':
+
+                        // Change sign up from pop up
+
                         popUpModal.style.animation = 'popupClose 1.5s alternate forwards';
                         setTimeout(() => {
                             popUpModal.remove()
@@ -477,6 +503,9 @@ function adaptive() {
                         setTimeout(() => {
                             popUpContainer.append(signUp);
                         }, 750);
+
+                        // Event listener of sign up
+
                         signUp.addEventListener('click', (e) => {
                             switch (e.target.className) {
                                 case 'btn-sign-in':
@@ -514,6 +543,9 @@ function adaptive() {
                 }
             }, true)
         }
+
+        // Add event listener on login button
+
         let loginButton = document.querySelector('.btn-login');
         loginButton.addEventListener('click', popUpListener);
     }
