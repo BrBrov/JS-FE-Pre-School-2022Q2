@@ -296,7 +296,6 @@ function adaptive() {
                                 case links[4]:
                                     // Listener for pop up and sign up menu for adaptive version
                                     let listener =(eventData) => {
-                                        log(eventData.target.className);
                                         switch (eventData.target.className) {
                                             case 'pop-up-btn-facebook':
                                             case 'facebook-img-pop-up':
@@ -445,7 +444,6 @@ function adaptive() {
             popUpContainer.append(popUpModal);
             popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
             popUpContainer.addEventListener('click', (eventData) => {
-                log(eventData.target.className);
                 switch (eventData.target.className) {
                     case 'pop-up-btn-facebook':
                     case 'facebook-img-pop-up':
