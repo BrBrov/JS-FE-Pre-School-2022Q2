@@ -830,23 +830,60 @@ button:active {
 /* Carousel */
 
 .carousel {
-    display: flex;
-    width: unset;
+    display: block;
+    position: relative;
+    /* width: 100%; */
+    width: auto;
     height: 800px;
-    margin-left: -39%;
+    /* margin: 0 auto 24px -35%; */
+    /* margin-left: -39%; */
+    /* margin-left: -35%; */
+    /* margin-right: 35%; */
     margin-bottom: 24px;
-    flex-direction: row;
-    align-items: flex-start;
-    align-self: center;
+    /*flex-wrap: nowrap;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
+    overflow: hidden;
+    /*transform: translate(-50%);*/
 }
 
 .carousel-item {
-    height: inherit;
-    margin: 0 1.45%;
+    display: block;
+    position: absolute;
+    height: 100%;
+    margin-top: 0;
+    margin-right: 1.59%;
+
+}
+.carousel-item:nth-child(1){
+    left: -98%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(2){
+    left: -38%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(3){
+    left: 22%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(4){
+    left: 82%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(5){
+    left: 142%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(6){
+    left: 202%;
+}
+.carousel-item:nth-child(7){
+    left: 262%;
 }
 
 .img-item {
-    height: 100%;
+    height: inherit;
     border-radius: 16px;
 }
 
@@ -909,7 +946,7 @@ button:active {
 
 .arrow {
     width: 8.7%;
-    height: 21%;
+    height: 61%;
 }
 
 .title-find-more {

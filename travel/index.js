@@ -295,7 +295,7 @@ function adaptive() {
                                     break;
                                 case links[4]:
                                     // Listener for pop up and sign up menu for adaptive version
-                                    let listener =(eventData) => {
+                                    let listener = (eventData) => {
                                         switch (eventData.target.className) {
                                             case 'pop-up-btn-facebook':
                                             case 'facebook-img-pop-up':
@@ -398,7 +398,7 @@ function adaptive() {
                                     popUpContainer.className = 'pop-up-bg';
                                     let popUpModal = CreatePopUp();
                                     let pageContainer = document.querySelector('.container');
-                                    setTimeout(()=>{
+                                    setTimeout(() => {
                                         pageContainer.append(popUpContainer);
                                         popUpContainer.append(popUpModal);
                                         popUpModal.style.animation = 'popupOpen 1.5s alternate forwards';
@@ -429,6 +429,80 @@ function adaptive() {
         for (let i = 0; i < 4; i++) {
             textStoryDivision[i].textContent = textStory.desktop;
         }
+
+        // Carousel code for desktop
+
+        let slidesArray = document.getElementsByClassName('carousel-item');
+
+
+        let firstElem = slidesArray[0].cloneNode(true);
+        slidesArray[2].after(firstElem);
+        firstElem = slidesArray[1].cloneNode(true);
+        slidesArray[3].after(firstElem);
+        let lastElem = slidesArray[2].cloneNode(true);
+        slidesArray[0].before(lastElem);
+
+        function rotate() {
+            // if (slidesArray.length > 6) {
+            //     slidesArray[6].remove();
+            // }
+            slidesArray = document.getElementsByClassName('carousel-item');
+            let elem = slidesArray[0].cloneNode(true);
+            slidesArray[5].after(elem);
+            let text = slidesArray[3].children[1].textContent;
+            // log(text);
+            for (let dot of dots) {
+                dot.className = blockMarksOfDots.inactive;
+            }
+            switch (text) {
+                case 'SPAIN':
+                    dots[0].className = blockMarksOfDots.active;
+                    break;
+                case 'JAPAN':
+                    dots[1].className = blockMarksOfDots.active;
+                    break;
+                case 'USA':
+                    dots[2].className = blockMarksOfDots.active;
+                    break;
+            }
+            slidesArray[0].remove();
+        }
+
+        let timerInterval = setInterval(rotate, 3000);
+
+        let carousel = document.querySelector('.carousel');
+
+        carousel.addEventListener('mouseover', function mouseOn() {
+            // log('on mouse');
+            clearTimeout(timerInterval);
+            // carousel.addEventListener('mouseout', function mouseOut() {
+            //     // log('mouse leave');
+            //     timerInterval = setInterval(rotate, 3000);
+            //     carousel.removeEventListener('mouseout', mouseOut);
+            // });
+        })
+        carousel.addEventListener('click',function (data){
+            log(data);
+            log(data.target.className)
+            switch (data.target.className)
+            {
+                case 'img-item':
+                    let img = document.querySelectorAll('.img-item');
+
+                    if(data.target.alt === img[3].alt && data.target.alt === img[0].alt){
+                        log('click right')
+                    }else if(data.target.alt === img[1].alt && data.target.alt === img[4].alt){
+                        log('click left')
+                    }else{
+                        log('central')
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        })
+
 
         // Listener of pop up menu for desktop version
 
@@ -549,8 +623,4 @@ function adaptive() {
     }
 }
 
-
 adaptive();
-
-
-
