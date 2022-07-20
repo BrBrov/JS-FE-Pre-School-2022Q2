@@ -434,18 +434,27 @@ function adaptive() {
 
         let slidesArray = document.getElementsByClassName('carousel-item');
 
-
         let firstElem = slidesArray[0].cloneNode(true);
         slidesArray[2].after(firstElem);
         firstElem = slidesArray[1].cloneNode(true);
         slidesArray[3].after(firstElem);
         let lastElem = slidesArray[2].cloneNode(true);
         slidesArray[0].before(lastElem);
+        let slidesBackUp = [];
+        for (const element of document.getElementsByClassName('carousel-item')) {
+            slidesBackUp.push(element);
+        }
 
         function rotate() {
-            // if (slidesArray.length > 6) {
-            //     slidesArray[6].remove();
-            // }
+
+            if(slidesArray.length>6){
+                for (const slide of slidesArray) {
+                    slide.remove();
+                }
+                slidesBackUp.forEach((elem, index)=>{
+                    slidesArray[index].before(elem);
+                })
+            }
             slidesArray = document.getElementsByClassName('carousel-item');
             let elem = slidesArray[0].cloneNode(true);
             slidesArray[5].after(elem);
@@ -475,33 +484,55 @@ function adaptive() {
         carousel.addEventListener('mouseover', function mouseOn() {
             // log('on mouse');
             clearTimeout(timerInterval);
-            // carousel.addEventListener('mouseout', function mouseOut() {
-            //     // log('mouse leave');
-            //     timerInterval = setInterval(rotate, 3000);
-            //     carousel.removeEventListener('mouseout', mouseOut);
-            // });
-        })
-        carousel.addEventListener('click',function (data){
-            log(data);
-            log(data.target.className)
-            switch (data.target.className)
-            {
-                case 'img-item':
-                    let img = document.querySelectorAll('.img-item');
+            carousel.addEventListener('mouseout', function mouseOut() {
+                // log('mouse leave');
+                timerInterval = setInterval(rotate, 3000);
+                carousel.removeEventListener('mouseout', mouseOut);
+            });
+            carousel.addEventListener('click',function (data){
+                log(data);
+                log(data.target.className)
+                function rotateLeft(){
+                    let backUpElem = slidesArray[5].cloneNode(true);
+                    slidesArray[0].before(backUpElem);
+                    slidesArray[6].remove();
+                }
+                function rotateRight() {
+                    let backUpElem = slidesArray[0].cloneNode(true);
+                    slidesArray[0].remove();
+                    slidesArray[4].after(backUpElem);
+                }
 
-                    if(data.target.alt === img[3].alt && data.target.alt === img[0].alt){
-                        log('click right')
-                    }else if(data.target.alt === img[1].alt && data.target.alt === img[4].alt){
-                        log('click left')
-                    }else{
-                        log('central')
-                    }
-                    break;
-                default:
-                    break;
-            }
+                switch (data.target.className)
+                {
+                    case 'img-item':
+                        let img = document.querySelectorAll('.img-item');
+                        if(data.target.alt === img[3].alt && data.target.alt === img[0].alt){
+                            rotateRight();
+                            break;
+                        }
+                        if(data.target.alt === img[1].alt && data.target.alt === img[4].alt){
+                            rotateLeft();
+                            break;
+                        }
+                        break;
+                    case 'title-item':
+                        let title = document.querySelectorAll('.title-item');
+                        log(title[3].innerText);
+                        if(data.target.innerText === title[3].innerText && data.target.innerText === title[0].innerText){
+                            rotateRight();
+                            break;
+                        }
+                        if(data.target.innerText === title[3].innerText && data.target.innerText === title[3].innerText){
+                            rotateLeft();
+                            break;
+                        }
+                        break;
+                }
 
+            })
         })
+
 
 
         // Listener of pop up menu for desktop version
