@@ -440,26 +440,12 @@ function adaptive() {
         slidesArray[3].after(firstElem);
         let lastElem = slidesArray[2].cloneNode(true);
         slidesArray[0].before(lastElem);
-        let slidesBackUp = [];
-        for (const element of document.getElementsByClassName('carousel-item')) {
-            slidesBackUp.push(element);
-        }
 
         function rotate() {
-
-            if(slidesArray.length>6){
-                for (const slide of slidesArray) {
-                    slide.remove();
-                }
-                slidesBackUp.forEach((elem, index)=>{
-                    slidesArray[index].before(elem);
-                })
-            }
             slidesArray = document.getElementsByClassName('carousel-item');
             let elem = slidesArray[0].cloneNode(true);
             slidesArray[5].after(elem);
             let text = slidesArray[3].children[1].textContent;
-            // log(text);
             for (let dot of dots) {
                 dot.className = blockMarksOfDots.inactive;
             }
@@ -477,63 +463,138 @@ function adaptive() {
             slidesArray[0].remove();
         }
 
+        function rotateLeft() {
+            let backUpElem = slidesArray[5].cloneNode(true);
+            slidesArray[0].before(backUpElem);
+            slidesArray[6].remove();
+        }
+
+        function rotateRight() {
+            let backUpElem = slidesArray[0].cloneNode(true);
+            slidesArray[0].remove();
+            slidesArray[4].after(backUpElem);
+        }
+
+
         let timerInterval = setInterval(rotate, 3000);
 
         let carousel = document.querySelector('.carousel');
 
         carousel.addEventListener('mouseover', function mouseOn() {
-            // log('on mouse');
             clearTimeout(timerInterval);
             carousel.addEventListener('mouseout', function mouseOut() {
-                // log('mouse leave');
                 timerInterval = setInterval(rotate, 3000);
                 carousel.removeEventListener('mouseout', mouseOut);
             });
-            carousel.addEventListener('click',function (data){
-                log(data);
-                log(data.target.className)
-                function rotateLeft(){
-                    let backUpElem = slidesArray[5].cloneNode(true);
-                    slidesArray[0].before(backUpElem);
-                    slidesArray[6].remove();
-                }
-                function rotateRight() {
-                    let backUpElem = slidesArray[0].cloneNode(true);
-                    slidesArray[0].remove();
-                    slidesArray[4].after(backUpElem);
+            carousel.addEventListener('click', function (data) {
+                function setDots(data) {
+                    for (let dot of dots) {
+                        dot.className = blockMarksOfDots.inactive
+                    }
+                    switch (data) {
+                        case 'SPAIN':
+                            dots[0].className = blockMarksOfDots.active;
+                            break;
+                        case 'JAPAN':
+                            dots[1].className = blockMarksOfDots.active;
+                            break;
+                        case 'USA':
+                            dots[2].className = blockMarksOfDots.active;
+                            break;
+                    }
                 }
 
-                switch (data.target.className)
-                {
+                switch (data.target.className) {
                     case 'img-item':
                         let img = document.querySelectorAll('.img-item');
-                        if(data.target.alt === img[3].alt && data.target.alt === img[0].alt){
+                        if (data.target.alt === img[3].alt && data.target.alt === img[0].alt) {
                             rotateRight();
+                            setDots(data.target.alt);
                             break;
                         }
-                        if(data.target.alt === img[1].alt && data.target.alt === img[4].alt){
+                        if (data.target.alt === img[1].alt && data.target.alt === img[4].alt) {
                             rotateLeft();
+                            setDots(data.target.alt);
                             break;
                         }
                         break;
                     case 'title-item':
                         let title = document.querySelectorAll('.title-item');
-                        log(title[3].innerText);
-                        if(data.target.innerText === title[3].innerText && data.target.innerText === title[0].innerText){
+                        if (data.target.innerText === title[3].innerText && data.target.innerText === title[0].innerText) {
                             rotateRight();
+                            setDots(data.target.innerText);
                             break;
                         }
-                        if(data.target.innerText === title[3].innerText && data.target.innerText === title[3].innerText){
+                        if (data.target.innerText === title[3].innerText && data.target.innerText === title[3].innerText) {
                             rotateLeft();
+                            setDots(data.target.innerText);
                             break;
                         }
                         break;
                 }
 
             })
+
         })
 
+        let dotsNavBar = document.getElementsByClassName('dots-nav')[0];
+        dotsNavBar.addEventListener('mouseover', function mouseOn() {
+            clearTimeout(timerInterval);
+            dotsNavBar.addEventListener('click', function ev(data) {
+                log(data.target.className);
+                let position = 0;
+                let node = data.target;
+                let activeDotPosition = 0;
+                while (node.previousElementSibling) {
+                    position++;
+                    node = node.previousElementSibling;
+                }
+                for (let dot of dots) {
+                    dot.className = blockMarksOfDots.inactive;
+                }
+                dots[position].className = blockMarksOfDots.active;
+                let elemsDisplay = slidesArray[2].innerText;
 
+                switch (elemsDisplay) {
+                    case 'SPAIN':
+                        activeDotPosition = 0;
+                        break;
+                    case 'JAPAN':
+                        activeDotPosition = 1;
+                        break;
+                    case 'USA':
+                        activeDotPosition = 2;
+                        break;
+                }
+                let rate = 0;
+
+                let left = async function () {
+                    rotateLeft();
+                }
+                if (position > activeDotPosition) {
+                    rate = position - activeDotPosition;
+                    while (rate !== 0) {
+                        rotateRight();
+                        rate--;
+                    }
+                } else {
+                    rate = activeDotPosition - position;
+                    if (rate === 1) {
+                        rotateLeft();
+                    }
+                    if (rate === 2) {
+                        rotateLeft();
+                    }
+                }
+                log(activeDotPosition);
+                log(rate);
+
+            }, true)
+            dotsNavBar.addEventListener('mouseout', function mouseOut() {
+                timerInterval = setInterval(rotate, 3000);
+                dotsNavBar.removeEventListener('mouseout', mouseOut);
+            });
+        });
 
         // Listener of pop up menu for desktop version
 
