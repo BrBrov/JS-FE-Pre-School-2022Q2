@@ -1814,31 +1814,38 @@ img:hover {
         height: 72.66%;
         margin: 0;
         overflow: hidden;
+        pointer-events: none;
     }
 
     .carousel-item {
-        display: block;
+        display: inline-block;
+        position: absolute;
         width: 100%;
         height: 100%;
+        /* left: 25%; */
         text-align: center;
-        position: relative;
         margin: 0 auto auto auto;
+        pointer-events: none;
     }
 
-    .carousel .carousel-item:nth-child(1) .img-item {
-        background-image: url("./assets/jpg/ocean.jpg");
+    .carousel .carousel-item:nth-child(1) {
+        /*background-image: url("./assets/jpg/ocean.jpg");*/
+        display: block;
+        left: 0;
     }
 
     .carousel .carousel-item:nth-child(2) {
-        display: none;
+        display: block;
+        left: 105%;
     }
 
     .carousel .carousel-item:nth-child(3) {
-        display: none;
+        display: block;
+        left: 210%;
     }
 
     .carousel:before {
-        content: "";
+        content: attr(attribute-left);
         display: block;
         position: absolute;
         z-index: 1;
@@ -1849,20 +1856,22 @@ img:hover {
         background-size: 100% 100%;
         background-position: center;
         transform: rotate(-90deg);
+        pointer-events: all;
     }
 
     .carousel:after {
-        content: "";
+        content: attr(attribute-right);
         display: block;
         position: absolute;
         z-index: 2;
         width: 8.34%;
         height: 14.3%;
-        margin: -34% auto 0 91%;
+        margin: 24.5% auto 0 91%;
         background-image: url("./assets/svg/arrow-carousel.svg");
         background-size: 100% 100%;
         background-position: center;
         transform: rotate(90deg);
+        pointer-events: all;
     }
 
 
