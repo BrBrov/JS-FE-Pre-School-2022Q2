@@ -950,7 +950,6 @@ button:active {
 .arrow {
     width: 8.7%;
     height: 35%;
-
 }
 
 .title-find-more {
@@ -1226,6 +1225,7 @@ img:hover {
         box-shadow: 0 4px 3px rgba(13, 96, 111, 0.25);
         border-radius: 10px;
     }
+
     .x-close {
         position: relative;
         width: 18.18%;
@@ -1235,6 +1235,7 @@ img:hover {
         top: 3.2%;
         background-image: url("./assets/svg/close-menu.svg");
     }
+
     .burger-menu-block {
         display: flex;
         position: relative;
@@ -1245,6 +1246,7 @@ img:hover {
         justify-content: space-between;
         flex-direction: column;
     }
+
     .burger-link {
         text-align: right;
         font-family: 'RedHatText Regular', sans-serif;
@@ -1980,7 +1982,6 @@ img:hover {
         height: 100%;
         gap: calc(7% - (390px - 100vw)*(4/70));
     }
-
 
     .title-sample {
         margin-top: 3%;
