@@ -18,6 +18,7 @@ let {log} = console;
 
 addEventListener('resize', adaptive);
 
+
 function adaptive() {
     const path = './assets/jpg/';
     const blockMarksOfDots = {
@@ -38,18 +39,35 @@ function adaptive() {
     let dots = document.getElementsByClassName('dot');
     let imgStory = document.getElementsByClassName('img-story');
     let textStoryDivision = document.getElementsByClassName('text-story');
+    let slidesArray = document.getElementsByClassName('carousel-item');
+    let backUpSlidesArray = [];
+    for (let slides of slidesArray) {
+        backUpSlidesArray.push(slides.cloneNode(true));
+    }
+    let carousel = document.querySelector('.carousel');
+    let timerInterval = -1;
+    if(timerInterval !== -1){
+        clearInterval(timerInterval);
+    }
 
     // Carousel code for desktop
 
-    function carouselWorker(){
-        let slidesArray = document.getElementsByClassName('carousel-item');
+    function carouselWorker() {
 
-        let firstElem = slidesArray[0].cloneNode(true);
-        slidesArray[2].after(firstElem);
-        firstElem = slidesArray[1].cloneNode(true);
-        slidesArray[3].after(firstElem);
-        let lastElem = slidesArray[2].cloneNode(true);
-        slidesArray[0].before(lastElem);
+        if(slidesArray.length !== 6){
+            let backUp = carousel.cloneNode(false);
+            carousel.remove();
+            backUpSlidesArray.forEach((elem)=>{
+                backUp.appendChild(elem);
+            });
+            document.getElementsByClassName('title-destination')[0].after(backUp);
+            let firstElem = slidesArray[0].cloneNode(true);
+            slidesArray[2].after(firstElem);
+            firstElem = slidesArray[1].cloneNode(true);
+            slidesArray[3].after(firstElem);
+            let lastElem = slidesArray[2].cloneNode(true);
+            slidesArray[0].before(lastElem);
+        }
 
         function rotate() {
             slidesArray = document.getElementsByClassName('carousel-item');
@@ -81,22 +99,22 @@ function adaptive() {
 
         function rotateRight() {
             let backUpElem = slidesArray[0].cloneNode(true);
+            slidesArray[5].after(backUpElem);
             slidesArray[0].remove();
-            slidesArray[4].after(backUpElem);
         }
 
+        timerInterval = setInterval(rotate, 3000);
 
-        let timerInterval = setInterval(rotate, 3000);
+        window.addEventListener('resize', (e)=>{
 
-        if(width<390){
-            clearTimeout(timerInterval);
-            for (let i = 3; i < slidesArray.length ; i++) {
-                slidesArray[i].remove();
+            let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            if(width < 391){
+                clearInterval(timerInterval);
             }
-            return;
-        }
-
-        let carousel = document.querySelector('.carousel');
+            location.reload();
+            e.stopImmediatePropagation();
+            window.removeEventListener('resize',()=>{});
+        })
 
         carousel.addEventListener('mouseover', function mouseOn() {
             clearTimeout(timerInterval);
@@ -184,36 +202,110 @@ function adaptive() {
                         activeDotPosition = 2;
                         break;
                 }
+
                 let rate = 0;
 
-                let left = async function () {
-                    rotateLeft();
-                }
                 if (position > activeDotPosition) {
                     rate = position - activeDotPosition;
+                    let delay = 0;
                     while (rate !== 0) {
                         rotateRight();
                         rate--;
+                        delay = delay + 1200;
                     }
                 } else {
                     rate = activeDotPosition - position;
-                    if (rate === 1) {
-                        rotateLeft();
-                    }
-                    if (rate === 2) {
-                        rotateLeft();
+                    let delay = 0
+                    while (rate !== 0) {
+                        setTimeout(() => {
+                            rotateLeft();
+                        }, delay);
+                        rate--;
+                        delay = delay + 1200;
                     }
                 }
                 log(activeDotPosition);
-                log(rate);
-
-            }, true)
+                data.stopImmediatePropagation();
+            }, false)
             dotsNavBar.addEventListener('mouseout', function mouseOut() {
                 timerInterval = setInterval(rotate, 3000);
                 dotsNavBar.removeEventListener('mouseout', mouseOut);
             });
         });
+
     }
+
+    function carouselWorkerForMobile(){
+        let carousel = document.querySelector('.carousel');
+        let itemsCarousel = document.getElementsByClassName('carousel-item');
+        itemsCarousel[0].before(itemsCarousel[2].cloneNode(true));
+        carousel.style.setProperty('--left-arrow', '0.5');
+        let count = 0;
+        let backUpArray = [];
+        carousel.addEventListener('pointerdown', (data) => {
+            let rectCarousel = carousel.getClientRects()[0];
+            let centerCarousel = rectCarousel.width / 2;
+
+            function dotsMark(ev) {
+                if(count > 2){
+                    count = 2;
+                }
+                if(count < 0){
+                    count = 0;
+                }
+                for (let dot of dots) {
+                    dot.className = blockMarksOfDots.inactive;
+                }
+                dots[count].className = blockMarksOfDots.active;
+                if (count === 0) {
+                    carousel.style.setProperty('--left-arrow', '0.5');
+                } else if (count === 2) {
+                    carousel.style.setProperty('--right-arrow', '0.5');
+                } else {
+                    setTimeout(() => {
+                        carousel.style.setProperty('--left-arrow', '1');
+                    }, 250);
+                    setTimeout(() => {
+                        carousel.style.setProperty('--right-arrow', '1');
+                    }, 250);
+                }
+                if (ev === 'right') {
+                    if (backUpArray.length !== 2) {
+                        backUpArray.push(itemsCarousel[0].cloneNode(true));
+                        itemsCarousel[0].remove();
+                    }
+                } else {
+                    if (backUpArray.length !== 0) {
+                        itemsCarousel[0].before(backUpArray.pop());
+                    }
+                }
+                log(backUpArray);
+            }
+
+            if (data.clientX < centerCarousel) {
+                log('click left');
+                let e = 'left';
+                carousel.style.setProperty('--left-arrow', '0.5');
+                count--;
+                dotsMark(e);
+            } else {
+                log('clock right');
+                let e = 'right';
+                carousel.style.setProperty('--right-arrow', '0.5');
+                count++;
+                dotsMark(e);
+            }
+            log(count);
+            data.stopImmediatePropagation();
+
+            document.addEventListener('resize',(e)=>{
+                location.reload();
+                e.stopImmediatePropagation();
+                document.removeEventListener('resize',()=>{});
+            })
+        }, false);
+    }
+
     // Pop Up Creation
 
     function CreatePopUp() {
@@ -401,45 +493,9 @@ function adaptive() {
 
         //Adaptive slider;
 
-        let slideArray = document.getElementsByClassName('carousel-item');
+        carouselWorkerForMobile();
 
-        function leftTranslate(){
-            let keyFrame = [
-                {transform: 'translateX(-105%)'}
-            ];
-            setTimeout(()=>{
-                for (let slide of slideArray) {
-                    slide.animate(keyFrame, {duration: 1500, delay: 50, fill: 'forwards'});
-                }
-            },1500);
-        }
-        function rightTranslate() {
-            let keyFrame = [
-                {transform: 'translateX(105%)'}
-            ];
-            setTimeout(()=>{
-                for (let slide of slideArray) {
-                    slide.animate(keyFrame, {duration: 1500, delay: 50, fill: 'forwards'});
-                }
-            },1500);
-        }
-
-        // let firstSlide = slideArray[0].cloneNode(true);
-        // slideArray[0].remove();
-
-        let carousel = document.querySelector('.carousel');
-        carousel.addEventListener('pointerdown', (data)=>{
-            let rectCarousel = carousel.getClientRects()[0];
-            let centerCarousel = rectCarousel.width/2;
-            // log(data.clientX);
-            // log(centerCarousel);
-            if(data.clientX < centerCarousel){
-                log('click left');
-            }else{
-                log('clock right');
-            }
-        });
-
+        //Burger menu algorithm
 
         menuButton.addEventListener('touchstart', () => {
 
@@ -634,6 +690,9 @@ function adaptive() {
                 }
             }
         });
+
+        //Desktop code!!!!
+
     } else {
 
         // Replacer links of elements for desktop version
@@ -768,6 +827,7 @@ function adaptive() {
         let loginButton = document.querySelector('.btn-login');
         loginButton.addEventListener('click', popUpListener);
         let htmlPage = document.getElementsByTagName('html')[0];
+        //Start carousel here
         carouselWorker();
     }
 }

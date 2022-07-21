@@ -949,7 +949,7 @@ button:active {
 
 .arrow {
     width: 8.7%;
-    height: 61%;
+    height: 35%;
 }
 
 .title-find-more {
@@ -1791,7 +1791,7 @@ img:hover {
     .destinations {
         width: 92.3%;
         height: 21.65%;
-        overflow: visible;
+        overflow: hidden;
         margin: 0 auto 0 auto;
     }
 
@@ -1831,17 +1831,26 @@ img:hover {
     .carousel .carousel-item:nth-child(1) {
         /*background-image: url("./assets/jpg/ocean.jpg");*/
         display: block;
-        left: 0;
+        left: -110%;
     }
 
     .carousel .carousel-item:nth-child(2) {
         display: block;
-        left: 105%;
+        left: 0;
     }
 
     .carousel .carousel-item:nth-child(3) {
         display: block;
+        left: 110%;
+    }
+    .carousel .carousel-item:nth-child(4){
+        display: block;
         left: 210%;
+    }
+
+    :root{
+        --left-arrow: 1;
+        --right-arrow: 1;
     }
 
     .carousel:before {
@@ -1857,6 +1866,7 @@ img:hover {
         background-position: center;
         transform: rotate(-90deg);
         pointer-events: all;
+        opacity: var(--left-arrow);
     }
 
     .carousel:after {
@@ -1872,6 +1882,7 @@ img:hover {
         background-position: center;
         transform: rotate(90deg);
         pointer-events: all;
+        opacity: var(--right-arrow);
     }
 
 
@@ -1904,18 +1915,18 @@ img:hover {
 
     .btn-find-more {
         width: 91px;
-        height: 30px;
+        height: 10%;
         margin: 6% auto auto auto;
         padding: 0;
     }
 
     .arrow {
-        margin: 13% auto auto 13.1%;
+        margin: 10% auto auto 13.1%;
     }
 
     .title-find-more {
         width: 75.3%;
-        margin: 8.12% 13% auto 0;
+        margin: 6.12% 13% auto 0;
         font-style: normal;
         font-weight: 500;
         font-size: 0.8em;
