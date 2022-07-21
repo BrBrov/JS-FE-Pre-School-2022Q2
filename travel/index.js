@@ -49,7 +49,6 @@ function adaptive() {
 
     function carouselWorker() {
         let slidesArray = document.getElementsByClassName('carousel-item');
-        log('carousel woker desktop');
         let firstElem = slidesArray[0].cloneNode(true);
         slidesArray[2].after(firstElem);
         firstElem = slidesArray[1].cloneNode(true);
@@ -94,7 +93,7 @@ function adaptive() {
 
         timerInterval = setInterval(rotate, 3000);
 
-        carousel = document.getElementsByClassName('carousel')[0];
+        let carousel = document.getElementsByClassName('carousel')[0];
         window.addEventListener('resize', (e) => {
             let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             if (width < 391) {
@@ -112,8 +111,6 @@ function adaptive() {
                 carousel.removeEventListener('mouseout', mouseOut);
             });
             carousel.addEventListener('click', function (data) {
-                log('click');
-
                 function setDots(data) {
                     for (let dot of dots) {
                         dot.className = blockMarksOfDots.inactive
