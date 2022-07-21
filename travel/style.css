@@ -171,13 +171,374 @@ button:active {
     background-image: url(./assets/jpg/boat-big.jpg);
 }
 
+/*Pop Up Styles*/
+
+.pop-up-bg{
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    margin: -259.4% auto;
+    overflow-y: hidden;
+    backdrop-filter: brightness(50%);
+}
+/*Keyframe for POP UP*/
+
+@keyframes popupOpen {
+    from{margin-top: -47%}
+    to{margin-top: 11.5%}
+}
+
+@keyframes popupClose {
+    from{margin-top: 11.5%}
+    to{margin-top: -47%}
+}
+
+/*====POP UP LOGIN======>*/
+
+.pop-up{
+    width: 650px;
+    height: 660px;
+    margin-top: -47%;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    text-align: center;
+    /*animation: popupOpen 3s alternate forwards;*/
+}
+.pop-up-title{
+    padding-top: 3.85%;
+    font-family: 'Aleo Regular', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: #0D606F;
+}
+.pop-up-btn-facebook{
+    width: 86%;
+    height: 9%;
+    margin-top: 4.63%;
+    padding: 0;
+    text-align: center;
+    background: #1877F2;
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
+    border-radius: 10px;
+}
+.facebook-img-pop-up{
+    width: 5%;
+    height: 40%;
+    margin: 0 2% 0 0.6%;
+}
+.facebook-text-pop-up{
+    vertical-align: 20%;
+    font-family: 'RedHatText Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+.pop-up-btn-google{
+    width: 86%;
+    height: 9%;
+    margin-top: 2%;
+    text-align: center;
+    background: #FFFFFF;
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
+    border-radius: 10px;
+}
+.google-img-pop-up{
+    width: 5%;
+    height: 40%;
+    margin: 0 2% 0 0.6%;
+}
+.google-text-pop-up{
+    vertical-align: 20%;
+    font-family: 'RedHatText Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #0D606F;
+}
+.separator-pop-up{
+    display: flex;
+    width: 86.15%;
+    height: 3.64%;
+    margin: 4.62% auto auto auto;
+    align-self: center;
+}
+.line-separator{
+    width: 46.25%;
+    align-self: center;
+    border: 1px solid rgba(13, 96, 111, 0.5);
+}
+.text-separator{
+    margin-left: 1.61%;
+    margin-right: 1.61%;
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(13, 96, 111, 0.5);
+}
+.register-form{
+    width: 86.16%;
+    height: 30%;
+    margin: 1% auto;
+    text-align: left;
+}
+.label-email{
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0D606F;
+}
+#mail{
+    width: 98%;
+    height: 24%;
+    margin-top: 0.9%;
+    margin-bottom: 3.58%;
+    background: #FFFFFF;
+    box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: 0;
+    border-radius: 10px;
+}
+
+#mail:optional{
+    outline: none;
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 19px;
+    color: #0D706F;
+}
+.label-password{
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0D606F;
+}
+#password{
+    width: 98%;
+    height: 24%;
+    margin-top: 0.9%;
+    background: #FFFFFF;
+    box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: 0;
+    border-radius: 10px;
+}
+#password:optional{
+    outline: none;
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 19px;
+    color: #0D706F;
+}
+.btn-sign-up{
+    width: 86%;
+    height: 8%;
+    margin-bottom: 1.3%;
+    background: #0D606F;
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
+    border-radius: 10px;
+}
+.label-sign-up{
+    font-family: 'RedHatText Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+.forgot-password{
+    margin-top: 0.5%;
+    font-family: 'Aleo Italic', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    text-decoration-line: underline;
+    color: #0D606F;
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+}
+.bottom-separator{
+    width: 86%;
+    margin: 4.2% auto 2.8% auto;
+    border: 1px solid rgba(13, 96, 111, 0.5);
+    transform: rotate(0.1deg);
+}
+.dont-register{
+    font-family: 'Aleo Italic', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(13, 96, 111, 0.5);
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+}
+.register{
+    font-family: 'Aleo Bold Italic', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-decoration-line: underline;
+    color: rgba(13, 96, 111, 0.9);
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+}
+/*=======================>*/
+
+/*=======SIGN UP======>*/
+.sign-up{
+    width: 650px;
+    height: 414px;
+    margin-top: -47%;
+    /*margin-top: 11.5%;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1.5%;
+    text-align: center;
+    background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    animation: popupOpen 3s alternate forwards;
+}
+.sign-up-title{
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: #0D606F;
+}
+.sign-form{
+    width: 86.16%;
+    height: 39%;
+    margin: 4.6% auto;
+    text-align: left;
+}
+.sign-email{
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0D606F;
+}
+#sign-mail{
+    width: 99%;
+    height: 33%;
+    margin-top: 0.9%;
+    margin-bottom: 3.58%;
+    background: #FFFFFF;
+    box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: 0;
+    border-radius: 10px;
+}
+
+#sign-mail:optional{
+    outline: none;
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 19px;
+    color: #0D706F;
+}
+.sign-password{
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #0D606F;
+}
+#sign-password{
+    width: 99%;
+    height: 32%;
+    margin-top: 0.9%;
+    background: #FFFFFF;
+    box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: 0;
+    border-radius: 10px;
+}
+#sign-password:optional{
+    outline: none;
+    font-family: 'Aleo Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 19px;
+    color: #0D706F;
+}
+.btn-sign-in{
+    width: 86%;
+    height: 13%;
+    margin-top: 1.9%;
+    margin-bottom: 1.3%;
+    background: #0D606F;
+    box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+    border: none;
+    border-radius: 10px;
+}
+.label-sign-in{
+    font-family: 'RedHatText Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+
+.bottom-separator-sign{
+    width: 86%;
+    margin: 2.44% auto 3.3% auto;
+    border: 1px solid rgba(13, 96, 111, 0.5);
+    transform: rotate(0.1deg);
+}
+.dont-sign{
+    font-family: 'Aleo Italic', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(13, 96, 111, 0.5);
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+}
+.sign{
+    font-family: 'Aleo Bold Italic', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-decoration-line: underline;
+    color: rgba(13, 96, 111, 0.9);
+    text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+}
+
 .header-div {
     display: flex;
     width: 100%;
     background: rgba(242, 120, 92, 0.7);
     box-shadow: 0 4px 4px rgba(13, 96, 111, 0.5);
 }
-
 /* header markup */
 
 .logo {
@@ -469,23 +830,63 @@ button:active {
 /* Carousel */
 
 .carousel {
-    display: flex;
-    width: unset;
+    display: block;
+    position: relative;
+    /* width: 100%; */
+    width: auto;
     height: 800px;
-    margin-left: -39%;
+    /* margin: 0 auto 24px -35%; */
+    /* margin-left: -39%; */
+    /* margin-left: -35%; */
+    /* margin-right: 35%; */
     margin-bottom: 24px;
-    flex-direction: row;
-    align-items: flex-start;
-    align-self: center;
+    /*flex-wrap: nowrap;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
+    overflow: hidden;
+    /*transform: translate(-50%);*/
 }
 
 .carousel-item {
-    height: inherit;
-    margin: 0 1.45%;
+    display: block;
+    position: absolute;
+    height: 100%;
+    margin-top: 0;
+    margin-right: 1.59%;
+
+}
+.carousel-item:nth-child(1){
+    left: -98%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(2){
+    left: -38%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(3){
+    left: 22%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(4){
+    left: 82%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(5){
+    left: 142%;
+    transition: left 1.5s;
+}
+.carousel-item:nth-child(6){
+    left: 202%;
+}
+.carousel-item:nth-child(7){
+    left: 262%;
+}
+.carousel-item:nth-child(8){
+    left: 324%;
 }
 
 .img-item {
-    height: 100%;
+    height: inherit;
     border-radius: 16px;
 }
 
@@ -548,7 +949,8 @@ button:active {
 
 .arrow {
     width: 8.7%;
-    height: 21%;
+    height: 35%;
+
 }
 
 .title-find-more {
@@ -802,6 +1204,8 @@ img:hover {
         border-radius: 30px;
     }
 
+    /*====Burger Menu====>*/
+
     @keyframes menu {
         from {margin-left: 100%}
         to {margin-left: 57.57%}
@@ -822,7 +1226,6 @@ img:hover {
         box-shadow: 0 4px 3px rgba(13, 96, 111, 0.25);
         border-radius: 10px;
     }
-
     .x-close {
         position: relative;
         width: 18.18%;
@@ -832,7 +1235,6 @@ img:hover {
         top: 3.2%;
         background-image: url("./assets/svg/close-menu.svg");
     }
-
     .burger-menu-block {
         display: flex;
         position: relative;
@@ -843,7 +1245,6 @@ img:hover {
         justify-content: space-between;
         flex-direction: column;
     }
-
     .burger-link {
         text-align: right;
         font-family: 'RedHatText Regular', sans-serif;
@@ -853,6 +1254,368 @@ img:hover {
         line-height: 21px;
         letter-spacing: 0.02rem;
         color: #FFFFFF;
+    }
+
+    /*=====POP UP keyframes====>*/
+
+    @keyframes popupOpen {
+        from{margin-top: -105%}
+        to{margin-top: 11.5%}
+    }
+
+    @keyframes popupClose {
+        from{margin-top: 11.5%}
+        to{margin-top: -105%}
+    }
+
+    .pop-up-bg{
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        margin: -378% auto;
+        overflow-y: hidden;
+        backdrop-filter: brightness(50%);
+    }
+
+    /*====POP UP LOGIN======>*/
+
+    .pop-up{
+        width: 100%;
+        height: calc(100vw/0.98);
+        margin-top: -105%;
+        margin-left: auto;
+        margin-right: auto;
+        background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        text-align: center;
+        /*animation: popupOpen 3s alternate forwards;*/
+    }
+    .pop-up-title{
+        padding-top: 3.85%;
+        font-family: 'Aleo Regular', serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    .pop-up-btn-facebook{
+        width: 86%;
+        height: 9%;
+        margin-top: 4.63%;
+        padding: 0;
+        text-align: center;
+        background: #1877F2;
+        box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: none;
+        border-radius: 10px;
+    }
+    .facebook-img-pop-up{
+        width: 5%;
+        height: 40%;
+        margin: 0 2% 1% 0.6%;
+    }
+    .facebook-text-pop-up{
+        vertical-align: 20%;
+        font-family: 'RedHatText Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: #FFFFFF;
+    }
+    .pop-up-btn-google{
+        width: 86%;
+        height: 9%;
+        margin-top: 2%;
+        text-align: center;
+        background: #FFFFFF;
+        box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: none;
+        border-radius: 10px;
+    }
+    .google-img-pop-up{
+        width: 5%;
+        height: 40%;
+        margin: 0 2% 1% 0.6%;
+    }
+    .google-text-pop-up{
+        vertical-align: 20%;
+        font-family: 'RedHatText Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    .separator-pop-up{
+        display: flex;
+        width: 86.15%;
+        height: 3.64%;
+        margin: 4.62% auto auto auto;
+        align-self: center;
+    }
+    .line-separator{
+        width: 46.25%;
+        align-self: center;
+        border: 1px solid rgba(13, 96, 111, 0.5);
+    }
+    .text-separator{
+        margin-left: 1.61%;
+        margin-right: 1.61%;
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.7rem;
+        line-height: 0.6rem;
+        color: rgba(13, 96, 111, 0.5);
+    }
+    .register-form{
+        width: 86.16%;
+        height: 25%;
+        margin: 1.2% auto;
+        text-align: left;
+    }
+    .label-email{
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    #mail{
+        width: 98%;
+        height: 24%;
+        margin-top: 0.9%;
+        margin-bottom: 3.58%;
+        background: #FFFFFF;
+        box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: 0;
+        border-radius: 10px;
+    }
+
+    #mail:optional{
+        outline: none;
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: #0D706F;
+    }
+    .label-password{
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    #password{
+        width: 98%;
+        height: 24%;
+        margin-top: 0.9%;
+        background: #FFFFFF;
+        box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: 0;
+        border-radius: 10px;
+    }
+    #password:optional{
+        outline: none;
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: #0D706F;
+    }
+    .btn-sign-up{
+        width: 86%;
+        height: 8%;
+        margin-top: 5%;
+        margin-bottom: 1.3%;
+        background: #0D606F;
+        box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: none;
+        border-radius: 10px;
+    }
+    .label-sign-up{
+        font-family: 'RedHatText Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: #FFFFFF;
+    }
+    .forgot-password{
+        margin-top: 0.5%;
+        font-family: 'Aleo Italic', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.7rem;
+        line-height: 0.7rem;
+        text-decoration-line: underline;
+        color: #0D606F;
+        text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+    }
+    .bottom-separator{
+        width: 86%;
+        margin: 2% auto 2% auto;
+        border: 1px solid rgba(13, 96, 111, 0.5);
+        transform: rotate(0.1deg);
+    }
+    .dont-register{
+        font-family: 'Aleo Italic', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: rgba(13, 96, 111, 0.5);
+        text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+    }
+    .register{
+        font-family: 'Aleo Bold Italic', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        text-decoration-line: underline;
+        color: rgba(13, 96, 111, 0.9);
+        text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+    }
+    /*=======================>*/
+
+    /*=======SIGN UP======>*/
+    .sign-up{
+        width: 100%;
+        height: calc(100vw/1.49);
+        margin-top: -77%;
+        /*margin-top: 11.5%;*/
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 1.5%;
+        text-align: center;
+        background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 16px;
+        animation: popupOpen 3s alternate forwards;
+    }
+    .sign-up-title{
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    .sign-form{
+        width: 86.16%;
+        height: 29%;
+        margin: 1% auto;
+        text-align: left;
+    }
+    .sign-email{
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    #sign-mail{
+        width: 99%;
+        height: 33%;
+        margin-top: 0.9%;
+        margin-bottom: 3.58%;
+        background: #FFFFFF;
+        box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: 0;
+        border-radius: 10px;
+    }
+
+    #sign-mail:optional{
+        outline: none;
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: #0D706F;
+    }
+    .sign-password{
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: #0D606F;
+    }
+    #sign-password{
+        width: 99%;
+        height: 32%;
+        margin-top: 0.9%;
+        background: #FFFFFF;
+        box-shadow: inset 0 0 3px rgba(13, 96, 111, 0.08), inset 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: 0;
+        border-radius: 10px;
+    }
+    #sign-password:optional{
+        outline: none;
+        font-family: 'Aleo Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        color: #0D706F;
+    }
+    .btn-sign-in{
+        width: 86%;
+        height: 13%;
+        margin-top: 12.9%;
+        margin-bottom: 1.3%;
+        background: #0D606F;
+        box-shadow: 0 0 3px rgba(13, 96, 111, 0.08), 0 2px 3px rgba(13, 96, 111, 0.16);
+        border: none;
+        border-radius: 10px;
+    }
+    .label-sign-in{
+        font-family: 'RedHatText Regular', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26px;
+        color: #FFFFFF;
+    }
+
+    .bottom-separator-sign{
+        width: 86%;
+        margin: 2.44% auto 3.3% auto;
+        border: 1px solid rgba(13, 96, 111, 0.5);
+        transform: rotate(0.1deg);
+    }
+    .dont-sign{
+        font-family: 'Aleo Italic', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.7rem;
+        line-height: 18px;
+        color: rgba(13, 96, 111, 0.5);
+        text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
+    }
+    .sign{
+        font-family: 'Aleo Bold Italic', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 0.7rem;
+        line-height: 1rem;
+        text-decoration-line: underline;
+        color: rgba(13, 96, 111, 0.9);
+        text-shadow: 0 2px 3px rgba(255, 255, 255, 0.16);
     }
 
     .header-div {
@@ -1026,7 +1789,7 @@ img:hover {
     .destinations {
         width: 92.3%;
         height: 21.65%;
-        overflow: visible;
+        overflow: hidden;
         margin: 0 auto 0 auto;
     }
 
@@ -1049,31 +1812,47 @@ img:hover {
         height: 72.66%;
         margin: 0;
         overflow: hidden;
+        pointer-events: none;
     }
 
     .carousel-item {
-        display: block;
+        display: inline-block;
+        position: absolute;
         width: 100%;
         height: 100%;
+        /* left: 25%; */
         text-align: center;
-        position: relative;
         margin: 0 auto auto auto;
+        pointer-events: none;
     }
 
-    .carousel .carousel-item:nth-child(1) .img-item {
-        background-image: url("./assets/jpg/ocean.jpg");
+    .carousel .carousel-item:nth-child(1) {
+        /*background-image: url("./assets/jpg/ocean.jpg");*/
+        display: block;
+        left: -110%;
     }
 
     .carousel .carousel-item:nth-child(2) {
-        display: none;
+        display: block;
+        left: 0;
     }
 
     .carousel .carousel-item:nth-child(3) {
-        display: none;
+        display: block;
+        left: 110%;
+    }
+    .carousel .carousel-item:nth-child(4){
+        display: block;
+        left: 210%;
+    }
+
+    :root{
+        --left-arrow: 1;
+        --right-arrow: 1;
     }
 
     .carousel:before {
-        content: "";
+        content: attr(attribute-left);
         display: block;
         position: absolute;
         z-index: 1;
@@ -1084,20 +1863,24 @@ img:hover {
         background-size: 100% 100%;
         background-position: center;
         transform: rotate(-90deg);
+        pointer-events: all;
+        opacity: var(--left-arrow);
     }
 
     .carousel:after {
-        content: "";
+        content: attr(attribute-right);
         display: block;
         position: absolute;
         z-index: 2;
         width: 8.34%;
         height: 14.3%;
-        margin: -34% auto 0 91%;
+        margin: 24.5% auto 0 91%;
         background-image: url("./assets/svg/arrow-carousel.svg");
         background-size: 100% 100%;
         background-position: center;
         transform: rotate(90deg);
+        pointer-events: all;
+        opacity: var(--right-arrow);
     }
 
 
@@ -1130,18 +1913,18 @@ img:hover {
 
     .btn-find-more {
         width: 91px;
-        height: 30px;
+        height: 10%;
         margin: 6% auto auto auto;
         padding: 0;
     }
 
     .arrow {
-        margin: 13% auto auto 13.1%;
+        margin: 10% auto auto 13.1%;
     }
 
     .title-find-more {
         width: 75.3%;
-        margin: 8.12% 13% auto 0;
+        margin: 6.12% 13% auto 0;
         font-style: normal;
         font-weight: 500;
         font-size: 0.8em;
@@ -1197,6 +1980,7 @@ img:hover {
         height: 100%;
         gap: calc(7% - (390px - 100vw)*(4/70));
     }
+
 
     .title-sample {
         margin-top: 3%;

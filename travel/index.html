@@ -12,46 +12,55 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="container">
-            <div class="background">
-                <div class="top"></div>
-                <div class="bottom"></div>
-            </div>
-            <div class="webpage">
-                <header class="header-div">
-                    <div class="logo">
-                        <img class="logo-img" src="./assets/svg/Logo.svg" alt="Logo">
-                        <h2 class="logo-title">Travel Portal</h2>
+<div class="page">
+    <div class="container">
+        <div class="background">
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+        <div class="webpage">
+            <header class="header-div">
+                <div class="logo">
+                    <img class="logo-img" src="./assets/svg/Logo.svg" alt="Logo">
+                    <h2 class="logo-title">Travel Portal</h2>
+                </div>
+                <nav class="navigation">
+                    <ul class="navigation-list">
+                        <li class="navigation-link">
+                            <a href="#preview">How It Works</a>
+                        </li>
+                        <li class="navigation-link">
+                            <a href="#steps">Plan Your Trip</a>
+                        </li>
+                        <li class="navigation-link">
+                            <a href="#destinations">Destinations</a>
+                        </li>
+                        <li class="navigation-link">
+                            <a href="#stories">Travel Stories</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button type="button" class="btn-login">
+                    <span class="title-btn-login">Login</span>
+                </button>
+            </header>
+            <main class="main-div">
+                <section id="preview" class="preview">
+                    <h1 class="preview-title">Explore the beauty of the World</h1>
+                    <div class="preview-remark">Recieve personalized recommendations for countries,
+                        hotels, activities and more
                     </div>
-                    <nav class="navigation">
-                        <ul class="navigation-list">
-                            <li class="navigation-link">
-                                <a href="#preview">How It Works</a>
-                            </li>
-                            <li class="navigation-link">
-                                <a href="#steps">Plan Your Trip</a>
-                            </li>
-                            <li class="navigation-link">
-                                <a href="#destinations">Destinations</a>
-                            </li>
-                            <li class="navigation-link">
-                                <a href="#stories">Travel Stories</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <button type="button" class="btn-login">
-                        <span class="title-btn-login">Login</span>
-                    </button>
-                </header>
-                <main class="main-div">
-                    <section id="preview" class="preview">
-                        <h1 class="preview-title">Explore the beauty of the World</h1>
-                        <div class="preview-remark">Recieve personalized recommendations for countries,
-                            hotels, activities and more</div>
-                        <div class="preview-input">
-                            <input type="text" name="search" id="find-trip" placeholder="What would you like to do?">
-                            <button type="submit" class="start-planning">Start Planning</button>
+                    <div class="preview-input">
+                        <input type="text" name="search" id="find-trip" placeholder="What would you like to do?">
+                        <button type="submit" class="start-planning">Start Planning</button>
+                    </div>
+                </section>
+                <section id="steps" class="steps">
+                    <h2 class="steps-title">3 STEPS TO THE PERFECT TRIP</h2>
+                    <div class="steps-flex">
+                        <div class="steps-box right-margin-steps">
+                            <div class="font-img-steps bicycle"></div>
+                            <div class="title-img-steps">Tell us what you want to do</div>
                         </div>
                     </section>
                     <section id="steps" class="steps">
@@ -70,32 +79,37 @@
                                 <div class="title-img-steps">We will give you recommendations</div>
                             </div>
                         </div>
-                    </section>
-                    <section id="destinations" class="destinations">
-                        <h2 class="title-destination">POPULAR DESTINATIONS</h2>
-                        <div class="carousel">
-                            <div class="carousel-item">
-                                <img class="img-item" src="./assets/jpg/ocean-big.jpg" alt="SPAIN">
-                                <div class="title-item">SPAIN</div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="img-item" src="./assets/jpg/gates.jpg" alt="JAPAN">
-                                <div class="title-item">JAPAN</div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="img-item" src="./assets/jpg/bridge.jpg" alt="USA">
-                                <div class="title-item">USA</div>
-                            </div>
+                        <div class="steps-box">
+                            <div class="font-img-steps airplane"></div>
+                            <div class="title-img-steps">We will give you recommendations</div>
                         </div>
-                        <div class="dots-nav">
-                            <div class="dot inactive-dot"></div>
-                            <div class="dot active-dot"></div>
-                            <div class="dot inactive-dot"></div>
+                    </div>
+                </section>
+                <section id="destinations" class="destinations">
+                    <h2 class="title-destination">POPULAR DESTINATIONS</h2>
+                    <div class="carousel">
+                        <div class="carousel-item">
+                            <img class="img-item" src="./assets/jpg/ocean-big.jpg" alt="SPAIN">
+                            <div class="title-item">SPAIN</div>
                         </div>
-                        <button class="btn-find-more" type="submit">
-                            <svg class="arrow" width="36" height="23" viewBox="0 0 36 23" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 11.5C0.5 11.1685 0.631696 10.8505
+                        <div class="carousel-item">
+                            <img class="img-item" src="assets/jpg/gates-big.jpg" alt="JAPAN">
+                            <div class="title-item">JAPAN</div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-item" src="assets/jpg/bridge-big.jpg" alt="USA">
+                            <div class="title-item">USA</div>
+                        </div>
+                    </div>
+                    <div class="dots-nav">
+                        <div class="dot inactive-dot"></div>
+                        <div class="dot active-dot"></div>
+                        <div class="dot inactive-dot"></div>
+                    </div>
+                    <button class="btn-find-more" type="submit">
+                        <svg class="arrow" width="36" height="23" viewBox="0 0 36 23" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 11.5C0.5 11.1685 0.631696 10.8505
                                          0.866116 10.6161C1.10054 10.3817 1.41848
                                          10.25 1.75 10.25H31.2325L23.365 2.38499C23.1303
                                          2.15028 22.9984 1.83193 22.9984 1.49999C22.9984
@@ -194,10 +208,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn-see-more" type="submit">
-                                <svg class="arrow-see" width="40" height="41" viewBox="0 0 40 41" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 20.5001C2.5 20.1686 2.6317 19.8507 2.86612
+                        </div>
+                        <button class="btn-see-more" type="submit">
+                            <svg class="arrow-see" width="40" height="41" viewBox="0 0 40 41" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 20.5001C2.5 20.1686 2.6317 19.8507 2.86612
                                     19.6162C3.10054 19.3818 3.41848 19.2501 3.75 19.2501H33.2325L25.365
                                     11.3851C25.1303 11.1504 24.9984 10.8321 24.9984 10.5001C24.9984
                                     10.1682 25.1303 9.84983 25.365 9.61511C25.5997 9.3804 25.9181
@@ -210,48 +225,48 @@
                                     31.3851C25.1303 31.1504 24.9984 30.8321 24.9984 30.5001C24.9984
                                     30.1682 25.1303 29.8498 25.365 29.6151L33.2325 21.7501H3.75C3.41848
                                     21.7501 3.10054 21.6184 2.86612 21.384C2.6317 21.1496 2.5 20.8316
-                                    2.5 20.5001Z" fill="white" />
-                                </svg>
-                                <span class="title-see-more">See More</span>
-                            </button>
-                        </div>
-                    </section>
-                </main>
-                <footer class="footer-div">
-                    <div class="footer-grid">
-                        <div class="git-rs">
-                            <a class="git" href="https://github.com/BrBrov">
-                                <img class="img-git" src="./assets/svg/git.svg" alt="Git">
-                            </a>
-                            <a class="rs" href="https://rs.school/js-stage0/">
-                                <img class="img-rs" src="./assets/svg/rs_school.svg" alt="RSschool">
-                            </a>
-                        </div>
-                        <div class="footer-block">
-                            <div class="title-footer">All Rights Reserved © Travel Portal</div>
-                            <ul class="social-list">
-                                <li class="social-link">
-                                    <a href="https://www.instagram.com/">
-                                        <img src="./assets/svg/Instagram.svg" alt="Instagram">
-                                    </a>
-                                </li>
-                                <li class="social-link">
-                                    <a href="https://www.youtube.com/">
-                                        <img src="./assets/svg/Youtube.svg" alt="Yuotube">
-                                    </a>
-                                </li>
-                                <li class="social-link">
-                                    <a href="https://twitter.com/">
-                                        <img src="./assets/svg/Twitter.svg" alt="Twitter">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                                    2.5 20.5001Z" fill="white"/>
+                            </svg>
+                            <span class="title-see-more">See More</span>
+                        </button>
                     </div>
-                </footer>
-            </div>
+                </section>
+            </main>
+            <footer class="footer-div">
+                <div class="footer-grid">
+                    <div class="git-rs">
+                        <a class="git" href="https://github.com/BrBrov">
+                            <img class="img-git" src="./assets/svg/git.svg" alt="Git">
+                        </a>
+                        <a class="rs" href="https://rs.school/js-stage0/">
+                            <img class="img-rs" src="./assets/svg/rs_school.svg" alt="RSschool">
+                        </a>
+                    </div>
+                    <div class="footer-block">
+                        <div class="title-footer">All Rights Reserved © Travel Portal</div>
+                        <ul class="social-list">
+                            <li class="social-link">
+                                <a href="https://www.instagram.com/">
+                                    <img src="./assets/svg/Instagram.svg" alt="Instagram">
+                                </a>
+                            </li>
+                            <li class="social-link">
+                                <a href="https://www.youtube.com/">
+                                    <img src="./assets/svg/Youtube.svg" alt="Yuotube">
+                                </a>
+                            </li>
+                            <li class="social-link">
+                                <a href="https://twitter.com/">
+                                    <img src="./assets/svg/Twitter.svg" alt="Twitter">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
+</div>
 </body>
 
 </html>
