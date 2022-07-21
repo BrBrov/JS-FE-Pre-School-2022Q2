@@ -188,7 +188,7 @@ function adaptive() {
                         break;
                 }
 
-                let rate = 0;
+                let rate;
 
                 if (position > activeDotPosition) {
                     rate = position - activeDotPosition;
