@@ -16,6 +16,7 @@ let {log} = console;
 //     log(value);
 // })
 
+
 addEventListener('resize', adaptive);
 
 
@@ -39,35 +40,23 @@ function adaptive() {
     let dots = document.getElementsByClassName('dot');
     let imgStory = document.getElementsByClassName('img-story');
     let textStoryDivision = document.getElementsByClassName('text-story');
-    let slidesArray = document.getElementsByClassName('carousel-item');
-    let backUpSlidesArray = [];
-    for (let slides of slidesArray) {
-        backUpSlidesArray.push(slides.cloneNode(true));
-    }
-    let carousel = document.querySelector('.carousel');
-    let timerInterval = -1;
-    if(timerInterval !== -1){
+    let timerInterval = false;
+    if (timerInterval) {
         clearInterval(timerInterval);
     }
 
     // Carousel code for desktop
 
     function carouselWorker() {
+        let slidesArray = document.getElementsByClassName('carousel-item');
+        log('carousel woker desktop');
+        let firstElem = slidesArray[0].cloneNode(true);
+        slidesArray[2].after(firstElem);
+        firstElem = slidesArray[1].cloneNode(true);
+        slidesArray[3].after(firstElem);
+        let lastElem = slidesArray[2].cloneNode(true);
+        slidesArray[0].before(lastElem);
 
-        if(slidesArray.length !== 6){
-            let backUp = carousel.cloneNode(false);
-            carousel.remove();
-            backUpSlidesArray.forEach((elem)=>{
-                backUp.appendChild(elem);
-            });
-            document.getElementsByClassName('title-destination')[0].after(backUp);
-            let firstElem = slidesArray[0].cloneNode(true);
-            slidesArray[2].after(firstElem);
-            firstElem = slidesArray[1].cloneNode(true);
-            slidesArray[3].after(firstElem);
-            let lastElem = slidesArray[2].cloneNode(true);
-            slidesArray[0].before(lastElem);
-        }
 
         function rotate() {
             slidesArray = document.getElementsByClassName('carousel-item');
@@ -105,17 +94,17 @@ function adaptive() {
 
         timerInterval = setInterval(rotate, 3000);
 
-        window.addEventListener('resize', (e)=>{
-
+        carousel = document.getElementsByClassName('carousel')[0];
+        window.addEventListener('resize', (e) => {
             let width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            if(width < 391){
+            if (width < 391) {
                 clearInterval(timerInterval);
             }
             location.reload();
             e.stopImmediatePropagation();
-            window.removeEventListener('resize',()=>{});
+            window.removeEventListener('resize', () => {
+            });
         })
-
         carousel.addEventListener('mouseover', function mouseOn() {
             clearTimeout(timerInterval);
             carousel.addEventListener('mouseout', function mouseOut() {
@@ -123,6 +112,8 @@ function adaptive() {
                 carousel.removeEventListener('mouseout', mouseOut);
             });
             carousel.addEventListener('click', function (data) {
+                log('click');
+
                 function setDots(data) {
                     for (let dot of dots) {
                         dot.className = blockMarksOfDots.inactive
@@ -168,16 +159,13 @@ function adaptive() {
                         }
                         break;
                 }
-
-            })
-
-        })
+            }, true)
+        }, false);
 
         let dotsNavBar = document.getElementsByClassName('dots-nav')[0];
         dotsNavBar.addEventListener('mouseover', function mouseOn() {
             clearTimeout(timerInterval);
             dotsNavBar.addEventListener('click', function ev(data) {
-                log(data.target.className);
                 let position = 0;
                 let node = data.target;
                 let activeDotPosition = 0;
@@ -207,11 +195,13 @@ function adaptive() {
 
                 if (position > activeDotPosition) {
                     rate = position - activeDotPosition;
-                    let delay = 0;
+                    let delay = 0
                     while (rate !== 0) {
-                        rotateRight();
-                        rate--;
+                        setTimeout(() => {
+                            rotateRight();
+                        }, delay);
                         delay = delay + 1200;
+                        rate--;
                     }
                 } else {
                     rate = activeDotPosition - position;
@@ -224,7 +214,6 @@ function adaptive() {
                         delay = delay + 1200;
                     }
                 }
-                log(activeDotPosition);
                 data.stopImmediatePropagation();
             }, false)
             dotsNavBar.addEventListener('mouseout', function mouseOut() {
@@ -235,7 +224,8 @@ function adaptive() {
 
     }
 
-    function carouselWorkerForMobile(){
+    function carouselWorkerForMobile() {
+        log('carousel worker adaptive');
         let carousel = document.querySelector('.carousel');
         let itemsCarousel = document.getElementsByClassName('carousel-item');
         itemsCarousel[0].before(itemsCarousel[2].cloneNode(true));
@@ -247,10 +237,10 @@ function adaptive() {
             let centerCarousel = rectCarousel.width / 2;
 
             function dotsMark(ev) {
-                if(count > 2){
+                if (count > 2) {
                     count = 2;
                 }
-                if(count < 0){
+                if (count < 0) {
                     count = 0;
                 }
                 for (let dot of dots) {
@@ -298,10 +288,11 @@ function adaptive() {
             log(count);
             data.stopImmediatePropagation();
 
-            document.addEventListener('resize',(e)=>{
+            document.addEventListener('resize', (e) => {
                 location.reload();
                 e.stopImmediatePropagation();
-                document.removeEventListener('resize',()=>{});
+                document.removeEventListener('resize', () => {
+                });
             })
         }, false);
     }
@@ -826,7 +817,7 @@ function adaptive() {
 
         let loginButton = document.querySelector('.btn-login');
         loginButton.addEventListener('click', popUpListener);
-        let htmlPage = document.getElementsByTagName('html')[0];
+
         //Start carousel here
         carouselWorker();
     }
