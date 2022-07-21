@@ -222,7 +222,6 @@ function adaptive() {
     }
 
     function carouselWorkerForMobile() {
-        log('carousel worker adaptive');
         let carousel = document.querySelector('.carousel');
         let itemsCarousel = document.getElementsByClassName('carousel-item');
         itemsCarousel[0].before(itemsCarousel[2].cloneNode(true));
@@ -266,26 +265,21 @@ function adaptive() {
                         itemsCarousel[0].before(backUpArray.pop());
                     }
                 }
-                log(backUpArray);
             }
-
             if (data.clientX < centerCarousel) {
-                log('click left');
                 let e = 'left';
                 carousel.style.setProperty('--left-arrow', '0.5');
                 count--;
                 dotsMark(e);
             } else {
-                log('clock right');
                 let e = 'right';
                 carousel.style.setProperty('--right-arrow', '0.5');
                 count++;
                 dotsMark(e);
             }
-            log(count);
             data.stopImmediatePropagation();
 
-            document.addEventListener('resize', (e) => {
+            window.addEventListener('resize', (e) => {
                 location.reload();
                 e.stopImmediatePropagation();
                 document.removeEventListener('resize', () => {
