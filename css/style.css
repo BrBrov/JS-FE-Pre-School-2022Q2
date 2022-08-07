@@ -196,7 +196,7 @@ body {
 .time {
   min-height: 124px;
   margin-bottom: 10px;
-  font-family: 'Arial-MT';
+  font-family: 'Arial-MT', sans-serif;
   font-size: 100px;
   letter-spacing: -4px;  
 }
@@ -208,23 +208,22 @@ body {
 }
 
 .greeting-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: stretch;
-  align-items: center;
+  display: block;
   min-height: 48px;
-  width: 100vw;
+  width: 80vw;
+  margin-left: 17%;
   font-size: 40px;
+  text-align: center;
 }
 
 .greeting {
-  flex: 1;  
+  display: inline-block;
   padding: 10px;
   text-align: right;
 }
 
 .name {
-  flex: 1;
+  display: inline-block;
   max-width: 50%;
   padding: 10px;
   font-size: 40px;
