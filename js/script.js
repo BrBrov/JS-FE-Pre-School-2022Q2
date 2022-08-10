@@ -245,16 +245,44 @@ function getBGUrl(timeDay) {
     // 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg'
     // https://github.com/rolling-scopes-school/stage1-tasks/raw/assets/images/afternoon/01.jpg
     return 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/' + arr[timeDay] + randNum + '.jpg';
-};
+}
 
 function setBgImage(url, body) {
     let img = new Image();
     img.src = url;
     img.onload = () => {
-        body.style.backgroundImage = `url(` + img.src + `)`;
+        setTimeout(()=>{
+            body.style.backgroundImage = `url(` + img.src + `)`;
+        },200);
     }
 }
 
+async function getQ(lang){
+    let urlq = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=`
+    if (lang === 'en') {
+        urlq = urlq + 'en'
+    } else (
+        urlq = urlq + 'ru'
+    )
+    let response = await fetch(urlq, {
+        method:'GET',
+        mode: 'cors',
+        headers:{
+            'origin' : 'https://api.forismatic.com',
+            'x-requested-with' : 'XMLHttpRequest'
+        }
+    })
+    let j;
+    return j = await response.json();
+}
+
+function animateBtnQuote(elem){
+    let frame = new KeyframeEffect(elem, [
+        {transform: 'rotate(0deg)'},
+        {transform: 'rotate(720deg)'}
+    ],{duration: 1500, fill: 'forwards', easing: 'ease-in-out'});
+    return new Animation(frame, document.timeline);
+}
 
 let start = async function entry() {
     let date = new DateToday();
@@ -262,10 +290,6 @@ let start = async function entry() {
     let translator = new Translator();
     let position = new Position(settings.getSetting('lang'));
 
-    let bgparam = {
-        start: "url(",
-        end: ") center/cover, rgba(0, 0, 0, 0.5"
-    }
     document.addEventListener('DOMContentLoaded', () => {
         //Variables
         let lang = settings.getSetting('lang');
@@ -278,11 +302,13 @@ let start = async function entry() {
         let body = document.body;
         let prev = document.querySelector('.slide-prev');
         let next = document.querySelector('.slide-next');
-
+        let quoteBtn = document.querySelector('.change-quote');
+        let quote = document.querySelector('.quote');
+        let author = document.querySelector('.author');
 
         window.addEventListener('load', () => {
 
-            body.style.background = bgparam.start + settings.getSetting('bgimage') + bgparam.end;
+            body.style.background = "url(" + settings.getSetting('bgimage') + ")";
 
             let timeControll = date.getTime().hours;
             let timeIsChange = new CustomEvent('changetime');
@@ -309,17 +335,9 @@ let start = async function entry() {
                 }
             }, 1050);
 
-            //Debug events!!!================>
-            time.addEventListener('click', () => {
-                time.dispatchEvent(timeIsChange);
-            })
-
-
             greeting.addEventListener('changetime', () => {
                 greeting.textContent = translator.getValue(lang, 'timeOfDay')[date.getTimeOfday()];
             })
-
-
 
             name.addEventListener('blur', () => {
                 log(name.value);
@@ -344,7 +362,6 @@ let start = async function entry() {
             }, true);
 
             //Slider
-
             prev.addEventListener('click', () => {
                 let url = settings.getSetting('bgimage');
                 let fileName = Number(url.slice(url.length - 6, url.length - 4));
@@ -357,6 +374,7 @@ let start = async function entry() {
                 if (fileName < 10) {
                     fileName = '0' + fileName;
                 }
+                log(fileName);
                 url = url + fileName + '.jpg';
                 settings.setSetting('bgimage', url);
                 setBgImage(url, body);
@@ -368,14 +386,36 @@ let start = async function entry() {
                 if (fileName < 20) {
                     fileName++;
                 } else if (fileName === 20) {
-                    fileName = 0;
+                    fileName = 1;
                 }
                 if (fileName < 10) {
                     fileName = '0' + fileName;
                 }
+                log(fileName);
                 url = url + fileName + '.jpg';
                 settings.setSetting('bgimage', url);
                 setBgImage(url, body);
+            })
+
+            //Quotes
+            // quoteBtn - button for update quote
+            // quote - quoteText
+            // author - quoteAuthor
+
+            let quoteSetUp = getQ(lang);
+            quoteSetUp.then(r=>{
+                quote.textContent = r.quoteText;
+                author.textContent = r.quoteAuthor;
+            });
+
+            quoteBtn.addEventListener('click', ()=>{
+                let animateClick = animateBtnQuote(quoteBtn);
+                animateClick.play();
+                let updateQuote = getQ(lang);
+                updateQuote.then(r=>{
+                    quote.textContent = r.quoteText;
+                    author.textContent = r.quoteAuthor;
+                })
             })
 
         })
