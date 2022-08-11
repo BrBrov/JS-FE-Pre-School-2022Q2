@@ -1,5 +1,5 @@
 let {log} = console;
-// Language of geolocation:
+// Available language for geolocation:
 //     name:be: "Паставы" <-belarus
 //     name:be-tarask: "Паставы" <- belarus(tarashkevicha)
 //     name:de: "Pastawy"  <- Deutsch
@@ -176,7 +176,9 @@ class SettingStorage {
                 name: '',
                 location: 'Minsk',
                 bgimage: '../assets/img/bg.jpg',
-                trackPlay: ''
+                trackPlay: '',
+                trackTag:'',
+                weatherInit: null
             }
             localStorage.setItem('settings', JSON.stringify(this.setting));
         }
@@ -201,36 +203,20 @@ class SettingStorage {
     }
 }
 
-class Position {
-    constructor(language) {
-        this._updatePlace(language);
+class Coordinates{
+    #coords = {};
+    constructor() {
+        this.#coords = {
+            latitude: null,
+            longitude: null
+        }
     }
-
-    _updatePlace(language) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-            let url = `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json&zoom=10&namedetails=[1]`;
-            let response = await fetch(url, {
-                method: 'GET',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8',
-                    "Accept-Language": language
-                }
-            })
-            let data = await response.json();
-            if (data.namedetails) {
-                this.place = data.namedetails;
-            } else {
-                this.place = 'unknown';
-            }
-
-        }, (err) => {
-            this.place = 'geolocation is blocked';
-        }, {enableHighAccuracy: true});
+    setCoords(latitude, longitude){
+        this.#coords.latitude = latitude;
+        this.#coords.longitude = longitude;
     }
-
-    getPlace(language) {
-        return this.place[`name:${language}`];
+    getCoords(){
+        return this.#coords;
     }
 }
 
@@ -251,36 +237,29 @@ function setBgImage(url, body) {
     let img = new Image();
     img.src = url;
     img.onload = () => {
-        setTimeout(()=>{
+        setTimeout(() => {
             body.style.backgroundImage = `url(` + img.src + `)`;
-        },200);
+        }, 200);
     }
 }
 
-async function getQ(lang){
-    let urlq = `https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=`
+async function getQ(lang) {
+    //https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=
+    let url = ``;
     if (lang === 'en') {
-        urlq = urlq + 'en'
+        url = url + 'en'
     } else (
-        urlq = urlq + 'ru'
+        url = url + 'ru'
     )
-    let response = await fetch(urlq, {
-        method:'GET',
-        mode: 'cors',
-        headers:{
-            'origin' : 'https://api.forismatic.com',
-            'x-requested-with' : 'XMLHttpRequest'
-        }
-    })
-    let j;
-    return j = await response.json();
+    let response = await fetch('https://scrappy-php.herokuapp.com/?url=https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru');
+    return await response.json();
 }
 
-function animateBtnQuote(elem){
+function animateBtnQuote(elem) {
     let frame = new KeyframeEffect(elem, [
         {transform: 'rotate(0deg)'},
         {transform: 'rotate(720deg)'}
-    ],{duration: 1500, fill: 'forwards', easing: 'ease-in-out'});
+    ], {duration: 1500, fill: 'forwards', easing: 'ease-in-out'});
     return new Animation(frame, document.timeline);
 }
 
@@ -288,23 +267,88 @@ let start = async function entry() {
     let date = new DateToday();
     let settings = new SettingStorage();
     let translator = new Translator();
-    let position = new Position(settings.getSetting('lang'));
+    let coodinates = new Coordinates();
 
     document.addEventListener('DOMContentLoaded', () => {
-        //Variables
-        let lang = settings.getSetting('lang');
+        //Initialization variables
+
+        let lang = settings.getSetting('lang'); //lanquage of app
+        log(lang);
+        // Clocks variable
         let month = translator.getValue(lang, 'month');
         let week = translator.getValue(lang, 'weekday');
         let time = document.querySelector('.time');
         let todayDate = document.querySelector('.date');
+        //Greeting variable
         let greeting = document.querySelector('.greeting');
         let name = document.querySelector('.name');
+        //Background image and slider
         let body = document.body;
         let prev = document.querySelector('.slide-prev');
         let next = document.querySelector('.slide-next');
+        //Quote block
         let quoteBtn = document.querySelector('.change-quote');
         let quote = document.querySelector('.quote');
         let author = document.querySelector('.author');
+        //Widget of weather
+        let city = document.querySelector('.city');
+        let weatherIcon = document.querySelector('.weather-icon');
+        let temperature = document.querySelector('.temperature');
+        let description = document.querySelector('.weather-description');
+        let wind = document.querySelector('.wind');
+        let humidity = document.querySelector('.humidity');
+        let weatherErr = document.querySelector('.weather-error');
+
+        //Function get weather from geolocation
+        function getWeatherGeolocation(lang){
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    coodinates.setCoords(position.coords.latitude, position.coords.longitude);
+                    resolve(position);
+                }, (err) => {
+                    reject(err);
+                }, {enableHighAccuracy: true})
+            }).then(r => {
+                let url = `https://api.openweathermap.org/data/2.5/weather?lat=${r.coords.latitude}&lon=${r.coords.longitude}&exclude=current&appid=1b4d2db9104890bb7966cf30eb259dae&units=metric&lang=${lang}`;
+                return fetch(url,{
+                    method: 'GET',
+                    mode:"cors"
+                })
+            }).then(response=>{
+                return response.json();
+            }).then(weather=>{
+                city.value = weather.name;
+                settings.setSetting('weatherInit', 'initialized');
+                settings.setSetting('location', weather.name);
+                weatherIcon.classList.add(`owf-${weather.weather[0].id}`);
+                temperature.textContent = weather.main.temp + ' ºC';
+                description.textContent = weather.weather[0].description;
+                wind.textContent = `Wind speed: ${weather.wind.speed} m/s`;
+                humidity.textContent =`Humidity: ${weather.main.humidity} %`;
+            }).catch(err=>{
+                weatherErr.textContent = err.message;
+                city.value = 'Enter your location';
+            })
+        }
+        function setWeather(name){
+            let setWeather = new Promise((resolve)=>{
+                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${name}&exclude=current&appid=1b4d2db9104890bb7966cf30eb259dae&units=metric&lang=${lang}`)
+                    .then(response=>{
+                        return response.json();
+                    }).then(r=>{
+                    resolve(r);
+                })
+            }).then(weather=>{
+                city.value = weather.name;
+                settings.setSetting('location', weather.name);
+                settings.setSetting('weatherInit', 'initialized');
+                weatherIcon.classList.add(`owf-${weather.weather[0].id}`);
+                temperature.textContent = weather.main.temp + ' ºC';
+                description.textContent = weather.weather[0].description;
+                wind.textContent = `Wind speed: ${weather.wind.speed} m/s`;
+                humidity.textContent =`Humidity: ${weather.main.humidity} %`;
+            })
+        }
 
         window.addEventListener('load', () => {
 
@@ -362,8 +406,12 @@ let start = async function entry() {
             }, true);
 
             //Slider
+            //prev <------
             prev.addEventListener('click', () => {
                 let url = settings.getSetting('bgimage');
+                if(url === '../assets/img/bg.jpg'){
+                    url = getBGUrl(date.getTimeOfday());
+                }
                 let fileName = Number(url.slice(url.length - 6, url.length - 4));
                 url = url.slice(0, url.length - 6);
                 if (fileName > 1) {
@@ -379,8 +427,12 @@ let start = async function entry() {
                 settings.setSetting('bgimage', url);
                 setBgImage(url, body);
             })
+            //next----->
             next.addEventListener('click', () => {
                 let url = settings.getSetting('bgimage');
+                if(url === '../assets/img/bg.jpg'){
+                    url = getBGUrl(date.getTimeOfday());
+                }
                 let fileName = Number(url.slice(url.length - 6, url.length - 4));
                 url = url.slice(0, url.length - 6);
                 if (fileName < 20) {
@@ -403,24 +455,36 @@ let start = async function entry() {
             // author - quoteAuthor
 
             let quoteSetUp = getQ(lang);
-            quoteSetUp.then(r=>{
-                quote.textContent = r.quoteText;
-                author.textContent = r.quoteAuthor;
+            quoteSetUp.then(r => {
+                quote.textContent = `${r.quoteText}`;
+                author.textContent = `${r.quoteAuthor}`;
             });
 
-            quoteBtn.addEventListener('click', ()=>{
+            //Update quote
+
+            quoteBtn.addEventListener('click', () => {
                 let animateClick = animateBtnQuote(quoteBtn);
                 animateClick.play();
                 let updateQuote = getQ(lang);
-                updateQuote.then(r=>{
-                    quote.textContent = r.quoteText;
-                    author.textContent = r.quoteAuthor;
+                updateQuote.then(r => {
+                    quote.textContent = `${r.quoteText}`;
+                    author.textContent = `${r.quoteAuthor}`;
                 })
             })
 
-        })
+            //Weather widget
+
+            if(settings.getSetting('weatherInit') === null){
+                getWeatherGeolocation(lang);
+            }else{
+                setWeather(settings.getSetting('location'));
+            }
+            //input place for weather;
+            city.addEventListener('blur', ()=>{
+                setWeather(city.value);
+            });
+        });
     })
-    // log(position.getPlace('en'))
 }
 
 start();
