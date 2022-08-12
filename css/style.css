@@ -23,6 +23,179 @@ body {
   transition: background-image 1s ease-in-out;
 }
 
+/*Menu settings*/
+
+.popup{
+  position: absolute;
+  width: calc(100vw);
+  height: calc(100vh);
+  top: 0;
+  opacity: 1;
+  transition: opacity 1.15s;
+}
+.hidden{
+  display: none;
+  opacity: 0.1;
+}
+.settings{
+  min-width: 320px;
+  max-width: 50%;
+  height: 90%;
+  margin: 1% auto;
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px black;
+  background-color: rgba(146,184,200,0.88);
+  opacity: 1;
+}
+.user-name{
+  position: relative;
+  max-width: 90%;
+  height: 5%;
+  margin: 3% auto;
+  font-family: 'Arial-MT', monospace;
+  font-weight: 600;
+  font-size: 2rem;
+  border: none;
+  color: black;
+}
+
+.user-name:optional{
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background-color: rgba(146,184,200,0.88);
+}
+.setting-weather{
+  width: auto;
+  height: 7%;
+  padding: 1%;
+  font-family: 'Arial', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: black;
+  border-radius: 10px;
+}
+
+.place-of-weather{
+  width: auto;
+  height: 5%;
+  padding: 1%;
+  margin: 3% auto;
+  font-family: 'Arial-MT', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: black;
+  border-radius: 10px;
+}
+.place-of-weather:optional{
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  background-color: rgba(146,184,200,0.88);
+}
+
+.language{
+  vertical-align: center;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+}
+.language-settings{
+  display: flex;
+  margin: 3% auto;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-self: center;
+  justify-items: center;
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-items: center;
+  justify-content: space-around;
+}
+.language-title{
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+}
+.check{
+  margin: 2% auto;
+}
+.title-setting{
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+}
+.collections-settings{
+  display: flex;
+  margin: 3% auto;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-self: center;
+  justify-items: center;
+}
+.collection-title{
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+}
+.title-choose-hide{
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: black;
+}
+.menu-hide{
+  display: flex;
+  height: 5%;
+  margin: 3% auto;
+  flex-direction: column;
+  justify-self: normal;
+  justify-items: flex-start;
+}
+.field-set{
+  display: flex;
+  margin: 2% 3% 2% 3%;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5%;
+}
+.switcher{
+  appearance: none;
+  height: 20px;
+  width: 35px;
+  border-radius: 10px;
+  box-shadow: inset -1em 0 0 0 rgba(192, 192, 192, 1);
+  background-color: white;
+  border: 1px solid rgba(192, 192, 192, 1);
+  outline: none;
+  transition: 0.2s;
+}
+.switcher:checked {
+  box-shadow: inset 1em 0 0 0 rgba(33, 150, 243, 0.5);
+  border: 1px solid rgba(33, 150, 243, 1);
+}
+
+.switcher:focus {
+  outline-width: 0;
+}
+.label-switcher{
+  font-family: 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: black;
+}
+
+/*Page*/
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -212,8 +385,8 @@ body {
 .greeting-container {
   display: block;
   min-height: 48px;
-  width: 80vw;
-  margin-left: 17%;
+  width: 65vw;
+  margin-left: 18%;
   font-size: 40px;
   text-align: center;
 }
@@ -251,7 +424,20 @@ body {
   min-height: 160px;  
   padding: 20px;
 }
-
+.settings-app{
+  width: 37px;
+  height: 35px;
+  margin-right: 3%;
+  cursor: pointer;
+  align-self: flex-end;
+  background: url('/assets/svg/settings.svg'), linear-gradient(45deg, gray, #d0c0c0);
+  border: 1px groove #b5e8ee;
+  border-radius: 10px;
+}
+.settings-app:active{
+  box-shadow: inset 1px 2px 0 black;
+  background: url('/assets/svg/settings.svg'), linear-gradient(45deg, #3b3b3b, #d28686);
+}
 .change-quote {
   margin-bottom: 30px;
   background-image: url("../assets/svg/reload.svg");

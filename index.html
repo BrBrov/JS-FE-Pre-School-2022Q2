@@ -1,54 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="assets/favicon.ico" rel="shortcut icon" />
-  <link rel="stylesheet" href="css/owfont-regular.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="./js/script.js"></script>
-  <title>momentum</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="assets/favicon.ico" rel="shortcut icon"/>
+    <link rel="stylesheet" href="css/owfont-regular.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="./js/script.js"></script>
+    <title>momentum</title>
 </head>
 <body>
-  <header class="header">
+<header class="header">
     <div class="player">
-      <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
-      </div>
-      <ul class="play-list"></ul>
+        <div class="player-controls">
+            <button class="play-prev player-icon"></button>
+            <button class="play player-icon"></button>
+            <button class="play-next player-icon"></button>
+        </div>
+        <ul class="play-list"></ul>
     </div>
     <div class="weather">
-      <input type="text" class="city" />
-      <i class="weather-icon owf"></i>
-      <div class="weather-error"></div>
-      <div class="description-container">
-        <span class="temperature"></span>
-        <span class="weather-description"></span>
-      </div>
-      <div class="wind"></div>
-      <div class="humidity"></div>
+        <input type="text" class="city"/>
+        <i class="weather-icon owf"></i>
+        <div class="weather-error"></div>
+        <div class="description-container">
+            <span class="temperature"></span>
+            <span class="weather-description"></span>
+        </div>
+        <div class="wind"></div>
+        <div class="humidity"></div>
     </div>
-  </header>
-  <main class="main">
+</header>
+<main class="main">
     <div class="slider-icons">
-      <button class="slide-prev slider-icon"></button>
-      <button class="slide-next slider-icon"></button>
+        <button class="slide-prev slider-icon"></button>
+        <button class="slide-next slider-icon"></button>
     </div>
     <time class="time"></time>
     <date class="date"></date>
     <div class="greeting-container">
-      <span class="greeting"></span>
-      <input type="text" class="name" placeholder=""/>
+        <span class="greeting"></span>
+        <input type="text" class="name" placeholder=""/>
     </div>
-  </main>
-  <footer class="footer">
+</main>
+<footer class="footer">
+  <button class="settings-app">
+  </button>
     <button class="change-quote"></button>
     <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+        <div class="quote"></div>
+        <div class="author"></div>
     </div>
-  </footer>
+</footer>
+<div class="popup hidden">
+    <div class="settings">
+        <input type="text" class="user-name" value="USER">
+        <hr>
+        <div class="setting-weather">Weather place</div>
+        <input type="text" class="place-of-weather" value="Minsk">
+        <hr>
+        <span class="language">Choose your language</span>
+        <div class="language-settings">
+            <div class="item en">
+                <span class="language-title">English</span>
+                <input type="checkbox" class="check en">
+            </div>
+            <div class="item ru">
+                <span class="language-title">English</span>
+                <input type="checkbox" class="check ru">
+            </div>
+            <div class="item by">
+                <span class="language-title">English</span>
+                <input type="checkbox" class="check by">
+            </div>
+        </div>
+        <hr>
+        <div class="slider-setting">
+            <span class="title-setting">Choose image collections</span>
+            <div class="collections-settings">
+                <div class="item">
+                    <span class="collection-title">Git Hub</span>
+                    <input type="checkbox" class="check git">
+                </div>
+                <div class="item">
+                    <span class="collection-title">Flikr</span>
+                    <input type="checkbox" class="check flikr">
+                </div>
+                <div class="item">
+                    <span class="collection-title">Unsplash</span>
+                    <input type="checkbox" class="check unsplash">
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="setting-page">
+            <span class="title-choose-hide">Choose to hide</span>
+            <div class="menu-hide">
+                <div class="field-set">
+                    <input class="switcher" type="checkbox">
+                    <div class="label-switcher">Hide player</div>
+                </div>
+                <div class="field-set">
+                    <input class="switcher" type="checkbox">
+                    <div class="label-switcher">Hide weather</div>
+                </div>
+                <div class="field-set">
+                    <input class="switcher" type="checkbox">
+                    <div class="label-switcher">Hide clock</div>
+                </div>
+                <div class="field-set">
+                    <input class="switcher" type="checkbox">
+                    <div class="label-switcher">Hide date</div>
+                </div>
+                <div class="field-set">
+                    <input class="switcher" type="checkbox">
+                    <div class="label-switcher">Hide greeting</div>
+                </div>
+                <div class="field-set">
+                    <input class="switcher" type="checkbox">
+                    <div class="label-switcher">Hide quote</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
