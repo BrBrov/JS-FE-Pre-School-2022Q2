@@ -16,6 +16,11 @@
             <button class="play-prev player-icon"></button>
             <button class="play player-icon"></button>
             <button class="play-next player-icon"></button>
+            <button class="sound-mute player-icon"></button>
+        </div>
+        <div class="controls">
+        <input type="range" class="play-range" min="0" max="100" value="0">
+        <input type="range" class="sound-volume" min="0" max="100" value="0">
         </div>
         <ul class="play-list"></ul>
     </div>
@@ -44,8 +49,7 @@
     </div>
 </main>
 <footer class="footer">
-  <button class="settings-app">
-  </button>
+  <button class="settings-app"></button>
     <button class="change-quote"></button>
     <div>
         <div class="quote"></div>
@@ -55,74 +59,74 @@
 <div class="popup hidden">
     <div class="settings">
         <input type="text" class="user-name" value="USER">
-        <hr>
-        <div class="setting-weather">Weather place</div>
+        <hr class="line">
+        <span class="setting-weather"></span><br>
         <input type="text" class="place-of-weather" value="Minsk">
-        <hr>
-        <span class="language">Choose your language</span>
+        <hr class="line">
+        <span class="language"></span>
         <div class="language-settings">
-            <div class="item en">
-                <span class="language-title">English</span>
-                <input type="checkbox" class="check en">
+            <div class="item">
+                <span class="language-title"></span>
+                <input type="checkbox" class="check" value="be">
             </div>
-            <div class="item ru">
-                <span class="language-title">English</span>
-                <input type="checkbox" class="check ru">
+            <div class="item">
+                <span class="language-title"></span>
+                <input type="checkbox" class="check" value="ru">
             </div>
-            <div class="item by">
-                <span class="language-title">English</span>
-                <input type="checkbox" class="check by">
+            <div class="item">
+                <span class="language-title"></span>
+                <input type="checkbox" class="check" value="en">
             </div>
         </div>
-        <hr>
+        <hr class="line">
         <div class="slider-setting">
-            <span class="title-setting">Choose image collections</span>
+            <span class="title-setting"></span>
             <div class="collections-settings">
                 <div class="item">
                     <span class="collection-title">Git Hub</span>
-                    <input type="checkbox" class="check git">
+                    <input type="checkbox" class="storage">
                 </div>
                 <div class="item">
                     <span class="collection-title">Flikr</span>
-                    <input type="checkbox" class="check flikr">
+                    <input type="checkbox" class="storage">
                 </div>
                 <div class="item">
                     <span class="collection-title">Unsplash</span>
-                    <input type="checkbox" class="check unsplash">
+                    <input type="checkbox" class="storage">
                 </div>
             </div>
-
         </div>
-        <hr>
+        <hr class="line">
         <div class="setting-page">
-            <span class="title-choose-hide">Choose to hide</span>
+            <span class="title-choose-hide"></span>
             <div class="menu-hide">
                 <div class="field-set">
-                    <input class="switcher" type="checkbox">
-                    <div class="label-switcher">Hide player</div>
+                    <input class="switcher" type="checkbox" value="player">
+                    <div class="label-switcher"></div>
                 </div>
                 <div class="field-set">
-                    <input class="switcher" type="checkbox">
-                    <div class="label-switcher">Hide weather</div>
+                    <input class="switcher" type="checkbox" value="weather">
+                    <div class="label-switcher"></div>
                 </div>
                 <div class="field-set">
-                    <input class="switcher" type="checkbox">
-                    <div class="label-switcher">Hide clock</div>
+                    <input class="switcher" type="checkbox" value="clock">
+                    <div class="label-switcher"></div>
                 </div>
                 <div class="field-set">
-                    <input class="switcher" type="checkbox">
-                    <div class="label-switcher">Hide date</div>
+                    <input class="switcher" type="checkbox" value="date">
+                    <div class="label-switcher"></div>
                 </div>
                 <div class="field-set">
-                    <input class="switcher" type="checkbox">
-                    <div class="label-switcher">Hide greeting</div>
+                    <input class="switcher" type="checkbox" value="greeting">
+                    <div class="label-switcher"></div>
                 </div>
                 <div class="field-set">
-                    <input class="switcher" type="checkbox">
-                    <div class="label-switcher">Hide quote</div>
+                    <input class="switcher" type="checkbox" value="quote">
+                    <div class="label-switcher"></div>
                 </div>
             </div>
         </div>
+        <button class="close-popup"></button>
     </div>
 </div>
 </body>

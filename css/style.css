@@ -28,7 +28,7 @@ body {
 .popup{
   position: absolute;
   width: calc(100vw);
-  height: calc(100vh);
+  height: calc(100%);
   top: 0;
   opacity: 1;
   transition: opacity 1.15s;
@@ -44,14 +44,20 @@ body {
   margin: 1% auto;
   border-radius: 10px;
   box-shadow: 1px 2px 3px black;
-  background-color: rgba(146,184,200,0.88);
+  /*background-color: rgba(146,184,200,0.88);*/
+  background: linear-gradient(45deg, rgba(146,184,200,0.8), rgb(7, 86, 141));
   opacity: 1;
+}
+.line{
+  display: block;
+  margin-top: 1%;
+  margin-bottom: 2%;
 }
 .user-name{
   position: relative;
   max-width: 90%;
   height: 5%;
-  margin: 3% auto;
+  margin: 3% auto 2% auto;
   font-family: 'Arial-MT', monospace;
   font-weight: 600;
   font-size: 2rem;
@@ -65,6 +71,14 @@ body {
   border-radius: 10px;
   outline: none;
   background-color: rgba(146,184,200,0.88);
+}
+.close-popup{
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 2px 3px #01103a;
+  background: linear-gradient(-45deg, rgb(46, 146, 231), rgb(100, 159, 213));
 }
 .setting-weather{
   width: auto;
@@ -81,7 +95,7 @@ body {
   width: auto;
   height: 5%;
   padding: 1%;
-  margin: 3% auto;
+  margin: 2% auto;
   font-family: 'Arial-MT', sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
@@ -105,7 +119,7 @@ body {
 }
 .language-settings{
   display: flex;
-  margin: 3% auto;
+  margin: 2% auto;
   flex-direction: row;
   justify-content: space-around;
   justify-self: center;
@@ -135,7 +149,7 @@ body {
 }
 .collections-settings{
   display: flex;
-  margin: 3% auto;
+  margin: 2% auto;
   flex-direction: row;
   justify-content: space-around;
   justify-self: center;
@@ -153,20 +167,27 @@ body {
   font-size: 1rem;
   color: black;
 }
+
 .menu-hide{
   display: flex;
   height: 5%;
   margin: 3% auto;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-self: normal;
-  justify-items: flex-start;
+  justify-items: stretch;
+  justify-content: space-around;
 }
 .field-set{
   display: flex;
+  width: 43%;
   margin: 2% 3% 2% 3%;
   flex-direction: row;
   justify-content: flex-start;
   gap: 5%;
+}
+.storage{
+  margin: 2% auto;
 }
 .switcher{
   appearance: none;
@@ -188,10 +209,14 @@ body {
   outline-width: 0;
 }
 .label-switcher{
+  text-align: left;
+  width: 80%;
   font-family: 'Arial', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
   color: black;
+  border-radius: 10px;
+  background-color: rgba(101, 179, 196, 0.3);
 }
 
 /*Page*/
@@ -210,8 +235,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
-  margin-bottom: 28px;
+  text-align: center;
+  width: 180px;
+  margin-bottom: 12px;
 }
 
 .play-list {
@@ -292,6 +318,36 @@ body {
 .play-next {
   background-image: url("../assets/svg/play-next.svg");
 }
+/*Player modifications*/
+.controls{
+  display: flex;
+  width: 140px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+.play-range{
+  width: 140px;
+  background-color: #C5B358;
+}
+.sound-volume{
+  width: 60px;
+  margin-left: 3%;
+  background-color: #70c558;
+}
+.sound-mute{
+  width: 30px;
+  height: 30px;
+  margin-left: 10%;
+  background-size: 20px 20px;
+  background-image: url("../assets/svg/sound.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+}
+/*===================================>*/
 
 .weather {
   display: flex;
@@ -426,17 +482,19 @@ body {
 }
 .settings-app{
   width: 37px;
-  height: 35px;
+  height: 37px;
   margin-right: 3%;
   cursor: pointer;
   align-self: flex-end;
-  background: url('/assets/svg/settings.svg'), linear-gradient(45deg, gray, #d0c0c0);
+  /*background-size: 37px 37px;*/
+  background-size: cover;
+  background: url('/assets/svg/settings.svg') no-repeat, linear-gradient(45deg, gray, #d0c0c0);
   border: 1px groove #b5e8ee;
   border-radius: 10px;
 }
 .settings-app:active{
   box-shadow: inset 1px 2px 0 black;
-  background: url('/assets/svg/settings.svg'), linear-gradient(45deg, #3b3b3b, #d28686);
+  background: url('/assets/svg/settings.svg') no-repeat, linear-gradient(45deg, #3b3b3b, #d28686);
 }
 .change-quote {
   margin-bottom: 30px;

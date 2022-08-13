@@ -93,6 +93,15 @@ class Translator {
                 10: "November",
                 11: "December"
             },
+            setMenu: {
+                weather: 'Your place',
+                language: 'Choose your language',
+                languageArr: ['Belarus', 'Russian', 'English'],
+                imgCollection: 'Choose image collection',
+                hide: 'Choose to hide',
+                hideArr: ['Hide player', 'Hide weather', 'Hide clock', 'Hide date', 'Hide greeting', 'Hide quote'],
+                close: 'Close'
+            },
             timeOfDay: ['Good Morning, ', 'Good Afternoon, ', 'Good Evening, ', 'Good Night, '],
             defaultName: 'Stranger',
             labelOfNameEnter: 'ENTER YOUR NAME'
@@ -120,6 +129,15 @@ class Translator {
                 9: "Октябрь",
                 10: "Ноябрь",
                 11: "Декабрь"
+            },
+            setMenu: {
+                weather: 'Ваше место',
+                language: 'Выберите язык',
+                languageArr: ['Белорусский', 'Русский', 'Англиский'],
+                imgCollection: 'Выберите источник изображений',
+                hide: 'Выберите, что бы спрятать',
+                hideArr: ['Спрятать плеер', 'Спрятать погоду', 'Спрятать часы', 'Спрятать дату', 'Спрятать приветствие', 'Спрятать цитаты'],
+                close: 'Закрыть'
             },
             timeOfDay: ['Доброе утро, ', 'Добрый день, ', 'Добрый вечер, ', 'Доброй ночи, '],
             defaultName: 'Странник',
@@ -149,6 +167,15 @@ class Translator {
                 10: "Лістапад",
                 11: "Снежань"
             },
+            setMenu: {
+                weather: 'Ваша месца',
+                language: 'Абярыце мову',
+                languageArr: ['Беларускі', 'Рускі', 'Англійскі'],
+                imgCollection: 'Вылучыце крыніцу малюнкаў',
+                hide: 'Выберыце, што схаваць',
+                hideArr: ['Схаваць плэер', 'Схаваць надвор\'е', 'Схаваць гадзіннік', 'Схаваць дату', 'Схаваць прывітанне', 'Схаваць цытаты'],
+                close: 'Зачыніць'
+            },
             timeOfDay: ['Добрай раніцы, ', 'Добры дзень, ', 'Добры вечар, ', 'Дабранач, '],
             defaultName: 'Вандроўнік',
             labelOfNameEnter: 'УВЯДЗІЦЕ СВАЁ ІМЯ'
@@ -162,10 +189,6 @@ class Translator {
 
 class SettingStorage {
     constructor() {
-        this.#startSetting();
-    }
-
-    #startSetting() {
         if (localStorage.getItem('settings')) {
             this.isSetting = true;
             this.setting = JSON.parse(localStorage.getItem('settings'));
@@ -177,8 +200,14 @@ class SettingStorage {
                 location: 'Minsk',
                 bgimage: '../assets/img/bg.jpg',
                 trackPlay: '',
-                trackTag:'',
-                weatherInit: null
+                trackTag: '',
+                weatherInit: null,
+                player: true,
+                weather: true,
+                clock: true,
+                date: true,
+                greeting: true,
+                quote: true
             }
             localStorage.setItem('settings', JSON.stringify(this.setting));
         }
@@ -203,19 +232,22 @@ class SettingStorage {
     }
 }
 
-class Coordinates{
+class Coordinates {
     #coords = {};
+
     constructor() {
         this.#coords = {
             latitude: null,
             longitude: null
         }
     }
-    setCoords(latitude, longitude){
+
+    setCoords(latitude, longitude) {
         this.#coords.latitude = latitude;
         this.#coords.longitude = longitude;
     }
-    getCoords(){
+
+    getCoords() {
         return this.#coords;
     }
 }
@@ -228,8 +260,6 @@ function getBGUrl(timeDay) {
     } else {
         randNum = '/' + randNum;
     }
-    // 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/evening/18.jpg'
-    // https://github.com/rolling-scopes-school/stage1-tasks/raw/assets/images/afternoon/01.jpg
     return 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/' + arr[timeDay] + randNum + '.jpg';
 }
 
@@ -272,14 +302,14 @@ let start = async function entry() {
     document.addEventListener('DOMContentLoaded', () => {
         //Initialization variables
 
-        let lang = settings.getSetting('lang'); //lanquage of app
-        log(lang);
+        let lang = settings.getSetting('lang'); //language of app
         // Clocks variable
         let month = translator.getValue(lang, 'month');
         let week = translator.getValue(lang, 'weekday');
         let time = document.querySelector('.time');
         let todayDate = document.querySelector('.date');
         //Greeting variable
+        let greetingContainer = document.querySelector('.greeting-container');
         let greeting = document.querySelector('.greeting');
         let name = document.querySelector('.name');
         //Background image and slider
@@ -291,6 +321,7 @@ let start = async function entry() {
         let quote = document.querySelector('.quote');
         let author = document.querySelector('.author');
         //Widget of weather
+        let weather = document.querySelector('.weather');
         let city = document.querySelector('.city');
         let weatherIcon = document.querySelector('.weather-icon');
         let temperature = document.querySelector('.temperature');
@@ -298,9 +329,142 @@ let start = async function entry() {
         let wind = document.querySelector('.wind');
         let humidity = document.querySelector('.humidity');
         let weatherErr = document.querySelector('.weather-error');
+        //Variable of settings menu
+        let popup = document.querySelector('.popup');
+        let userName = document.querySelector('.user-name');
+        let placeOfUser = document.querySelector('.place-of-weather');
+        let settingWeather = document.querySelector('.setting-weather');
+        let settingLanguage = document.querySelector('.language');
+        let titleLangArr = document.querySelectorAll('.language-title');
+        let checkboxesArr = document.querySelectorAll('.check');
+        let settingBGImage = document.querySelector('.title-setting');
+        let titleHide = document.querySelector('.title-choose-hide');
+        let labelSwitcherArr = document.querySelectorAll('.label-switcher');
+        let switcherArr = document.querySelectorAll('.switcher');
+        let btnSettingsApp = document.querySelector('.settings-app');
+        let btnSettingsClose = document.querySelector('.close-popup');
+        //Variables of player
+        let player = document.querySelector('.player');
+        //===================================================================>
 
-        //Function get weather from geolocation
-        function getWeatherGeolocation(lang){
+        btnSettingsApp.addEventListener('click', () => {
+            setupPopUp(lang);
+            popup.className = 'popup';
+            popup.addEventListener('click', (e) => {
+                e.stopImmediatePropagation();
+                switch (e.target.className) {
+                    case 'popup':
+                        popup.className = 'popup hidden';
+                        break;
+                    case 'close-popup':
+                        popup.className = 'popup hidden';
+                        break;
+                    case 'user-name':
+                        userName.addEventListener('blur', () => {
+                            settings.setSetting('name', userName.value);
+                            name.value = userName.value;
+                            userName.removeEventListener('blur', () => {
+                            });
+                        })
+                        break;
+                    case 'place-of-weather':
+                        placeOfUser.addEventListener('blur', () => {
+                            setWeather(placeOfUser.value, lang);
+                            placeOfUser.removeEventListener('blur', () => {
+                            });
+                        })
+                        break;
+                    case 'check':
+                        if (e.target.checked) {
+                            checkboxesArr.forEach(elem => {
+                                if (elem.value !== e.target.value) {
+                                    elem.checked = false;
+                                }
+                            })
+                        } else {
+                            e.target.checked = true;
+                        }
+                        settings.setSetting('lang', e.target.value);
+                        lang = e.target.value;
+                        // location.reload();
+                        setWeather(settings.getSetting('location'), lang);
+                        greeting.textContent = translator.getValue(lang, 'timeOfDay')[date.getTimeOfday()];
+                        let dateToday = date.getToday();
+                        month = translator.getValue(lang, 'month');
+                        week = translator.getValue(lang, 'weekday');
+                        todayDate.textContent = week[dateToday.day] + ', ' + month[dateToday.month] + ' ' + dateToday.number;
+                        getQ(lang);
+                        break;
+                    case 'switcher':
+                        log(e.target.checked);
+                        switch(e.target.value){
+                            case 'player':
+                                if(e.target.checked){
+                                    player.className = 'hidden';
+                                    settings.setSetting('player', false);
+                                }else{
+                                    player.className = 'player';
+                                    settings.setSetting('player', true);
+                                }
+                                break;
+                            case 'weather':
+                                if(e.target.checked){
+                                    weather.className = 'hidden';
+                                    settings.setSetting('weather', false);
+                                }else{
+                                    weather.className = 'weather';
+                                    settings.setSetting('weather', true);
+                                }
+                                break;
+                            case 'clock':
+                                if(e.target.checked){
+                                    time.className = 'hidden';
+                                    settings.setSetting('clock', false);
+                                }else{
+                                    time.className = 'time';
+                                    settings.setSetting('clock', true);
+                                }
+                                break;
+                            case 'date':
+                                if(e.target.checked){
+                                    todayDate.className = 'hidden';
+                                    settings.setSetting('date', false);
+                                }else{
+                                    todayDate.className = 'date';
+                                    settings.setSetting('date', true);
+                                }
+                                break;
+                            case 'greeting':
+                                if(e.target.checked){
+                                    greetingContainer.className = 'hidden';
+                                    settings.setSetting('greeting', false);
+                                }else{
+                                    greetingContainer.className = 'greeting-container';
+                                    settings.setSetting('greeting', true);
+                                }
+                                break;
+                            case 'quote':
+                                if(e.target.checked){
+                                    quoteBtn.className = 'hidden';
+                                    quote.className = 'hidden';
+                                    author.className = 'hidden';
+                                    settings.setSetting('quote', false);
+                                }else{
+                                    quoteBtn.className = 'change-quote';
+                                    quote.className = 'quote';
+                                    author.className = 'author';
+                                    settings.setSetting('quote', true);
+                                }
+                                break;
+                        }
+
+                        break;
+                }
+            })
+        })
+
+        //Function
+        function getWeatherGeolocation(lang) {
             return new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition((position) => {
                     coodinates.setCoords(position.coords.latitude, position.coords.longitude);
@@ -310,13 +474,13 @@ let start = async function entry() {
                 }, {enableHighAccuracy: true})
             }).then(r => {
                 let url = `https://api.openweathermap.org/data/2.5/weather?lat=${r.coords.latitude}&lon=${r.coords.longitude}&exclude=current&appid=1b4d2db9104890bb7966cf30eb259dae&units=metric&lang=${lang}`;
-                return fetch(url,{
+                return fetch(url, {
                     method: 'GET',
-                    mode:"cors"
+                    mode: "cors"
                 })
-            }).then(response=>{
+            }).then(response => {
                 return response.json();
-            }).then(weather=>{
+            }).then(weather => {
                 city.value = weather.name;
                 settings.setSetting('weatherInit', 'initialized');
                 settings.setSetting('location', weather.name);
@@ -324,21 +488,25 @@ let start = async function entry() {
                 temperature.textContent = weather.main.temp + ' ºC';
                 description.textContent = weather.weather[0].description;
                 wind.textContent = `Wind speed: ${weather.wind.speed} m/s`;
-                humidity.textContent =`Humidity: ${weather.main.humidity} %`;
-            }).catch(err=>{
+                humidity.textContent = `Humidity: ${weather.main.humidity} %`;
+            }).catch(err => {
                 weatherErr.textContent = err.message;
                 city.value = 'Enter your location';
             })
         }
-        function setWeather(name){
-            let setWeather = new Promise((resolve)=>{
-                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${name}&exclude=current&appid=1b4d2db9104890bb7966cf30eb259dae&units=metric&lang=${lang}`)
-                    .then(response=>{
+        function setWeather(name, lang) {
+            let langParam = lang;
+            if (lang === 'be') {
+                langParam = 'ru';
+            }
+            let set = new Promise((resolve) => {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${name}&exclude=current&appid=1b4d2db9104890bb7966cf30eb259dae&units=metric&lang=${langParam}`)
+                    .then(response => {
                         return response.json();
-                    }).then(r=>{
+                    }).then(r => {
                     resolve(r);
                 })
-            }).then(weather=>{
+            }).then(weather => {
                 city.value = weather.name;
                 settings.setSetting('location', weather.name);
                 settings.setSetting('weatherInit', 'initialized');
@@ -346,21 +514,90 @@ let start = async function entry() {
                 temperature.textContent = weather.main.temp + ' ºC';
                 description.textContent = weather.weather[0].description;
                 wind.textContent = `Wind speed: ${weather.wind.speed} m/s`;
-                humidity.textContent =`Humidity: ${weather.main.humidity} %`;
+                humidity.textContent = `Humidity: ${weather.main.humidity} %`;
             })
         }
+
+        function setPageParam(value, lang) {
+            if (value === '') {
+                value = translator.getValue(lang, 'labelOfNameEnter');
+            } else {
+                if (value !== translator.getValue(lang, 'labelOfNameEnter')) {
+                    settings.setSetting('name', value);
+                    let url = getBGUrl(date.getTimeOfday());
+                    settings.setSetting('bgimage', url);
+                    body.style.backgroundImage = url;
+                }
+            }
+        }
+        function setupPopUp(lang) {
+            userName.value = settings.getSetting('name');
+            placeOfUser.value = settings.getSetting('location');
+            let stringsReference = translator.getValue(lang, 'setMenu');
+            settingWeather.textContent = stringsReference.weather;
+            settingLanguage.textContent = stringsReference.language;
+            stringsReference.languageArr.forEach((string, index) => {
+                titleLangArr[index].textContent = `${string}`;
+            });
+            checkboxesArr.forEach(e => {
+                if (e.value === lang) {
+                    e.checked = true;
+                } else {
+                    e.checked = false;
+                }
+            })
+            settingBGImage.textContent = stringsReference.imgCollection;
+            titleHide.textContent = stringsReference.hide;
+            switcherArr.forEach(e=>{
+                if(settings.getSetting(e.value)){
+                    e.checked = false;
+                }else{
+                    e.checked = true;
+                }
+            })
+            stringsReference.hideArr.forEach((string, index) => {
+                labelSwitcherArr[index].textContent = `${string}`;
+            })
+            btnSettingsClose.textContent = stringsReference.close;
+        }
+        function setupPage(){
+            if(!settings.getSetting('player')){
+                player.className = 'hidden';
+            }
+            if(!settings.getSetting('weather')){
+                weather.className = 'hidden';
+            }
+            if(!settings.getSetting('clock')){
+                time.className = 'hidden';
+            }
+            if(!settings.getSetting('date')){
+                todayDate.className = 'hidden';
+            }
+            if(!settings.getSetting('greeting')){
+                greetingContainer.className = 'hidden';
+            }
+            if(!settings.getSetting('quote')){
+                quoteBtn.className = 'hidden';
+                quote.className = 'hidden';
+                author.className = 'hidden';
+            }
+        }
+
 
         window.addEventListener('load', () => {
 
             body.style.background = "url(" + settings.getSetting('bgimage') + ")";
 
-            let timeControll = date.getTime().hours;
+            setupPage();
+
+            let timeControl = date.getTime().hours;
+
             let timeIsChange = new CustomEvent('changetime');
 
             setInterval(() => {
                 let timeData = date.getTime();
-                if (timeControll !== timeData.hours) {
-                    timeControll = timeData.hours;
+                if (timeControl !== timeData.hours) {
+                    timeControl = timeData.hours;
                     time.dispatchEvent(timeIsChange);
                 }
                 time.textContent = timeData.hours + ':' + timeData.minutes + ':' + timeData.seconds;
@@ -384,17 +621,7 @@ let start = async function entry() {
             })
 
             name.addEventListener('blur', () => {
-                log(name.value);
-                if (name.value === '') {
-                    name.value = translator.getValue(lang, 'labelOfNameEnter');
-                } else {
-                    if (name.value !== translator.getValue(lang, 'labelOfNameEnter')) {
-                        settings.setSetting('name', name.value);
-                        let url = getBGUrl(date.getTimeOfday());
-                        settings.setSetting('bgimage', url);
-                        body.style.backgroundImage = url;
-                    }
-                }
+                setPageParam(name.value, lang);
             })
             //Body change img depend on time
             body.addEventListener('changetime', () => {
@@ -409,7 +636,7 @@ let start = async function entry() {
             //prev <------
             prev.addEventListener('click', () => {
                 let url = settings.getSetting('bgimage');
-                if(url === '../assets/img/bg.jpg'){
+                if (url === '../assets/img/bg.jpg') {
                     url = getBGUrl(date.getTimeOfday());
                 }
                 let fileName = Number(url.slice(url.length - 6, url.length - 4));
@@ -430,7 +657,7 @@ let start = async function entry() {
             //next----->
             next.addEventListener('click', () => {
                 let url = settings.getSetting('bgimage');
-                if(url === '../assets/img/bg.jpg'){
+                if (url === '../assets/img/bg.jpg') {
                     url = getBGUrl(date.getTimeOfday());
                 }
                 let fileName = Number(url.slice(url.length - 6, url.length - 4));
@@ -474,13 +701,13 @@ let start = async function entry() {
 
             //Weather widget
 
-            if(settings.getSetting('weatherInit') === null){
+            if (settings.getSetting('weatherInit') === null) {
                 getWeatherGeolocation(lang);
-            }else{
-                setWeather(settings.getSetting('location'));
+            } else {
+                setWeather(settings.getSetting('location'), lang);
             }
             //input place for weather;
-            city.addEventListener('blur', ()=>{
+            city.addEventListener('blur', () => {
                 setWeather(city.value);
             });
         });
