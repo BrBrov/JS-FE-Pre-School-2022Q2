@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="assets/favicon.ico" rel="shortcut icon"/>
-    <link rel="stylesheet" href="css/owfont-regular.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="./css/owfont-regular.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
     <script src="./js/script.js"></script>
     <title>momentum</title>
 </head>
@@ -16,10 +16,10 @@
             <button class="play-prev player-icon"></button>
             <button class="play player-icon"></button>
             <button class="play-next player-icon"></button>
-            <button class="sound-mute player-icon"></button>
+            <button class="sound-mute player-icon on"></button>
         </div>
         <div class="controls">
-        <input type="range" class="play-range" min="0" max="100" value="0">
+        <input type="range" class="play-range" min="0" value="0">
         <input type="range" class="sound-volume" min="0" max="100" value="0">
         </div>
         <ul class="play-list"></ul>
@@ -41,20 +41,20 @@
         <button class="slide-prev slider-icon"></button>
         <button class="slide-next slider-icon"></button>
     </div>
-    <time class="time"></time>
-    <date class="date"></date>
+    <div class="time"></div>
+    <div class="date"></div>
     <div class="greeting-container">
         <span class="greeting"></span>
         <input type="text" class="name" placeholder=""/>
     </div>
 </main>
 <footer class="footer">
-  <button class="settings-app"></button>
     <button class="change-quote"></button>
     <div>
         <div class="quote"></div>
         <div class="author"></div>
     </div>
+    <button class="settings-app"></button>
 </footer>
 <div class="popup hidden">
     <div class="settings">

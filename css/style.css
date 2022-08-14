@@ -31,11 +31,15 @@ body {
   height: calc(100%);
   top: 0;
   opacity: 1;
-  transition: opacity 1.15s;
+  transition: 1.5s;
 }
 .hidden{
-  display: none;
   opacity: 0.1;
+  display: none;
+  transition: 1.5s;
+}
+.non-visible{
+  visibility: hidden;
 }
 .settings{
   min-width: 320px;
@@ -253,6 +257,9 @@ body {
   cursor: pointer;
   transition: .3s;
 }
+.playing{
+  color: #25c7e1;
+}
 
 .play-item:hover {
   opacity: 1;
@@ -340,12 +347,17 @@ body {
   height: 30px;
   margin-left: 10%;
   background-size: 20px 20px;
-  background-image: url("../assets/svg/sound.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-color: white;
   border-radius: 10px;
   border: none;
+}
+.on{
+  background-image: url("../assets/svg/sound.svg");
+}
+.off{
+  background-image: url("../assets/svg/sound-mute.svg");
 }
 /*===================================>*/
 
@@ -488,7 +500,7 @@ body {
   align-self: flex-end;
   /*background-size: 37px 37px;*/
   background-size: cover;
-  background: url('/assets/svg/settings.svg') no-repeat, linear-gradient(45deg, gray, #d0c0c0);
+  background: url('/assets/svg/settings.svg') no-repeat, linear-gradient(45deg, #4f79ab, #82d7e5);
   border: 1px groove #b5e8ee;
   border-radius: 10px;
 }
