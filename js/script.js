@@ -474,24 +474,24 @@ let start = async function entry() {
 
         function setupPage() {
             if (!settings.getSetting('player')) {
-                player.className = 'hidden';
+                player.className = 'non-visible';
             }
             if (!settings.getSetting('weather')) {
-                weather.className = 'hidden';
+                weather.className = 'non-visible';
             }
             if (!settings.getSetting('clock')) {
-                time.className = 'hidden';
+                time.className = 'non-visible';
             }
             if (!settings.getSetting('date')) {
-                todayDate.className = 'hidden';
+                todayDate.className = 'non-visible';
             }
             if (!settings.getSetting('greeting')) {
-                greetingContainer.className = 'hidden';
+                greetingContainer.className = 'non-visible';
             }
             if (!settings.getSetting('quote')) {
-                quoteBtn.className = 'hidden';
-                quote.className = 'hidden';
-                author.className = 'hidden';
+                quoteBtn.className = 'non-visible';
+                quote.className = 'non-visible';
+                author.className = 'non-visible';
             }
         }
 
@@ -514,7 +514,7 @@ let start = async function entry() {
                 }
             })
         }
-        let listMutation = new CustomEvent('updatePlayList');
+        
         let trackCount = null;
 
         function playerCreate() {
@@ -534,7 +534,7 @@ let start = async function entry() {
             audio.src = list[trackCount].path;
             audio.currentTime = settings.getSetting('songsTimer');
             audio.autoplay = false;
-
+            audio.volume = volume.value/100;
             player.addEventListener('click', (e)=>{
                 e.stopImmediatePropagation();
                 switch (e.target.className){
@@ -610,7 +610,7 @@ let start = async function entry() {
                         break;
                 }
             })
-            audio.ended=()=>{
+            audio.onended=()=>{
                 clearInterval(interval);
                 if(trackCount === 3){
                     audio.src = list[0].path;
@@ -633,7 +633,7 @@ let start = async function entry() {
             })
         }
 
-           playerCreate();
+        playerCreate();
 
         //Realization of settings
         btnSettingsApp.addEventListener('click', () => {
