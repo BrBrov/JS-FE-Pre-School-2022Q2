@@ -319,7 +319,7 @@ let start = async function entry() {
     let date = new DateToday();
     let settings = new SettingStorage();
     let translator = new Translator();
-    let coodinates = new Coordinates();
+    let coordinates = new Coordinates();
 
     document.addEventListener('DOMContentLoaded', () => {
         //Initialization variables
@@ -376,7 +376,7 @@ let start = async function entry() {
         function getWeatherGeolocation(lang) {
             return new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition((position) => {
-                    coodinates.setCoords(position.coords.latitude, position.coords.longitude);
+                    coordinates.setCoords(position.coords.latitude, position.coords.longitude);
                     resolve(position);
                 }, (err) => {
                     reject(err);
@@ -451,7 +451,7 @@ let start = async function entry() {
                 titleLangArr[index].textContent = `${string}`;
             });
             checkboxesArr.forEach(e => {
-                if (e.value === lang) {
+                if(e.value === lang) {
                     e.checked = true;
                 } else {
                     e.checked = false;
@@ -460,7 +460,7 @@ let start = async function entry() {
             settingBGImage.textContent = stringsReference.imgCollection;
             titleHide.textContent = stringsReference.hide;
             switcherArr.forEach(e => {
-                if (settings.getSetting(e.value)) {
+                if(settings.getSetting(e.value)) {
                     e.checked = false;
                 } else {
                     e.checked = true;
@@ -560,9 +560,12 @@ let start = async function entry() {
                         audio.src = list[trackCount].path;
                         setPlayItem(playItemArr);
                         settings.setSetting('trackPlay', trackCount);
-                        interval = positionTrack(audio);
-                        audio.play();
-                        range.max = audio.duration;
+                        new Promise(resolve => {
+                            resolve(audio.play())
+                        }).then(r=>{
+                            range.max = audio.duration;
+                            interval = positionTrack(audio);
+                        });
                         break;
                     case 'play-next player-icon':
                         audio.pause();
@@ -575,17 +578,23 @@ let start = async function entry() {
                         audio.src = list[trackCount].path;
                         setPlayItem(playItemArr);
                         settings.setSetting('trackPlay', trackCount);
-                        audio.play();
-                        range.max = audio.duration;
-                        interval = positionTrack(audio);
+                        new Promise(resolve => {
+                            resolve(audio.play())
+                        }).then(r=>{
+                            range.max = audio.duration;
+                            interval = positionTrack(audio);
+                        });
                         break;
                     case 'sound-mute player-icon on':
                         e.target.className = 'sound-mute player-icon off';
-                        audio.muted = true;
+                        settings.setSetting('volume', (audio.volume*100));
+                        audio.volume = 0;
+                        volume.value = 0;
                         break;
                     case 'sound-mute player-icon off':
                         e.target.className = 'sound-mute player-icon on';
-                        audio.muted = false;
+                        volume.value = settings.getSetting(('volume'));
+                        audio.volume =volume.value/100;
                         break;
                     case 'play-item':
                         playItemArr.forEach((elem,i,arr)=>{
@@ -599,11 +608,15 @@ let start = async function entry() {
                         clearInterval(interval);
                         for(let i=0; i<list.length; i++){
                             if(e.target.textContent === list[i].title){
+                                audio.load();
                                 audio.src = list[i].path;
                                 settings.setSetting('trackPlay', i);
-                                audio.play();
-                                range.max = audio.duration;
-                                interval = positionTrack(audio);
+                                new Promise(resolve => {
+                                    resolve(audio.play())
+                                }).then(r=>{
+                                    range.max = audio.duration;
+                                    interval = positionTrack(audio);
+                                });
                                 break;
                             }
                         }
@@ -612,16 +625,21 @@ let start = async function entry() {
             })
             audio.onended=()=>{
                 clearInterval(interval);
-                if(trackCount === 3){
+                if(trackCount >= 3){
                     audio.src = list[0].path;
                     trackCount = 0;
                 }else{
-                    audio.src = list[trackCount+1].path;
+                    trackCount++;
+                    audio.src = list[trackCount].path;
                 }
+                setPlayItem(playItemArr);
                 settings.setSetting('trackPlay', trackCount);
-                audio.play();
-                range.max = audio.duration;
-                interval = positionTrack(audio);
+                new Promise(resolve => {
+                    resolve(audio.play())
+                }).then(r=>{
+                    range.max = audio.duration;
+                    interval = positionTrack(audio);
+                });
             }
             range.addEventListener('input', ()=>{
                 settings.setSetting('songsTimer', range.value);
