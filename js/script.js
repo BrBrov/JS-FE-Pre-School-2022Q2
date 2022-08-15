@@ -104,7 +104,8 @@ class Translator {
             },
             timeOfDay: ['Good Morning, ', 'Good Afternoon, ', 'Good Evening, ', 'Good Night, '],
             defaultName: 'Stranger',
-            labelOfNameEnter: 'ENTER YOUR NAME'
+            labelOfNameEnter: 'ENTER NAME',
+            tag: 'Enter tag'
         }
         this.ru = {
             weekday: {
@@ -141,7 +142,8 @@ class Translator {
             },
             timeOfDay: ['Доброе утро, ', 'Добрый день, ', 'Добрый вечер, ', 'Доброй ночи, '],
             defaultName: 'Странник',
-            labelOfNameEnter: 'ВВЕДИТЕ СВОЁ ИМЯ'
+            labelOfNameEnter: 'ВВЕДИТЕ ИМЯ',
+            tag: 'Введите тэг на англиском'
         }
         this.be = {
             weekday: {
@@ -178,12 +180,13 @@ class Translator {
             },
             timeOfDay: ['Добрай раніцы, ', 'Добры дзень, ', 'Добры вечар, ', 'Дабранач, '],
             defaultName: 'Вандроўнік',
-            labelOfNameEnter: 'УВЯДЗІЦЕ СВАЁ ІМЯ'
+            labelOfNameEnter: 'УВЯДЗІЦЕ ІМЯ',
+            tag: 'Увядзіце тэг на англійскім'
         }
         this.playlist = [{
-                path: '../assets/sounds/Black Batty.mp3',
-                title: 'Black Batty'
-            },
+            path: '../assets/sounds/Black Batty.mp3',
+            title: 'Black Batty'
+        },
             {
                 path: '../assets/sounds/Can\'t Stop.mp3',
                 title: 'Can\'t Stop'
@@ -228,7 +231,9 @@ class SettingStorage {
                 clock: true,
                 date: true,
                 greeting: true,
-                quote: true
+                quote: true,
+                imageSource: '0',
+                imgTags: null
             }
             localStorage.setItem('settings', JSON.stringify(this.setting));
         }
@@ -316,7 +321,7 @@ function animateBtnQuote(elem) {
     return new Animation(frame, document.timeline);
 }
 
-let start = async function entry() {
+let start = async function () {
     let date = new DateToday();
     let settings = new SettingStorage();
     let translator = new Translator();
@@ -366,6 +371,11 @@ let start = async function entry() {
         let switcherArr = document.querySelectorAll('.switcher');
         let btnSettingsApp = document.querySelector('.settings-app');
         let btnSettingsClose = document.querySelector('.close-popup');
+        let imgSourceSet = document.querySelectorAll('.storage');
+        let sliderSetting = document.querySelector('.slider-setting');
+        let inputTags =document.createElement('input');
+        inputTags.className = 'tags';
+        inputTags.type = 'text';
         //Variables of player
         let player = document.querySelector('.player');
         let playList = document.querySelector('.play-list');
@@ -452,16 +462,38 @@ let start = async function entry() {
                 titleLangArr[index].textContent = `${string}`;
             });
             checkboxesArr.forEach(e => {
-                if(e.value === lang) {
+                if (e.value === lang) {
                     e.checked = true;
                 } else {
                     e.checked = false;
                 }
             })
             settingBGImage.textContent = stringsReference.imgCollection;
+            imgSourceSet.forEach(e => {
+                if (e.value == settings.getSetting('imageSource')) {
+                    e.checked = true;
+                } else {
+                    e.checked = false;
+                }
+            })
+            if(settings.getSetting('imageSource') === '0'){
+                if(document.querySelector('.tags')){
+                    document.getElementsByClassName('tags')[0].remove();
+                }
+            }else{
+                if(!document.querySelector('.tags')){
+                    sliderSetting.append(inputTags);
+                    if(settings.getSetting('imgTags')){
+                        inputTags.value = settings.getSetting('imgTags');
+                    }else{
+                        inputTags.value = translator.getValue(lang,'tag');
+                    }
+
+                }
+            }
             titleHide.textContent = stringsReference.hide;
             switcherArr.forEach(e => {
-                if(settings.getSetting(e.value)) {
+                if (settings.getSetting(e.value)) {
                     e.checked = false;
                 } else {
                     e.checked = true;
@@ -471,6 +503,13 @@ let start = async function entry() {
                 labelSwitcherArr[index].textContent = `${string}`;
             })
             btnSettingsClose.textContent = stringsReference.close;
+            if(document.querySelector('.tag')){
+                if(settings.getSetting('imgTags')){
+                    document.querySelector('.tag').value = settings.getSetting('imgTags');
+                }else{
+                    document.querySelector('.tag').value = translator.getValue( lang, 'tag');
+                }
+            }
         }
 
         function setupPage() {
@@ -501,26 +540,27 @@ let start = async function entry() {
         // songsTimer: '',
         // volume: ''
         let interval = null; // control of scroll track;
-        function positionTrack(audio){
+        let trackCount = null;
+
+        function positionTrack(audio) {
             return setInterval(() => {
                 range.value = audio.currentTime;
             }, 100);
         }
-        function setPlayItem(playItemArr){
-            playItemArr.forEach((e,i,arr)=>{
-                if(i === trackCount){
+
+        function setPlayItem(playItemArr) {
+            playItemArr.forEach((e, i, arr) => {
+                if (i === trackCount) {
                     arr[i].className = 'play-item playing';
-                }else{
+                } else {
                     arr[i].className = 'play-item';
                 }
             })
         }
-        
-        let trackCount = null;
 
         function playerCreate() {
             let list = translator.getPlayList();
-            list.forEach(e=>{
+            list.forEach(e => {
                 let titleItem = document.createElement('li');
                 titleItem.classList = 'play-item';
                 titleItem.textContent = e.title;
@@ -535,16 +575,18 @@ let start = async function entry() {
             audio.src = list[trackCount].path;
             audio.currentTime = settings.getSetting('songsTimer');
             audio.autoplay = false;
-            audio.volume = volume.value/100;
-            player.addEventListener('click', (e)=>{
+            audio.volume = volume.value / 100;
+            player.addEventListener('click', (e) => {
                 e.stopImmediatePropagation();
-                switch (e.target.className){
+                switch (e.target.className) {
                     case 'play player-icon':
-                        if(audio.paused){
-                            audio.play().catch(e=>{log(e)});
+                        if (audio.paused) {
+                            audio.play().catch(e => {
+                                log(e)
+                            });
                             range.max = audio.duration;
                             interval = positionTrack(audio);
-                        }else{
+                        } else {
                             audio.pause();
                             settings.setSetting('songsTimer', audio.currentTime);
                             clearInterval(interval);
@@ -553,9 +595,9 @@ let start = async function entry() {
                     case 'play-prev player-icon':
                         audio.pause();
                         clearInterval(interval);
-                        if(trackCount === 0){
+                        if (trackCount === 0) {
                             trackCount = 3;
-                        }else {
+                        } else {
                             trackCount--;
                         }
                         audio.src = list[trackCount].path;
@@ -563,7 +605,7 @@ let start = async function entry() {
                         settings.setSetting('trackPlay', trackCount);
                         new Promise(resolve => {
                             resolve(audio.play())
-                        }).then(r=>{
+                        }).then(r => {
                             range.max = audio.duration;
                             interval = positionTrack(audio);
                         });
@@ -571,9 +613,9 @@ let start = async function entry() {
                     case 'play-next player-icon':
                         audio.pause();
                         clearInterval(interval);
-                        if(trackCount === 3){
+                        if (trackCount === 3) {
                             trackCount = 0
-                        }else {
+                        } else {
                             trackCount++;
                         }
                         audio.src = list[trackCount].path;
@@ -581,40 +623,40 @@ let start = async function entry() {
                         settings.setSetting('trackPlay', trackCount);
                         new Promise(resolve => {
                             resolve(audio.play())
-                        }).then(r=>{
+                        }).then(r => {
                             range.max = audio.duration;
                             interval = positionTrack(audio);
                         });
                         break;
                     case 'sound-mute player-icon on':
                         e.target.className = 'sound-mute player-icon off';
-                        settings.setSetting('volume', (audio.volume*100));
+                        settings.setSetting('volume', (audio.volume * 100));
                         audio.volume = 0;
                         volume.value = 0;
                         break;
                     case 'sound-mute player-icon off':
                         e.target.className = 'sound-mute player-icon on';
                         volume.value = settings.getSetting(('volume'));
-                        audio.volume =volume.value/100;
+                        audio.volume = volume.value / 100;
                         break;
                     case 'play-item':
-                        playItemArr.forEach((elem,i,arr)=>{
-                            if(e.target.textContent === elem.textContent){
+                        playItemArr.forEach((elem, i, arr) => {
+                            if (e.target.textContent === elem.textContent) {
                                 arr[i].className = 'play-item playing';
-                            }else{
+                            } else {
                                 arr[i].className = 'play-item';
                             }
                         })
                         audio.pause();
                         clearInterval(interval);
-                        for(let i=0; i<list.length; i++){
-                            if(e.target.textContent === list[i].title){
+                        for (let i = 0; i < list.length; i++) {
+                            if (e.target.textContent === list[i].title) {
                                 audio.load();
                                 audio.src = list[i].path;
                                 settings.setSetting('trackPlay', i);
                                 new Promise(resolve => {
                                     resolve(audio.play())
-                                }).then(r=>{
+                                }).then(r => {
                                     range.max = audio.duration;
                                     interval = positionTrack(audio);
                                 });
@@ -624,12 +666,12 @@ let start = async function entry() {
                         break;
                 }
             })
-            audio.onended=()=>{
+            audio.onended = () => {
                 clearInterval(interval);
-                if(trackCount >= 3){
+                if (trackCount >= 3) {
                     audio.src = list[0].path;
                     trackCount = 0;
-                }else{
+                } else {
                     trackCount++;
                     audio.src = list[trackCount].path;
                 }
@@ -637,18 +679,18 @@ let start = async function entry() {
                 settings.setSetting('trackPlay', trackCount);
                 new Promise(resolve => {
                     resolve(audio.play())
-                }).then(r=>{
+                }).then(r => {
                     range.max = audio.duration;
                     interval = positionTrack(audio);
                 });
             }
-            range.addEventListener('input', ()=>{
+            range.addEventListener('input', () => {
                 settings.setSetting('songsTimer', range.value);
                 audio.currentTime = range.value;
             })
-            volume.addEventListener('input', ()=>{
+            volume.addEventListener('input', () => {
                 settings.setSetting('volume', volume.value);
-                audio.volume = volume.value/100;
+                audio.volume = volume.value / 100;
             })
         }
 
@@ -702,6 +744,25 @@ let start = async function entry() {
                         week = translator.getValue(lang, 'weekday');
                         todayDate.textContent = week[dateToday.day] + ', ' + month[dateToday.month] + ' ' + dateToday.number;
                         getQ(lang);
+                        if(document.querySelector('.tags')){
+                            if(settings.getSetting('imgTags') === null){
+                                document.querySelector('.tags').value = translator.getValue(lang,'tag');
+                            }else{
+                                document.querySelector('.tags').value = settings.getSetting('imgTags');
+                            }
+                        }
+                        let menuRef = translator.getValue(lang, 'setMenu');
+                        settingWeather.textContent = menuRef.weather;
+                        settingLanguage.textContent = menuRef.language;
+                        titleLangArr.forEach((e,i)=> {
+                            e.textContent = menuRef.languageArr[i];
+                        })
+                        settingBGImage.textContent = menuRef.imgCollection;
+                        titleHide.textContent = menuRef.imgCollection;
+                        labelSwitcherArr.forEach((e,i)=>{
+                            e.textContent = menuRef.hideArr[i];
+                        })
+                        btnSettingsClose.textContent = menuRef.close;
                         break;
                     case 'switcher':
                         log(e.target.checked);
@@ -767,6 +828,41 @@ let start = async function entry() {
                         }
 
                         break;
+                    case 'storage':
+                        imgSourceSet.forEach(elem => {
+                            if (e.target.value !== elem.value) {
+                                elem.checked = false;
+                            }
+                        })
+                        settings.setSetting('imageSource', e.target.value);
+                        if(e.target.value === '0'){
+                            if(document.querySelector('.tags')){
+                                inputTags.removeEventListener('blur',()=>{});
+                                document.getElementsByClassName('tags')[0].remove();
+                            }
+                        }else{
+                            if(!document.querySelector('.tags')){
+                                sliderSetting.append(inputTags);
+                                if(settings.getSetting('imgTags') !== null){
+                                    log('a')
+                                    inputTags.value = settings.getSetting('imgTags');
+                                }else{
+                                    log('s')
+                                    inputTags.value = translator.getValue(lang, 'tag');
+                                }
+                                inputTags.addEventListener('blur',(e)=>{
+                                    e.stopImmediatePropagation();
+                                    if(inputTags.value === ''){
+                                        settings.setSetting('imgTags', null);
+                                        inputTags.value = translator.getValue(lang, 'tag');
+                                    }else{
+                                        log('w')
+                                        settings.setSetting('imgTags', inputTags.value);
+                                    }
+                                })
+                            }
+                        }
+                        break;
                 }
             })
         })
@@ -775,7 +871,7 @@ let start = async function entry() {
 
             body.style.background = "url(" + settings.getSetting('bgimage') + ")";
             setupPage();
- 
+
 
             let timeControl = date.getTime().hours;
 
@@ -836,7 +932,6 @@ let start = async function entry() {
                 if (fileName < 10) {
                     fileName = '0' + fileName;
                 }
-                log(fileName);
                 url = url + fileName + '.jpg';
                 settings.setSetting('bgimage', url);
                 setBgImage(url, body);
@@ -857,7 +952,6 @@ let start = async function entry() {
                 if (fileName < 10) {
                     fileName = '0' + fileName;
                 }
-                log(fileName);
                 url = url + fileName + '.jpg';
                 settings.setSetting('bgimage', url);
                 setBgImage(url, body);
@@ -870,7 +964,6 @@ let start = async function entry() {
 
             let quoteSetUp = getQ();
             quoteSetUp.then(r => {
-                log(r)
                 quote.textContent = `${r[0].quote}`;
                 author.textContent = `${r[0].author}`;
             });

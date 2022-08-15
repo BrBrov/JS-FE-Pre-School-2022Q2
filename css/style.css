@@ -193,6 +193,13 @@ body {
 .storage{
   margin: 2% auto;
 }
+.tags{
+  text-align: center;
+  width: 80%;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+}
 .switcher{
   appearance: none;
   height: 20px;
