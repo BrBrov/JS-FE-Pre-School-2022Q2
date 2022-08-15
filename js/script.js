@@ -296,14 +296,15 @@ function setBgImage(url, body) {
 }
 
 async function getQ(lang) {
-    //https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=
-    let url = ``;
-    if (lang === 'en') {
-        url = url + 'en'
-    } else (
-        url = url + 'ru'
-    )
-    let response = await fetch('https://scrappy-php.herokuapp.com/?url=https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru');
+    //https://scrappy-php.herokuapp.com/?url=https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=ru
+    // https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=${lang}
+    // let url = ``;
+    // if (lang === 'en') {
+    //     url = url + 'en'
+    // } else (
+    //     url = url + 'ru'
+    // )
+    let response = await fetch(`https://www.breakingbadapi.com/api/quote/random`);
     return await response.json();
 }
 
@@ -867,10 +868,11 @@ let start = async function entry() {
             // quote - quoteText
             // author - quoteAuthor
 
-            let quoteSetUp = getQ(lang);
+            let quoteSetUp = getQ();
             quoteSetUp.then(r => {
-                quote.textContent = `${r.quoteText}`;
-                author.textContent = `${r.quoteAuthor}`;
+                log(r)
+                quote.textContent = `${r[0].quote}`;
+                author.textContent = `${r[0].author}`;
             });
 
             //Update quote
@@ -878,10 +880,10 @@ let start = async function entry() {
             quoteBtn.addEventListener('click', () => {
                 let animateClick = animateBtnQuote(quoteBtn);
                 animateClick.play();
-                let updateQuote = getQ(lang);
+                let updateQuote = getQ();
                 updateQuote.then(r => {
-                    quote.textContent = `${r.quoteText}`;
-                    author.textContent = `${r.quoteAuthor}`;
+                    quote.textContent = `${r[0].quote}`;
+                    author.textContent = `${r[0].author}`;
                 })
             })
 
