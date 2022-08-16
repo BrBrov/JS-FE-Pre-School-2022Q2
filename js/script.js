@@ -1,4 +1,4 @@
-let {log} = console;
+let { log } = console;
 // Available language for geolocation:
 //     name:be: "Паставы" <-belarus
 //     name:be-tarask: "Паставы" <- belarus(tarashkevicha)
@@ -187,18 +187,18 @@ class Translator {
             path: '../assets/sounds/Black Batty.mp3',
             title: 'Black Batty'
         },
-            {
-                path: '../assets/sounds/Can\'t Stop.mp3',
-                title: 'Can\'t Stop'
-            },
-            {
-                path: '../assets/sounds/Pretty Fly.mp3',
-                title: 'Pretty Fly'
-            },
-            {
-                path: '../assets/sounds/Stan.mp3',
-                title: 'Stan'
-            }];
+        {
+            path: '../assets/sounds/Can\'t Stop.mp3',
+            title: 'Can\'t Stop'
+        },
+        {
+            path: '../assets/sounds/Pretty Fly.mp3',
+            title: 'Pretty Fly'
+        },
+        {
+            path: '../assets/sounds/Stan.mp3',
+            title: 'Stan'
+        }];
     }
 
     getValue(language, param) {
@@ -315,9 +315,9 @@ async function getQ(lang) {
 
 function animateBtnQuote(elem) {
     let frame = new KeyframeEffect(elem, [
-        {transform: 'rotate(0deg)'},
-        {transform: 'rotate(720deg)'}
-    ], {duration: 1500, fill: 'forwards', easing: 'ease-in-out'});
+        { transform: 'rotate(0deg)' },
+        { transform: 'rotate(720deg)' }
+    ], { duration: 1500, fill: 'forwards', easing: 'ease-in-out' });
     return new Animation(frame, document.timeline);
 }
 
@@ -329,8 +329,10 @@ let start = async function () {
 
     document.addEventListener('DOMContentLoaded', () => {
         //Initialization variables
-
+        let flikrGallery = [];
         let lang = settings.getSetting('lang'); //language of app
+        let imgsourse = settings.getSetting('imageSource');
+        let indexImgNow = 0;
         // Clocks variable
         let month = translator.getValue(lang, 'month');
         let week = translator.getValue(lang, 'weekday');
@@ -373,7 +375,7 @@ let start = async function () {
         let btnSettingsClose = document.querySelector('.close-popup');
         let imgSourceSet = document.querySelectorAll('.storage');
         let sliderSetting = document.querySelector('.slider-setting');
-        let inputTags =document.createElement('input');
+        let inputTags = document.createElement('input');
         inputTags.className = 'tags';
         inputTags.type = 'text';
         //Variables of player
@@ -382,7 +384,7 @@ let start = async function () {
         let range = document.querySelector('.play-range');
         let volume = document.querySelector('.sound-volume');
         //===================================================================>
-
+        let timeIsChange = new CustomEvent('changetime');
         //Other functions
         function getWeatherGeolocation(lang) {
             return new Promise((resolve, reject) => {
@@ -391,7 +393,7 @@ let start = async function () {
                     resolve(position);
                 }, (err) => {
                     reject(err);
-                }, {enableHighAccuracy: true})
+                }, { enableHighAccuracy: true })
             }).then(r => {
                 let url = `https://api.openweathermap.org/data/2.5/weather?lat=${r.coords.latitude}&lon=${r.coords.longitude}&exclude=current&appid=1b4d2db9104890bb7966cf30eb259dae&units=metric&lang=${lang}`;
                 return fetch(url, {
@@ -425,8 +427,8 @@ let start = async function () {
                     .then(response => {
                         return response.json();
                     }).then(r => {
-                    resolve(r);
-                })
+                        resolve(r);
+                    })
             }).then(weather => {
                 city.value = weather.name;
                 settings.setSetting('location', weather.name);
@@ -476,17 +478,17 @@ let start = async function () {
                     e.checked = false;
                 }
             })
-            if(settings.getSetting('imageSource') === '0'){
-                if(document.querySelector('.tags')){
+            if (settings.getSetting('imageSource') === '0') {
+                if (document.querySelector('.tags')) {
                     document.getElementsByClassName('tags')[0].remove();
                 }
-            }else{
-                if(!document.querySelector('.tags')){
+            } else {
+                if (!document.querySelector('.tags')) {
                     sliderSetting.append(inputTags);
-                    if(settings.getSetting('imgTags')){
+                    if (settings.getSetting('imgTags')) {
                         inputTags.value = settings.getSetting('imgTags');
-                    }else{
-                        inputTags.value = translator.getValue(lang,'tag');
+                    } else {
+                        inputTags.value = translator.getValue(lang, 'tag');
                     }
 
                 }
@@ -503,11 +505,11 @@ let start = async function () {
                 labelSwitcherArr[index].textContent = `${string}`;
             })
             btnSettingsClose.textContent = stringsReference.close;
-            if(document.querySelector('.tag')){
-                if(settings.getSetting('imgTags')){
+            if (document.querySelector('.tag')) {
+                if (settings.getSetting('imgTags')) {
                     document.querySelector('.tag').value = settings.getSetting('imgTags');
-                }else{
-                    document.querySelector('.tag').value = translator.getValue( lang, 'tag');
+                } else {
+                    document.querySelector('.tag').value = translator.getValue(lang, 'tag');
                 }
             }
         }
@@ -694,8 +696,39 @@ let start = async function () {
             })
         }
 
-        playerCreate();
+        
 
+        function getBGUnsplash() {
+            let url = 'https://api.unsplash.com/photos/random?client_id=e-ikdj_pn59_CvTI4gvPv7K4hzvsQY-fpWZiDhDsJ90&orientation=landscape';
+            if (settings.getSetting('imgTags')) {
+                url = url + `&query=${settings.getSetting('imgTags')}`
+            }
+            fetch(url).then(r => {
+                return r.json();
+            }).then(data => {
+                settings.setSetting('bgimage', data.urls.regular);
+                setBgImage(data.urls.regular, body);
+            })
+        }
+        function getBGFlikr(){
+            //&tags=nature
+            //https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=084b2251b471c9c3b47a582a40abe69d&extras=url_l&format=json&nojsoncallback=1
+            let url = 'https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=084b2251b471c9c3b47a582a40abe69d&extras=url_l&format=json&nojsoncallback=1';
+            if (settings.getSetting('imgTags')) {
+                url = url + `&tags=${settings.getSetting('imgTags')}`
+            }
+            fetch(url).then(r => {
+                return r.json();
+            }).then(data => {
+                    data.photos.photo.forEach(e=>{
+                        if(e.url_l){
+                            flikrGallery.push(e.url_l);
+                        }                    
+                    })              
+            })
+        }
+        playerCreate();
+        getBGFlikr();
         //Realization of settings
         btnSettingsApp.addEventListener('click', () => {
             setupPopUp(lang);
@@ -744,22 +777,22 @@ let start = async function () {
                         week = translator.getValue(lang, 'weekday');
                         todayDate.textContent = week[dateToday.day] + ', ' + month[dateToday.month] + ' ' + dateToday.number;
                         getQ(lang);
-                        if(document.querySelector('.tags')){
-                            if(settings.getSetting('imgTags') === null){
-                                document.querySelector('.tags').value = translator.getValue(lang,'tag');
-                            }else{
+                        if (document.querySelector('.tags')) {
+                            if (settings.getSetting('imgTags') === null) {
+                                document.querySelector('.tags').value = translator.getValue(lang, 'tag');
+                            } else {
                                 document.querySelector('.tags').value = settings.getSetting('imgTags');
                             }
                         }
                         let menuRef = translator.getValue(lang, 'setMenu');
                         settingWeather.textContent = menuRef.weather;
                         settingLanguage.textContent = menuRef.language;
-                        titleLangArr.forEach((e,i)=> {
+                        titleLangArr.forEach((e, i) => {
                             e.textContent = menuRef.languageArr[i];
                         })
                         settingBGImage.textContent = menuRef.imgCollection;
                         titleHide.textContent = menuRef.imgCollection;
-                        labelSwitcherArr.forEach((e,i)=>{
+                        labelSwitcherArr.forEach((e, i) => {
                             e.textContent = menuRef.hideArr[i];
                         })
                         btnSettingsClose.textContent = menuRef.close;
@@ -832,36 +865,47 @@ let start = async function () {
                         imgSourceSet.forEach(elem => {
                             if (e.target.value !== elem.value) {
                                 elem.checked = false;
+                            } else {
+                                elem.checked = true;
                             }
                         })
                         settings.setSetting('imageSource', e.target.value);
-                        if(e.target.value === '0'){
-                            if(document.querySelector('.tags')){
-                                inputTags.removeEventListener('blur',()=>{});
+                        imgsourse = Number(e.target.value);
+                        
+                        if (e.target.value === '0') {
+                            if (document.querySelector('.tags')) {
+                                inputTags.removeEventListener('blur', () => { });
                                 document.getElementsByClassName('tags')[0].remove();
                             }
-                        }else{
-                            if(!document.querySelector('.tags')){
+                        } else {
+                            if (!document.querySelector('.tags')) {
                                 sliderSetting.append(inputTags);
-                                if(settings.getSetting('imgTags') !== null){
-                                    log('a')
+                                if (settings.getSetting('imgTags') !== null) {
                                     inputTags.value = settings.getSetting('imgTags');
-                                }else{
-                                    log('s')
+                                } else {
                                     inputTags.value = translator.getValue(lang, 'tag');
                                 }
-                                inputTags.addEventListener('blur',(e)=>{
-                                    e.stopImmediatePropagation();
-                                    if(inputTags.value === ''){
+                                inputTags.addEventListener('blur', (e) => {                                    
+                                    if (inputTags.value === '') {
                                         settings.setSetting('imgTags', null);
                                         inputTags.value = translator.getValue(lang, 'tag');
-                                    }else{
+                                    } else {
                                         log('w')
                                         settings.setSetting('imgTags', inputTags.value);
                                     }
+                                    log('dispatch');
+                                    if(imgsourse === 1){
+                                        getBGFlikr();
+                                    }
+                                    if(imgsourse === 2){
+                                        getBGUnsplash();
+                                    }
+                                    body.dispatchEvent(timeIsChange);
+                                    
                                 })
                             }
                         }
+                        body.dispatchEvent(timeIsChange);
                         break;
                 }
             })
@@ -872,10 +916,7 @@ let start = async function () {
             body.style.background = "url(" + settings.getSetting('bgimage') + ")";
             setupPage();
 
-
             let timeControl = date.getTime().hours;
-
-            let timeIsChange = new CustomEvent('changetime');
 
             setInterval(() => {
                 let timeData = date.getTime();
@@ -908,53 +949,111 @@ let start = async function () {
             })
             //Body change img depend on time
             body.addEventListener('changetime', () => {
-
-                let dayTime = date.getTimeOfday();
-                let src = getBGUrl(dayTime);
-                setBgImage(src, body);
-                settings.setSetting('bgimage', src);
+                switch (imgsourse) {
+                    case 0:
+                    log('git')
+                        let dayTime = date.getTimeOfday();
+                        let src = getBGUrl(dayTime);
+                        setBgImage(src, body);
+                        settings.setSetting('bgimage', src);
+                        break;
+                    case 1:
+                        if(flikrGallery.length === 0){
+                            new Promise((resolve, reject)=>{
+                                resolve(getBGFlikr());
+                            }).then(r=>{
+                                setBgImage(flikrGallery[indexImgNow + 1], body);
+                            })
+                        }
+                        setBgImage(flikrGallery[indexImgNow + 1], body);
+                        settings.setSetting('bgimage', flikrGallery[0]);
+                        break;
+                    case 2:
+                        getBGUnsplash();
+                        break;
+                }
             }, true);
 
             //Slider
             //prev <------
             prev.addEventListener('click', () => {
-                let url = settings.getSetting('bgimage');
-                if (url === '../assets/img/bg.jpg') {
-                    url = getBGUrl(date.getTimeOfday());
+                switch (imgsourse) {
+                    case 0:
+                        let url = settings.getSetting('bgimage');
+                        if (url === '../assets/img/bg.jpg') {
+                            url = getBGUrl(date.getTimeOfday());
+                        }
+                        let fileName = Number(url.slice(url.length - 6, url.length - 4));
+                        url = url.slice(0, url.length - 6);
+                        if (fileName > 1) {
+                            fileName--;
+                        } else if (fileName === 1) {
+                            fileName = 20;
+                        }
+                        if (fileName < 10) {
+                            fileName = '0' + fileName;
+                        }
+                        url = url + fileName + '.jpg';
+                        settings.setSetting('bgimage', url);
+                        setBgImage(url, body);
+                        break;
+                    case 1:  
+                    let u;                      
+                        if(indexImgNow ===0){
+                            indexImgNow = flikrGallery.length - 1
+                            u = flikrGallery[indexImgNow];
+                        }
+                        else{
+                            indexImgNow--;
+                            u = flikrGallery[indexImgNow];
+                        }
+                        setBgImage(u, body); 
+                        settings.setSetting('bgimage', u);                                           
+                        break;
+                    case 2:
+                        getBGUnsplash();
+                        break;
                 }
-                let fileName = Number(url.slice(url.length - 6, url.length - 4));
-                url = url.slice(0, url.length - 6);
-                if (fileName > 1) {
-                    fileName--;
-                } else if (fileName === 1) {
-                    fileName = 20;
-                }
-                if (fileName < 10) {
-                    fileName = '0' + fileName;
-                }
-                url = url + fileName + '.jpg';
-                settings.setSetting('bgimage', url);
-                setBgImage(url, body);
             })
             //next----->
             next.addEventListener('click', () => {
-                let url = settings.getSetting('bgimage');
-                if (url === '../assets/img/bg.jpg') {
-                    url = getBGUrl(date.getTimeOfday());
+                switch (imgsourse) {
+                    case 0:
+                        let url = settings.getSetting('bgimage');
+                        if (url === '../assets/img/bg.jpg') {
+                            url = getBGUrl(date.getTimeOfday());
+                        }
+                        let fileName = Number(url.slice(url.length - 6, url.length - 4));
+                        url = url.slice(0, url.length - 6);
+                        if (fileName < 20) {
+                            fileName++;
+                        } else if (fileName === 20) {
+                            fileName = 1;
+                        }
+                        if (fileName < 10) {
+                            fileName = '0' + fileName;
+                        }
+                        url = url + fileName + '.jpg';
+                        settings.setSetting('bgimage', url);
+                        setBgImage(url, body);
+                        break;
+                    case 1:
+                    let u;
+                    if(indexImgNow === flikrGallery.length - 1){
+                        indexImgNow = 0
+                        u = flikrGallery[indexImgNow];
+                    }
+                    else{
+                        indexImgNow++;
+                        u = flikrGallery[indexImgNow];
+                    }
+                    setBgImage(u, body);
+                    settings.setSetting('bgimage', u);  
+                        break;
+                    case 2:
+                        getBGUnsplash();
+                        break;
                 }
-                let fileName = Number(url.slice(url.length - 6, url.length - 4));
-                url = url.slice(0, url.length - 6);
-                if (fileName < 20) {
-                    fileName++;
-                } else if (fileName === 20) {
-                    fileName = 1;
-                }
-                if (fileName < 10) {
-                    fileName = '0' + fileName;
-                }
-                url = url + fileName + '.jpg';
-                settings.setSetting('bgimage', url);
-                setBgImage(url, body);
             })
 
             //Quotes
@@ -996,8 +1095,3 @@ let start = async function () {
 }
 
 start();
-
-
-
-
-
